@@ -1,0 +1,342 @@
+//== Cores ==//
+$blue: #556ee6;
+$indigo: #564ab1;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #f46a6a;
+$orange: #f1734f;
+$yellow: #f1b44c;
+$green: #34c38f;
+$teal: #050505;
+$cyan: #50a5f1;
+//== Cores ==//
+
+.pink {
+    color: $pink;
+}
+
+.success {
+    color: $green;
+}
+
+.primary {
+    color: $teal;
+}
+
+.danger {
+    color: $red;
+}
+
+.warning {
+    color: $yellow;
+}
+
+
+//Loader CSS Modo Noturno
+// #loader {
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     z-index: 1;
+//     width: 120px;
+//     height: 120px;
+//     margin: -76px 0 0 -76px;
+//     border: 16px solid #f3f3f3;
+//     border-radius: 50%;
+//     border-top: 16px solid #3498db;
+//     -webkit-animation: spin 2s linear infinite;
+//     animation: spin 2s linear infinite;
+// }
+// Loader CSS Modo Noturno
+
+.form-check {
+    padding-top: 5px;
+}
+
+.paginaInicial {
+    margin-left: 0 !important;
+}
+
+.bonusIcone {
+    content: url(assets/images/bonus.svg);
+}
+
+.modalBonus {
+    border: 1px solid #556ee6;
+}
+
+.CorVerde {
+    color: $green;
+}
+
+.avatarRanking {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.avatar-sm {
+    height: 2rem !important;
+    width: 2rem !important;
+}
+
+.descritivoInicial {
+    float: right;
+    width: 330px;
+    color: #74788d;
+    opacity: 0.7;
+    margin-top: -15px;
+}
+
+//==  Simulador.html  ==//
+.hackTabelaAltura {
+
+    color: transparent !important;
+    user-select: none;
+
+}
+
+//== FILTROS inicio.html ==//
+#datepicker4 {
+    cursor: pointer;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #2a3042 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #2a3042;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
+.selectFiltros {
+    border: 1px solid #ced4da !important;
+}
+
+//== Carousel Ranking Colors ==//
+.first {
+    color: #ecc81a;
+}
+
+.second {
+    color: #4e606b;
+}
+
+.third {
+    color: #f1734f;
+}
+
+//== Carousel Ranking Colors End ==//
+
+.carousel-align {
+    display: flex !important;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+}
+
+.carousel-item {
+    transition: none !important;
+    display: none !important;
+}
+
+.carousel-item.active {
+    display: block !important;
+}
+
+.separador::after {
+    content: "|";
+    opacity: 0.5;
+}
+
+.card-footer {
+    padding: .625rem 1.25rem !important;
+}
+
+.progress {
+    background-color: #b9b9b970 !important;
+    overflow: unset;
+    display: -webkit-box;
+}
+
+.fogueteBar {
+    position: relative;
+    margin-top: -9px;
+    margin-left: -15px;
+    z-index: 1000;
+    height: 30px;
+    animation-duration: 6s;
+}
+
+.progress-bar {
+    align-items: flex-end !important;
+}
+
+.progress-icon-end {
+    position: absolute;
+    top: -7px;
+    right: -9px;
+    border-radius: 15px 50px 30px 5px !important;
+}
+
+.progress-icon-start {
+    position: absolute;
+    top: -7px;
+    border-radius: 15px 50px 30px 5px !important;
+}
+
+.rounded-bar {
+    border-radius: 15px 50px 50px 15px;
+}
+
+.avatar-title-card {
+    align-items: center;
+    background-color: $success;
+    color: $white;
+    display: flex;
+    font-weight: 400;
+    height: 75%;
+    justify-content: center;
+    width: 75%;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.avatar-title.start {
+    align-items: center;
+    background-color: $yellow;
+    color: $white;
+    display: flex;
+    font-weight: $fw-medium;
+    height: 75%;
+    justify-content: center;
+    width: 75%;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.titleProgressBar {
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.card-footer {
+    background-color: rgba(0, 0, 0, .07) !important;
+}
+
+.carousel-align h6 {
+    margin-bottom: 0;
+}
+
+.pontosInicio {
+    font-size: 1rem;
+}
+
+// Separador vertical do card
+.sobreIndicador:after {
+    content: "";
+    background-color: $blue;
+    opacity: 0.2;
+    position: absolute;
+    width: 2px;
+    height: 151px;
+    top: 28px;
+    left: 100%;
+    display: block
+}
+
+mark {
+    background-color: #e3effc !important;
+}
+
+#cardRegrasCalculo {
+    border-radius: 0px 0px 0.25rem 0.25rem !important;
+    display: none;
+}
+
+.expand {
+    border-radius: 0.25rem 0.25rem 0px 0px !important;
+    transition: width .1s;
+    transition-timing-function: ease;
+    width: 100%;
+    background-color: $blue  !important;
+    color: #fff;
+}
+
+.expand:hover {
+    transition: background-color 2s;
+    transition-timing-function: ease;
+    background-color: $cyan  !important;
+    color: #fff;
+}
+
+.shrink {
+    transition: width 1s;
+    transition: background-color .5s;
+    transition-timing-function: ease;
+    width: 20%;
+    background-color: $blue  !important;
+    color: #fff;
+
+    #cardRegrasCalculo {
+        border-radius: 0.25rem !important;
+    }
+}
+
+.shrink:hover {
+    transition: background-color 2s;
+    transition-timing-function: ease;
+    background-color: $cyan  !important;
+    color: #fff;
+}
+
+.mini-stats-wid {
+    box-shadow: inset 0px 0px 0px .3px $blue;
+}
+
+.indicadorCard .mini-stats-wid:hover {
+    box-shadow: inset 0px 0px 0px 1px $blue;
+    transition: box-shadow .5s;
+}
+
+// Texto do marker
+.apex-charts text {
+    fill: #fff;
+}
+
+// Escala Tabela Yaxis Xaxis
+.apexcharts-text.apexcharts-yaxis-label {
+    fill: #adb5bd;
+}
+
+// Titulos Yaxis
+.apexcharts-text.apexcharts-yaxis-title-text {
+    fill: #adb5bd !important;
+}
+
+// Titulos Yaxis
+.apex-charts text tspan {
+    fill: #adb5bd !important;
+}
+
+.descTotalPontos {
+    font-size: .8rem;
+}
+
+//Indicador Tooltip
+.tooltipIndicador {
+    padding: 0;
+    border: none;
+    color: $blue;
+}
