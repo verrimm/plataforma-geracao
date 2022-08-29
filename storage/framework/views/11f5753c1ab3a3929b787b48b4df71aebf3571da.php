@@ -169,12 +169,12 @@
 
                             <div class="avatar-xs progress-icon-start">
                                 <span class="avatar-title start border border-warning">
-                                    5º
+                                    <?php echo e($ranking['posicao_ranking']); ?>º
                                 </span>
                             </div>
                             <div class="avatar-xs progress-icon-end">
                                 <span class="avatar-title-card border border-success">
-                                    4º
+                                    <?php echo e($ranking['posicao_ranking']-1); ?>º
                                 </span>
                             </div>
                         </div>
