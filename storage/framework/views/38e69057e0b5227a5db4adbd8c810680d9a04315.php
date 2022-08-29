@@ -8,7 +8,7 @@
 
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Superação <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> Ranking Geral <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?> Ranking GRUPO <?php echo e($dadosRanking[0]['cd_grupo']); ?> <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 
 
@@ -25,115 +25,104 @@
                                     <div class="ranking-table-header-data h6">Agência</div>
                                     <div class="ranking-table-header-data h6">Pontuação</div>
                                 </div>
+
+
+                                <?php
+                                $contador = 0
+                                ?>
+                                <?php $__currentLoopData = $dadosRanking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemRaking): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                <?php if($contador==0): ?>
                                 <div class="ranking-table-row-leader-1">
                                     <div class="ranking-table-data-leader-1">
                                         <div class="medal-gold"></div>
                                     </div>
                                     <div class="ranking-table-data">
-                                        Capão da Canoa
+                                        <?php echo e($itemRaking['nm_posto']); ?>
+
                                     </div>
                                     <div class="ranking-table-data">
                                         
-                                        100
+                                        <?php echo e($itemRaking['pt_ranking']); ?>
+
                                     </div>
                                 </div>
+                                <?php endif; ?>
+                                <?php if($contador==1): ?>
                                 <div class="ranking-table-row-leader-2">
                                     <div class="ranking-table-data-leader-2">
                                         <div class="medal-silver"></div>
                                     </div>
                                     <div class="ranking-table-data">
-                                        Guaíba
+                                        <?php echo e($itemRaking['nm_posto']); ?>
+
                                     </div>
                                     <div class="ranking-table-data">
-                                        
-                                        100
+                                        <?php echo e($itemRaking['pt_ranking']); ?>
+
                                     </div>
                                 </div>
+                                <?php endif; ?>
+                                <?php if($contador==2): ?>
                                 <div class="ranking-table-row-leader-3">
                                     <div class="ranking-table-data-leader-3">
                                         <div class="medal-bronze"></div>
                                     </div>
                                     <div class="ranking-table-data">
-                                        Projeta
+                                        <?php echo e($itemRaking['nm_posto']); ?>
+
                                     </div>
                                     <div class="ranking-table-data">
-                                        
-                                        100
+                                        <?php echo e($itemRaking['pt_ranking']); ?>
+
                                     </div>
                                 </div>
+                                 <?php endif; ?>
+
+                                <?php
+                                $contador++
+                                ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+
+
+
                                 <div class="ranking-table-body mb-3">
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            4
+                                    
+                                    <?php
+                                        $contador = 0
+                                    ?>
+                                        
+                                    <?php $__currentLoopData = $dadosRanking; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemRanking): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($contador>2): ?>
+                                         
+                                        <div class="ranking-table-row">
+                                            <div class="ranking-table-data">
+                                                <?php echo e($contador+1); ?>
+
+                                            </div>  
+                                            <div class="ranking-table-data">
+                                                <?php echo e($itemRanking['nm_posto']); ?>
+
+                                            </div>
+                                            <div class="ranking-table-data">
+                                                
+                                                <?php echo e($itemRanking['pt_ranking']); ?>
+
+                                            </div>
                                         </div>
-                                        <div class="ranking-table-data">
-                                            Campo Bom
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            5
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Lajeado
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            6
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Gramado
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            7
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Mãe de Deus
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            8
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Recife
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            9
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Canoas
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            
-                                            100
-                                        </div>
-                                    </div>
+                                        
+                                        <?php endif; ?>
+
+                                        <?php
+                                            $contador++
+                                        ?>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                   
+                                   
                                 </div>
                             </div>
                             <!--Use Date Formatter-->

@@ -87,12 +87,22 @@ Route::get('ranking-geral', function () {
     $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
         ->where('cd_posto', '=', $usuario['cd_posto'])->first();
-    $participantesGrupo = posto::all()
-        ->join('grupo_posto as gp', 'cd_grupo', '=', 'postos cd_grupo');
+    $ranking = posto::join("grupo_posto as gp", function ($join) {
+        $join->on("gp.cd_coop", "=", "postos.cd_coop")
+            ->on("gp.cd_posto", "=", "postos.cd_posto");
+        })
+    ->join("ranking_posto as rp", function ($join) {
+        $join->on("rp.cd_coop", "=", "postos.cd_coop")
+            ->on("rp.cd_posto", "=", "postos.cd_posto");    
+    })
+    ->where('gp.cd_grupo','=',$grupo['cd_grupo'])
+    ->orderByDesc('pt_ranking')
+    ->get()
+    ;
 
 
     return view('ranking-geral', [
-        'dadosRanking' => $participantesGrupo
+        'dadosRanking' => $ranking
 
     ]);
 });

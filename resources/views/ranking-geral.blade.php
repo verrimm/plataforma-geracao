@@ -8,7 +8,7 @@
 
 @component('components.breadcrumb')
 @slot('li_1') Superação @endslot
-@slot('title') Ranking Geral @endslot
+@slot('title') Ranking GRUPO {{$dadosRanking[0]['cd_grupo']}} @endslot
 @endcomponent
 
 
@@ -25,115 +25,95 @@
                                     <div class="ranking-table-header-data h6">Agência</div>
                                     <div class="ranking-table-header-data h6">Pontuação</div>
                                 </div>
+
+
+                                @php
+                                $contador = 0
+                                @endphp
+                                @foreach ($dadosRanking as $itemRaking)
+
+                                @if ($contador==0)
                                 <div class="ranking-table-row-leader-1">
                                     <div class="ranking-table-data-leader-1">
                                         <div class="medal-gold"></div>
                                     </div>
                                     <div class="ranking-table-data">
-                                        Capão da Canoa
+                                        {{$itemRaking['nm_posto']}}
                                     </div>
                                     <div class="ranking-table-data">
                                         {{-- <div class="complete"></div> --}}
-                                        100
+                                        {{$itemRaking['pt_ranking']}}
                                     </div>
                                 </div>
+                                @endif
+                                @if ($contador==1)
                                 <div class="ranking-table-row-leader-2">
                                     <div class="ranking-table-data-leader-2">
                                         <div class="medal-silver"></div>
                                     </div>
                                     <div class="ranking-table-data">
-                                        Guaíba
+                                        {{$itemRaking['nm_posto']}}
                                     </div>
                                     <div class="ranking-table-data">
-                                        {{-- <div class="complete"></div> --}}
-                                        100
+                                        {{$itemRaking['pt_ranking']}}
                                     </div>
                                 </div>
+                                @endif
+                                @if ($contador==2)
                                 <div class="ranking-table-row-leader-3">
                                     <div class="ranking-table-data-leader-3">
                                         <div class="medal-bronze"></div>
                                     </div>
                                     <div class="ranking-table-data">
-                                        Projeta
+                                        {{$itemRaking['nm_posto']}}
                                     </div>
                                     <div class="ranking-table-data">
-                                        {{-- <div class="complete"></div> --}}
-                                        100
+                                        {{$itemRaking['pt_ranking']}}
                                     </div>
                                 </div>
+                                 @endif
+
+                                @php
+                                $contador++
+                                @endphp
+                                @endforeach
+
+
+
+
+
                                 <div class="ranking-table-body mb-3">
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            4
+                                    
+                                    @php
+                                        $contador = 0
+                                    @endphp
+                                        
+                                    @foreach ($dadosRanking as $itemRanking)
+                                        @if ($contador>2)
+                                         
+                                        <div class="ranking-table-row">
+                                            <div class="ranking-table-data">
+                                                {{$contador+1}}
+                                            </div>  
+                                            <div class="ranking-table-data">
+                                                {{$itemRanking['nm_posto']}}
+                                            </div>
+                                            <div class="ranking-table-data">
+                                                {{-- <div class="complete"></div> --}}
+                                                {{$itemRanking['pt_ranking']}}
+                                            </div>
                                         </div>
-                                        <div class="ranking-table-data">
-                                            Campo Bom
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            {{-- <div class="complete"></div> --}}
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            5
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Lajeado
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            {{-- <div class="complete"></div> --}}
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            6
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Gramado
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            {{-- <div class="complete"></div> --}}
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            7
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Mãe de Deus
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            {{-- <div class="complete"></div> --}}
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            8
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Recife
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            {{-- <div class="complete"></div> --}}
-                                            100
-                                        </div>
-                                    </div>
-                                    <div class="ranking-table-row">
-                                        <div class="ranking-table-data">
-                                            9
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            Canoas
-                                        </div>
-                                        <div class="ranking-table-data">
-                                            {{-- <div class="complete"></div> --}}
-                                            100
-                                        </div>
-                                    </div>
+                                        
+                                        @endif
+
+                                        @php
+                                            $contador++
+                                        @endphp
+
+                                    @endforeach
+
+                                   
+                                   
                                 </div>
                             </div>
                             <!--Use Date Formatter-->
