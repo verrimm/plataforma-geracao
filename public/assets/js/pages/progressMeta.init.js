@@ -1,0 +1,1 @@
+!function(){var t=document.querySelector(".js-completed-bar");t&&(t.style.width=t.getAttribute("data-complete")+"%",t.style.opacity=1)}();
