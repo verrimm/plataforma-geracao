@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/datepicker/datepicker.min.css') }}">
 @endsection
 
+
 <div class="row">
     <div class="col-xl-12">
         <div class="row" style="justify-content: center;">
