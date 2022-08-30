@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="<?php echo e(URL::asset('/assets/libs/datepicker/datepicker.min.css')); ?>">
 <?php $__env->stopSection(); ?>
 
+
 <div class="row">
     <div class="col-xl-12">
         <div class="row" style="justify-content: center;">
@@ -52,6 +53,16 @@
                                 <h5 class="mb-0">
                                     <?php echo e($dadosUsuario->sum('pontuacao')); ?>
 
+                                </h5>
+                            </div>
+                            <div class="flex-grow-1">
+                                <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-award"></span>
+                                    Posição</p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                        class="far fa-question-circle"></i></button>
+                                <h5 class="mb-0">
+                                     <?php echo e($ranking['posicao_ranking']); ?>º
                                 </h5>
                             </div>
                         </div>
@@ -270,15 +281,11 @@
                                 echo "R$ " . number_format($item['vl_lcto'],0,",",".");
                                 ?>
                                 <?php endif; ?>
-
-
-
                             </h5>
                         </div>
                         <div class="flex-shrink-0 align-self-center">
                             <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                <span
-                                    class="avatar-title rounded-circle avatarRanking iconePosicaoRanking"><?php echo e($item['ordem']); ?>º</span>
+                                <span class="avatar-title rounded-circle avatarRanking iconePosicaoRanking"><?php echo e($item['ordem']); ?>º</span>
                             </div>
                         </div>
                     </div>

@@ -52,6 +52,16 @@
                                     {{$dadosUsuario->sum('pontuacao')}}
                                 </h5>
                             </div>
+                            <div class="flex-grow-1">
+                                <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-award"></span>
+                                    Posição</p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                        class="far fa-question-circle"></i></button>
+                                <h5 class="mb-0">
+                                     {{$ranking['posicao_ranking']}}º
+                                </h5>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer progressBarBG">
@@ -268,15 +278,11 @@
                                 echo "R$ " . number_format($item['vl_lcto'],0,",",".");
                                 @endphp
                                 @endif
-
-
-
                             </h5>
                         </div>
                         <div class="flex-shrink-0 align-self-center">
                             <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                <span
-                                    class="avatar-title rounded-circle avatarRanking iconePosicaoRanking">{{$item['ordem']}}º</span>
+                                <span class="avatar-title rounded-circle avatarRanking iconePosicaoRanking">{{$item['ordem']}}º</span>
                             </div>
                         </div>
                     </div>

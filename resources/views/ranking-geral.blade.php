@@ -1,4 +1,4 @@
-@extends('layouts.master', ['rankingRapido' => 'teste'])
+@extends('layouts.master', ['rankingRapido' => 'rankingRapido'])
 
 @section('title') Superação @endsection
 @section('css')
