@@ -31,23 +31,10 @@ Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class,
 Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
 
-//Language Translation
-Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
-
 
 Route::get('index', function () {
 
-    $rankingTop = posto::join("grupo_posto as gp", function ($join) {
-        $join->on("gp.cd_coop", "=", "postos.cd_coop")
-            ->on("gp.cd_posto", "=", "postos.cd_posto");
-        })
-        ->join("ranking_posto as rp", function ($join) {
-            $join->on("rp.cd_coop", "=", "postos.cd_coop")
-                ->on("rp.cd_posto", "=", "postos.cd_posto");
-        })
-        ->orderby('gp.cd_grupo','asc')
-        ->orderby('rp.posicao_ranking','asc')
-        ->get();
+   
     $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
     ->where('cd_posto', '=', $usuario['cd_posto'])->first();
@@ -66,7 +53,6 @@ Route::get('index', function () {
     return view('index', [
 
         'ranking' => $ranking,
-        'rankingTop' =>$rankingTop, 
         'dadosUsuario' => posto::join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "postos.cd_coop")
                 ->on("gp.cd_posto", "=", "postos.cd_posto");
@@ -87,7 +73,32 @@ Route::get('index', function () {
 });
 
 Route::get('comparador', function () {
+    $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
     return view('comparador');
+});
+Route::get('comparador2', function () {
+    $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
+    $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
+    ->where('cd_posto', '=', $usuario['cd_posto'])->first();
+    return view('comparador2',[
+
+        'dadosUsuario' => posto::join("grupo_posto as gp", function ($join) {
+            $join->on("gp.cd_coop", "=", "postos.cd_coop")
+                ->on("gp.cd_posto", "=", "postos.cd_posto");
+        })
+            ->join("grupos as g", 'g.cd_grupo', "=", 'gp.cd_grupo')
+            ->join("lancamento as l", function ($join) {
+                $join->on("l.cd_coop", "=", "postos.cd_coop")
+                    ->on("l.cd_posto", "=", "postos.cd_posto");
+            })
+            ->join("indicadores as i", function ($join) {
+                $join->on("i.cd_indicador", "=", "l.cd_indicador");
+            })
+            ->where('postos.cd_coop', $usuario['cd_coop'])
+            ->where('postos.cd_posto', $usuario['cd_posto'])
+            ->get()
+
+    ]);
 });
 Route::get('simulador', function () {
     return view('simulador');
@@ -99,6 +110,19 @@ Route::get('ranking-geral', function () {
     $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
         ->where('cd_posto', '=', $usuario['cd_posto'])->first();
+
+
+    $rankingTop = posto::join("grupo_posto as gp", function ($join) {
+            $join->on("gp.cd_coop", "=", "postos.cd_coop")
+                ->on("gp.cd_posto", "=", "postos.cd_posto");
+            })
+            ->join("ranking_posto as rp", function ($join) {
+                $join->on("rp.cd_coop", "=", "postos.cd_coop")
+                    ->on("rp.cd_posto", "=", "postos.cd_posto");
+            })
+            ->orderby('gp.cd_grupo','asc')
+            ->orderby('rp.posicao_ranking','asc')
+            ->get();
     $ranking = posto::join("grupo_posto as gp", function ($join) {
         $join->on("gp.cd_coop", "=", "postos.cd_coop")
             ->on("gp.cd_posto", "=", "postos.cd_posto");
@@ -114,15 +138,16 @@ Route::get('ranking-geral', function () {
 
 
     return view('ranking-geral', [
-        'dadosRanking' => $ranking
+        'dadosRanking' => $ranking,
+        'rankingTop' => $rankingTop
 
     ]);
 });
 
-//rotas indicadores
+//rotas indicadores e rotas default e 404
 Route::get('/{indicador}', function ($indicador) {
 
-    $varTemp = 0;
+    $varTemp = 'z';
     $listaIndicadores = indicador::all();
 
     foreach ($listaIndicadores as $item) {
@@ -131,10 +156,10 @@ Route::get('/{indicador}', function ($indicador) {
             $varTemp = $indicador;
         }
     }
-
+    if($varTemp!='z'){
     $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
     $cd_indicador = indicador::where('url', '=', $varTemp)->first();
-
+    
     return view('indicador', [
 
         'indicador' => indicador::where('url', '=', $varTemp)->first(),
@@ -172,12 +197,17 @@ Route::get('/{indicador}', function ($indicador) {
             ->where('postos.cd_posto', $usuario['cd_posto'])
             ->get()
     ]);
+    }
+    else{
+        if(view()->exists($indicador)){
+            return view($indicador); 
+        }else{
+            return view('pages-404');
+        }
+        
+    }
 });
 
 
 
 
-Route::get('/{hacks}', function ($hacks) {
-
-    return view($hacks);
-});

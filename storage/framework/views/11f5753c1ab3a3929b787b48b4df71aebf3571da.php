@@ -21,16 +21,7 @@
 <link rel="stylesheet" href="<?php echo e(URL::asset('/assets/libs/datepicker/datepicker.min.css')); ?>">
 <?php $__env->stopSection(); ?>
 
-    
-   <?php for($i = 0; $i < count($rankingTop); $i++): ?>
-    
-       <?php echo e($rankingTop[$i]['nm_posto']); ?>
-
-       <br>
-
-
-   <?php endfor; ?>
-
+   
     
 
 

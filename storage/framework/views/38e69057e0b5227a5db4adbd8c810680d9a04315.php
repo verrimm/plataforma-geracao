@@ -12,6 +12,9 @@
 <?php echo $__env->renderComponent(); ?>
 
 
+ 
+
+
 <div class="col-xl-12">
     <div class="row" style="justify-content: flex-start;">
         <div class="col-md-8">

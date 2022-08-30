@@ -21,9 +21,7 @@
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/datepicker/datepicker.min.css') }}">
 @endsection
 
-    
-  
-
+   
     
 
 
