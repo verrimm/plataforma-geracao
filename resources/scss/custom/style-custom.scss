@@ -340,3 +340,9 @@ mark {
     border: none;
     color: $blue;
 }
+
+//Row
+.rankingCards {
+    --bs-gutter-y: 0;
+    cursor: pointer;
+}
