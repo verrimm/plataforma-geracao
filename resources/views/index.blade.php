@@ -3,16 +3,18 @@
 @section('title') Superação @endsection
 
 @section('content')
-    <div class="loader" id="fadeOut" style="position: fixed; z-index: 999999; top: 0; left: 0; width: 100%; height: 100%; background: #222736; display: block; justify-content: center; align-items: center;">
-          <img style="left: 50%;top: 50%;position: absolute;" src="{{ URL::asset('assets/images/preloader.gif') }}" />
-    </div>
+<div class="loader" id="fadeOut"
+    style="position: fixed; z-index: 999999; top: 0; left: 0; width: 100%; height: 100%; background: #222736; display: block; justify-content: center; align-items: center;">
+    <img style="left: 50%;top: 50%;position: absolute;" src="{{ URL::asset('assets/images/preloader.gif') }}" />
+</div>
 @component('components.breadcrumb')
 @slot('li_1') Superação @endslot
 @slot('title') Página Inicial @endslot
 @endcomponent
 @section('css')
 <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"
+    type="text/css">
 
 <link href="{{ URL::asset('/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.css') }}" rel="stylesheet"
     type="text/css">
@@ -20,14 +22,6 @@
     type="text/css" />
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/datepicker/datepicker.min.css') }}">
 @endsection
-
-    
-  
-
-    
-
-
-
 
 <div class="row">
     <div class="col-xl-12">
@@ -40,6 +34,9 @@
                                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-map-pin"></span>
                                     {{$dadosUsuario[0]['nm_grupo']}}
                                 </p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                        class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     {{$dadosUsuario[0]['nm_posto']}}
                                 </h5>
@@ -47,6 +44,9 @@
                             <div class="flex-grow-1">
                                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-trophy"></span>
                                     Pontuação Total</p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                        class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     {{$dadosUsuario->sum('pontuacao')}}
                                 </h5>
@@ -248,47 +248,49 @@
     </div>
     <!-- inicio linhas -->
     @foreach ($dadosUsuario as $item)
-        
 
-        <div class="col-md-3 indicadorCard">
-            <a href="./{{$item['url']}}">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">{{$item['nm_indicador']}}</p>
-                                <h5 class="mb-0">
-                                    @if($item['cd_indicador']>9 || $item['cd_indicador']==8 || $item['cd_indicador']==3 || $item['cd_indicador']==4  )
-                                       {{$item['delta']*100}} %
-                                    @else
 
-                                        @php
-                                             echo "R$ " . number_format($item['vl_lcto'],0,",","."); 
-                                         @endphp 
-                                    @endif
+    <div class="col-md-3 indicadorCard">
+        <a href="./{{$item['url']}}">
+            <div class="card mini-stats-wid">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="text-muted fw-medium">{{$item['nm_indicador']}}</p>
+                            <h5 class="mb-0">
+                                @if($item['cd_indicador']>9 || $item['cd_indicador']==8 || $item['cd_indicador']==3 ||
+                                $item['cd_indicador']==4 )
+                                {{$item['delta']*100}} %
+                                @else
 
-                                    
-                                   
-                                </h5>
-                            </div>
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle avatarRanking iconePosicaoRanking">{{$item['ordem']}}º</span>
-                                </div>
-                            </div>
+                                @php
+                                echo "R$ " . number_format($item['vl_lcto'],0,",",".");
+                                @endphp
+                                @endif
+
+
+
+                            </h5>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="carousel-align">
-                            <h6>10% <span class="separador primary"></span>
-                                <i class="bx bxs-upvote success"></i> {{$item['pontuacao']}}
-                                Pts.
-                            </h6>
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                <span
+                                    class="avatar-title rounded-circle avatarRanking iconePosicaoRanking">{{$item['ordem']}}º</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </a>
-        </div>
+                <div class="card-footer">
+                    <div class="carousel-align">
+                        <h6>10% <span class="separador primary"></span>
+                            <i class="bx bxs-upvote success"></i> {{$item['pontuacao']}}
+                            Pts.
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
 
 
     @endforeach

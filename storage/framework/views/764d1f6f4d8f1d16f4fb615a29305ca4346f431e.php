@@ -28,11 +28,15 @@
                 <i class="fa fa-fw fa-bars"></i>
             </button>
         </div>
+        <?php echo e($rankingRapido); ?>
 
         <a href="./ranking-geral" class="linkCarousel d-none d-md-block">
             <div class="carousel-align">
                 <div id="carouselRanking" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
                     <div class="carousel-inner" role="listbox">
+                        
+                        
+                        
                         <div class="carousel-item">
                             <span class="img-fluid badge badge-soft-dark">Ranking</span>
                             <span class="img-fluid badge badge-soft-success">Grupo 0</span>
@@ -144,7 +148,7 @@
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user"
-                        src="<?php echo e(isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg')); ?>"
+                        src="<?php echo e(isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-2.jpg')); ?>"
                         alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1" key="t-henry"><?php echo e(ucfirst(Auth::user()->name)); ?></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master', ['rankingRapido' => 'teste'])
 
 @section('title') Regulamento @endsection
 
