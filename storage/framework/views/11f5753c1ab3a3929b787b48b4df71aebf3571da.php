@@ -21,6 +21,21 @@
 <link rel="stylesheet" href="<?php echo e(URL::asset('/assets/libs/datepicker/datepicker.min.css')); ?>">
 <?php $__env->stopSection(); ?>
 
+    
+   <?php for($i = 0; $i < count($rankingTop); $i++): ?>
+    
+       <?php echo e($rankingTop[$i]['nm_posto']); ?>
+
+       <br>
+
+
+   <?php endfor; ?>
+
+    
+
+
+
+
 <div class="row">
     <div class="col-xl-12">
         <div class="row" style="justify-content: center;">
@@ -316,4 +331,4 @@
 <script src="<?php echo e(URL::asset('/assets/js/pages/dashboard.init.js')); ?>"></script>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\mateus.g.0999\Documents\GitHub\plataforma-geracao\resources\views/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', ['rankingRapido' => 'teste'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\mateus.g.0999\Documents\GitHub\plataforma-geracao\resources\views/index.blade.php ENDPATH**/ ?>

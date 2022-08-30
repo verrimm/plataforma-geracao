@@ -37,6 +37,17 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 
 Route::get('index', function () {
 
+    $rankingTop = posto::join("grupo_posto as gp", function ($join) {
+        $join->on("gp.cd_coop", "=", "postos.cd_coop")
+            ->on("gp.cd_posto", "=", "postos.cd_posto");
+        })
+        ->join("ranking_posto as rp", function ($join) {
+            $join->on("rp.cd_coop", "=", "postos.cd_coop")
+                ->on("rp.cd_posto", "=", "postos.cd_posto");
+        })
+        ->orderby('gp.cd_grupo','asc')
+        ->orderby('rp.posicao_ranking','asc')
+        ->get();
     $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
     ->where('cd_posto', '=', $usuario['cd_posto'])->first();
@@ -54,7 +65,8 @@ Route::get('index', function () {
 
     return view('index', [
 
-        'ranking' => $ranking, 
+        'ranking' => $ranking,
+        'rankingTop' =>$rankingTop, 
         'dadosUsuario' => posto::join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "postos.cd_coop")
                 ->on("gp.cd_posto", "=", "postos.cd_posto");

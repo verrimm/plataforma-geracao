@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master', ['rankingRapido' => 'teste'])
 
 @section('title') Superação @endsection
 
@@ -20,6 +20,14 @@
     type="text/css" />
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/datepicker/datepicker.min.css') }}">
 @endsection
+
+    
+  
+
+    
+
+
+
 
 <div class="row">
     <div class="col-xl-12">
