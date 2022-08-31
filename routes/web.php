@@ -47,11 +47,12 @@ Route::get('index', function () {
             ->on("rp.cd_posto", "=", "postos.cd_posto");
     })
     ->where('gp.cd_grupo','=',$grupo['cd_grupo'])
+    ->where('postos.cd_coop','=',$usuario['cd_coop'])
+    ->where('postos.cd_posto','=',$usuario['cd_posto'])
     ->first()
     ;
 
     return view('index', [
-
         'ranking' => $ranking,
         'dadosUsuario' => posto::join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "postos.cd_coop")
