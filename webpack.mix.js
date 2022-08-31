@@ -176,6 +176,7 @@ mix.webpackConfig({
 //copying demo pages related assets
 var app_pages_assets = {
     js: [
+        folder.src + "js/pages/bgColocacao.init.js",
         folder.src + "js/pages/iconColocacao.init.js",
         folder.src + "js/pages/progressMeta.init.js",
         folder.src + "js/pages/apexcharts.init.js",

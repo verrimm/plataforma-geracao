@@ -9,7 +9,24 @@ $yellow: #f1b44c;
 $green: #34c38f;
 $teal: #050505;
 $cyan: #50a5f1;
+
+$ouro: #ecc81a;
+$prata: #9aa0a5;
+$bronze: #f1734f;
+
 //== Cores ==//
+
+.bg-ouro {
+    background-color: $ouro;
+}
+
+.bg-prata {
+    background-color: $prata;
+}
+
+.bg-bronze {
+    background-color: $bronze;
+}
 
 .pink {
     color: $pink;
@@ -174,7 +191,7 @@ $cyan: #50a5f1;
 
 .fogueteBar {
     position: relative;
-    margin-top: -9px;
+    margin-top: -8px;
     margin-left: -15px;
     z-index: 1000;
     height: 30px;
@@ -187,19 +204,29 @@ $cyan: #50a5f1;
 
 .progress-icon-end {
     position: absolute;
-    top: -7px;
-    right: -9px;
+    top: -11px;
+    right: -12px;
     border-radius: 15px 50px 30px 5px !important;
 }
 
 .progress-icon-start {
     position: absolute;
-    top: -7px;
+    top: -11px;
     border-radius: 15px 50px 30px 5px !important;
 }
 
 .rounded-bar {
     border-radius: 15px 50px 50px 15px;
+}
+
+.avatar-xs {
+    //Override app.scss
+    height: 3rem;
+    width: 3rem;
+}
+
+.progress-lg {
+    height: 15px;
 }
 
 .avatar-title-card {
@@ -212,6 +239,7 @@ $cyan: #50a5f1;
     justify-content: center;
     width: 75%;
     border-radius: 5px 5px 5px 5px;
+    font-size: 1rem;
 }
 
 .avatar-title.start {
@@ -224,6 +252,7 @@ $cyan: #50a5f1;
     justify-content: center;
     width: 75%;
     border-radius: 5px 5px 5px 5px;
+    font-size: 1rem;
 }
 
 .titleProgressBar {
