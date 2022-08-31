@@ -1,1 +1,40 @@
-!function(){var n,r={1085:function(){for(var n=document.querySelectorAll(".iconePosicaoRanking"),r=0;r<n.length;r++)switch(n[r].textContent){case"1º":case"2º":case"3º":n[r].classList.add("bg-success");break;case"4º":case"5º":case"6º":n[r].classList.add("bg-warning");break;default:n[r].classList.add("bg-danger")}},3524:function(){},4946:function(){},6626:function(){},3711:function(){},3354:function(){}},t={};function e(n){var o=t[n];if(void 0!==o)return o.exports;var i=t[n]={exports:{}};return r[n](i,i.exports,e),i.exports}e.m=r,n=[],e.O=function(r,t,o,i){if(!t){var c=1/0;for(s=0;s<n.length;s++){t=n[s][0],o=n[s][1],i=n[s][2];for(var u=!0,a=0;a<t.length;a++)(!1&i||c>=i)&&Object.keys(e.O).every((function(n){return e.O[n](t[a])}))?t.splice(a--,1):(u=!1,i<c&&(c=i));if(u){n.splice(s--,1);var f=o();void 0!==f&&(r=f)}}return r}i=i||0;for(var s=n.length;s>0&&n[s-1][2]>i;s--)n[s]=n[s-1];n[s]=[t,o,i]},e.o=function(n,r){return Object.prototype.hasOwnProperty.call(n,r)},function(){var n={7290:0,3186:0,4464:0,2316:0,8393:0,4673:0};e.O.j=function(r){return 0===n[r]};var r=function(r,t){var o,i,c=t[0],u=t[1],a=t[2],f=0;if(c.some((function(r){return 0!==n[r]}))){for(o in u)e.o(u,o)&&(e.m[o]=u[o]);if(a)var s=a(e)}for(r&&r(t);f<c.length;f++)i=c[f],e.o(n,i)&&n[i]&&n[i][0](),n[c[f]]=0;return e.O(s)},t=self.webpackChunkskote=self.webpackChunkskote||[];t.forEach(r.bind(null,0)),t.push=r.bind(null,t.push.bind(t))}(),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(1085)})),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(3524)})),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(4946)})),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(6626)})),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(3711)}));var o=e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(3354)}));o=e.O(o)}();
+/******/ (function() { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!**************************************************!*\
+  !*** ./resources/js/pages/iconColocacao.init.js ***!
+  \**************************************************/
+var posicao = document.querySelectorAll(".iconePosicaoRanking");
+
+for (var i = 0; i < posicao.length; i++) {
+  switch (posicao[i].textContent) {
+    case "1º":
+      posicao[i].classList.add("bg-success");
+      break;
+
+    case "2º":
+      posicao[i].classList.add("bg-success");
+      break;
+
+    case "3º":
+      posicao[i].classList.add("bg-success");
+      break;
+
+    case "4º":
+      posicao[i].classList.add("bg-warning");
+      break;
+
+    case "5º":
+      posicao[i].classList.add("bg-warning");
+      break;
+
+    case "6º":
+      posicao[i].classList.add("bg-warning");
+      break;
+
+    default:
+      posicao[i].classList.add("bg-danger");
+      break;
+  }
+}
+/******/ })()
+;

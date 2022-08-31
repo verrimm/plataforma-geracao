@@ -1,4 +1,4 @@
-var posicao = document.querySelectorAll(".iconePosicaoRanking")
+var posicao = document.querySelectorAll(".iconePosicaoRanking");
 
 for (var i = 0; i < posicao.length; i++) {
     switch (posicao[i].textContent) {
