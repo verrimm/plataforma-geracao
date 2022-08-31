@@ -3,16 +3,18 @@
 <?php $__env->startSection('title'); ?> Superação <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-    <div class="loader" id="fadeOut" style="position: fixed; z-index: 999999; top: 0; left: 0; width: 100%; height: 100%; background: #222736; display: block; justify-content: center; align-items: center;">
-          <img style="left: 50%;top: 50%;position: absolute;" src="<?php echo e(URL::asset('assets/images/preloader.gif')); ?>" />
-    </div>
+<div class="loader" id="fadeOut"
+    style="position: fixed; z-index: 999999; top: 0; left: 0; width: 100%; height: 100%; background: #222736; display: block; justify-content: center; align-items: center;">
+    <img style="left: 50%;top: 50%;position: absolute;" src="<?php echo e(URL::asset('assets/images/preloader.gif')); ?>" />
+</div>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Superação <?php $__env->endSlot(); ?>
 <?php $__env->slot('title'); ?> Página Inicial <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/select2/select2.min.css')); ?>" rel="stylesheet" type="text/css" />
-<link href="<?php echo e(URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css')); ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo e(URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css')); ?>" rel="stylesheet"
+    type="text/css">
 
 <link href="<?php echo e(URL::asset('/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.css')); ?>" rel="stylesheet"
     type="text/css">
@@ -20,11 +22,6 @@
     type="text/css" />
 <link rel="stylesheet" href="<?php echo e(URL::asset('/assets/libs/datepicker/datepicker.min.css')); ?>">
 <?php $__env->stopSection(); ?>
-
-   
-    
-
-
 
 
 <div class="row">
@@ -39,6 +36,9 @@
                                     <?php echo e($dadosUsuario[0]['nm_grupo']); ?>
 
                                 </p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                        class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     <?php echo e($dadosUsuario[0]['nm_posto']); ?>
 
@@ -47,9 +47,22 @@
                             <div class="flex-grow-1">
                                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-trophy"></span>
                                     Pontuação Total</p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                        class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     <?php echo e($dadosUsuario->sum('pontuacao')); ?>
 
+                                </h5>
+                            </div>
+                            <div class="flex-grow-1">
+                                <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-award"></span>
+                                    Posição</p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                        class="far fa-question-circle"></i></button>
+                                <h5 class="mb-0">
+                                     <?php echo e($ranking['posicao_ranking']); ?>º
                                 </h5>
                             </div>
                         </div>
@@ -249,48 +262,46 @@
     </div>
     <!-- inicio linhas -->
     <?php $__currentLoopData = $dadosUsuario; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        
 
-        <div class="col-md-3 indicadorCard">
-            <a href="./<?php echo e($item['url']); ?>">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium"><?php echo e($item['nm_indicador']); ?></p>
-                                <h5 class="mb-0">
-                                    <?php if($item['cd_indicador']>9 || $item['cd_indicador']==8 || $item['cd_indicador']==3 || $item['cd_indicador']==4  ): ?>
-                                       <?php echo e($item['delta']*100); ?> %
-                                    <?php else: ?>
 
-                                        <?php
-                                             echo "R$ " . number_format($item['vl_lcto'],0,",","."); 
-                                         ?> 
-                                    <?php endif; ?>
+    <div class="col-md-3 indicadorCard">
+        <a href="./<?php echo e($item['url']); ?>">
+            <div class="card mini-stats-wid">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="text-muted fw-medium"><?php echo e($item['nm_indicador']); ?></p>
+                            <h5 class="mb-0">
+                                <?php if($item['cd_indicador']>9 || $item['cd_indicador']==8 || $item['cd_indicador']==3 ||
+                                $item['cd_indicador']==4 ): ?>
+                                <?php echo e($item['delta']*100); ?> %
+                                <?php else: ?>
 
-                                    
-                                   
-                                </h5>
-                            </div>
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle avatarRanking iconePosicaoRanking"><?php echo e($item['ordem']); ?>º</span>
-                                </div>
-                            </div>
+                                <?php
+                                echo "R$ " . number_format($item['vl_lcto'],0,",",".");
+                                ?>
+                                <?php endif; ?>
+                            </h5>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="carousel-align">
-                            <h6>10% <span class="separador primary"></span>
-                                <i class="bx bxs-upvote success"></i> <?php echo e($item['pontuacao']); ?>
-
-                                Pts.
-                            </h6>
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                <span class="avatar-title rounded-circle avatarRanking iconePosicaoRanking"><?php echo e($item['ordem']); ?>º</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </a>
-        </div>
+                <div class="card-footer">
+                    <div class="carousel-align">
+                        <h6>10% <span class="separador primary"></span>
+                            <i class="bx bxs-upvote success"></i> <?php echo e($item['pontuacao']); ?>
+
+                            Pts.
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
 
 
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -321,6 +321,7 @@
               </div>
 
               <div class="col-lg-6">
+                
                 <div class="row">
                   <div class="table-rep-plugin">
                     <div class="table-responsive table-bordered mb-0" data-pattern="priority-columns">
@@ -336,25 +337,143 @@
                           </tr>
                         </thead>
                         <tbody>
-                          
-            
+
+
+                            @php
+                                $contador=0
+                            @endphp
                             @foreach ($dadosUsuario as $item)
-                            <tr>
-                            
-                            
-            
-                            <th>{{$item['nm_indicador']}}</th>
-                            <td>
-                              {{$item['ordem']}}º
-                              {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
-                            </td>
-                            <td>R${{number_format($item['vl_lcto'],0,",",".")}}</td>
-                            <td>49</td>
-                            <td>120</td>
-                            <td>15</td>
-                          </tr>
+                              
+                              @if ($contador<2)
+
+                                <tr>
+                                <th>{{$item['nm_indicador']}}</th>
+                                <td>
+                                  {{$item['ordem']}}º
+                                  {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
+                                </td>
+                                <td>R${{number_format($item['vl_lcto'],0,",",".")}}</td>
+                                <td>R${{number_format($item['delta'],0,",",".")}}</td>
+                                <td> {{$item['pontuacao']}} </td>
+                                <td> {{$item['pontuacao_base']}} </td>
+                                </tr>
+                              @endif
+
+                              @if ($contador>=2 and $contador<=3)
+                                <tr>
+                                  <th>{{$item['nm_indicador']}}</th>
+                                  <td>
+                                    {{$item['ordem']}}º
+                                    {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
+                                  </td>
+                                  <td>R${{number_format($item['vl_lcto_anterior'],0,",",".")}}</td>
+                                  <td>R${{number_format($item['vl_lcto'],0,",",".")}}</td>
+                                  <td> {{$item['delta']*100}}%</td>
+                                  <td> {{$item['pontuacao']}} </td>
+                                  <td> {{$item['pontuacao_base']}} </td>
+                                </tr>
+                              @endif
+                              
+                              @if ($contador>3 and $contador<=5)
+                                <tr>
+                                  <th>{{$item['nm_indicador']}}</th>
+                                  <td>
+                                  {{$item['ordem']}}º
+                                  {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
+                                  </td>
+                                  <td>R${{number_format($item['vl_lcto'],0,",",".")}}</td>
+                                  <td>R${{number_format($item['delta'],0,",",".")}}</td>
+                                  <td> {{$item['pontuacao']}} </td>
+                                  <td> {{$item['pontuacao_base']}} </td>
+                                </tr>  
+                              @endif
+                              
+                              @if ($contador==6)
+                                <tr>
+                                  <th>{{$item['nm_indicador']}}</th>
+                                  <td>
+                                    {{$item['ordem']}}º
+                                    {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
+                                  </td>
+                                  <td>R${{number_format($item['vl_lcto_anterior'],0,",",".")}}</td>
+                                  <td>R${{number_format($item['vl_lcto'],0,",",".")}}</td>
+                                  <td> {{$item['delta']*100}}% </td>
+                                  <td> {{$item['pontuacao']}} </td>
+                                  <td> {{$item['pontuacao_base']}} </td>
+                                </tr>
+                              @endif
+                              
+                              @if ($contador==7)
+                                <tr>
+                                  <th>{{$item['nm_indicador']}}</th>
+                                  <td>
+                                    {{$item['ordem']}}º
+                                    {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
+                                  </td>
+                                  <td>R${{number_format($item['vl_lcto_anterior'],0,",",".")}}</td>
+                                  <td>R${{number_format($item['vl_lcto'],0,",",".")}}</td>
+                                  <td> {{$item['delta']*100}}% </td>
+                                  <td> {{$item['pontuacao']}} </td>
+                                  <td> {{$item['pontuacao_base']}} </td>
+                                </tr>
+                              @endif
+                                
+                              @if ($contador==8 )
+                                <tr>
+                                  <th>{{$item['nm_indicador']}}</th>
+                                  <td>
+                                    {{$item['ordem']}}º
+                                    {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
+                                  </td>
+                                  <td>R${{number_format($item['vl_lcto_anterior'],0,",",".")}}</td>
+                                  <td>R${{number_format($item['vl_lcto'],0,",",".")}}</td>
+                                  <td>R${{number_format($item['delta'],0,",",".")}} </td>
+                                  <td> {{$item['pontuacao']}} </td>
+                                  <td> {{$item['pontuacao_base']}} </td>
+                                </tr>
+                              @endif
+                              
+                              @if ($contador>8 and $contador<13 )
+                                <tr>
+                                  <th>{{$item['nm_indicador']}}</th>
+                                  <td>
+                                    {{$item['ordem']}}º
+                                    {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
+                                  </td>
+                                  <td>R${{number_format($item['vl_lcto_anterior'],0,",",".")}}</td>
+                                  <td>R${{number_format($item['vl_lcto'],0,",",".")}}</td>
+                                  <td> {{$item['delta']*100}}% </td>
+                                  <td> {{$item['pontuacao']}} </td>
+                                  <td> {{$item['pontuacao_base']}} </td>
+                                </tr>
+                              @endif
+      
+
+                              
+                              @if ($contador == 13 or $contador == 14 )
+                              <tr>
+                                <th>{{$item['nm_indicador']}}</th>
+                                <td>
+                                  {{$item['ordem']}}º
+                                  {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
+                                </td>
+                                <td>R$ {{number_format($item['vl_lcto_anterior'],0,",",".")}}</td>
+                                <td>R$ {{number_format($item['vl_lcto'],0,",",".")}}</td>
+                                <td> {{$item['pontuacao']}} </td>
+                                <td> {{$item['pontuacao_base']}} </td>
+                                </tr>
+                              @endif
+
+
+                              @php
+                              $contador++;
+                              @endphp
+                              
+
+
                             @endforeach
-            
+                            
+                           
                            
                           
                         
