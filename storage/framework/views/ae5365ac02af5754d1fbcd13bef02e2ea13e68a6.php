@@ -257,7 +257,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card mini-stats-wid bgIndicador" style="height: 90%">
+                <div class="card mini-stats-wid bgIndicador">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
@@ -266,10 +266,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <div class="flex-grow-1">
                             <h3 style="color: #fff; text-align: center; margin-bottom: 0px">
                                 POSIÇÃO ATUAL</h3>
-                        </div>
                     </div>
                 </div>
             </div>
