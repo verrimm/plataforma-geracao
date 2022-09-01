@@ -14,7 +14,7 @@ $ouro: #ecc81a;
 $prata: #9aa0a5;
 $bronze: #f1734f;
 
-//== Cores ==//
+//== Cores ===//
 
 .bg-ouro {
     background-color: $ouro;
@@ -314,7 +314,7 @@ mark {
     transition: width 1s;
     transition: background-color .5s;
     transition-timing-function: ease;
-    width: 20%;
+    width: 10%;
     background-color: $blue  !important;
     color: #fff;
 

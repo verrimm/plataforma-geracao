@@ -1,7 +1,7 @@
 var posicao = document.querySelectorAll(".iconePosicaoRanking");
 
 for (var i = 0; i < posicao.length; i++) {
-    switch (posicao[i].textContent) {
+    switch (posicao[i].innerText) {
         case "1º":
             posicao[i].classList.add("bg-success");
             break;

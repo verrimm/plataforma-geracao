@@ -28,14 +28,11 @@
                 <i class="fa fa-fw fa-bars"></i>
             </button>
         </div>
-        <?php echo e($rankingRapido); ?>
 
         <a href="./ranking-geral" class="linkCarousel d-none d-md-block">
             <div class="carousel-align">
                 <div id="carouselRanking" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
                     <div class="carousel-inner" role="listbox">
-                        
-                        
                         
                         <div class="carousel-item">
                             <span class="img-fluid badge badge-soft-dark">Ranking</span>

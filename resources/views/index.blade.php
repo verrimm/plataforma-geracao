@@ -1,4 +1,4 @@
-@extends('layouts.master', ['rankingRapido' => 'teste'])
+@extends('layouts.master')
 
 @section('title')
     Superação
@@ -116,17 +116,6 @@
                                     {{ $dadosUsuario->sum('pontuacao') }}
                                 </h5>
                             </div>
-                            <div class="flex-grow-1">
-                                <p class="badge bg-primary" style="font-size: 100%;"><span
-                                        class="bx bx-award"></span>
-                                    Posição</p>
-                                <button type="button" class="btn btn-outline-light tooltipIndicador"
-                                    draggable="true" data-bs-toggle="tooltip" data-bs-placement="top"
-                                    title="Descrição"><i class="far fa-question-circle"></i></button>
-                                <h5 class="mb-0">
-                                    {{ $ranking['posicao_ranking'] }}º
-                                </h5>
-                            </div>
                         </div>
                     </div>
                     <div class="card-footer progressBarBG">
@@ -138,7 +127,7 @@
                         <div class="custom-progess mt-3 mb-4">
                             <div class="progress animated-progess progress-lg">
                                 <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar"
-                                    role="progressbar" data-complete="40">
+                                    role="progressbar" data-complete="60">
                                 </div>
                                 <svg class="fogueteBar bx-spin"
                                     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -255,14 +244,10 @@
                             </div>
 
                             <div class="avatar-xs progress-icon-start">
-                                <span class="avatar-title start border iconePosicaoRanking">
-                                    {{ $ranking['posicao_ranking'] }}º
-                                </span>
+                                <span class="avatar-title start border iconePosicaoRanking">{{ $ranking['posicao_ranking'] }}º</span>
                             </div>
                             <div class="avatar-xs progress-icon-end">
-                                <span class="avatar-title-card border iconePosicaoRanking">
-                                    {{ $ranking['posicao_ranking'] - 1 }}º
-                                </span>
+                                <span class="avatar-title-card border iconePosicaoRanking">{{ $rankingPodio[0]['posicao_ranking']}}º</span>
                             </div>
                         </div>
                     </div>
@@ -273,8 +258,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <h1 class="posicaoRanking" style="color: #fff; text-align: center; margin-bottom: 0px; font-size: 5.03125rem; margin-top: 15px;">
-                                    {{ $ranking['posicao_ranking'] }}º</h1>
+                                <h1 class="posicaoRanking" style="color: #fff; text-align: center; margin-bottom: 0px; font-size: 5.03125rem; margin-top: 15px;">{{ $ranking['posicao_ranking'] }}º</h1>
                             </div>
                         </div>
                     </div>
