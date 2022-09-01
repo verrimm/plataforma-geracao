@@ -120,7 +120,7 @@
                     </div>
                     <div class="card-footer progressBarBG">
                         <div class="d-flex titleProgressBar">
-                            <h6>Faltam <strong class="success pontosInicio">267 pontos</strong> para
+                            <h6>Faltam <strong class="success pontosInicio">267 pontos1</strong> para
                                 próxima colocação</h6>
                         </div>
 
