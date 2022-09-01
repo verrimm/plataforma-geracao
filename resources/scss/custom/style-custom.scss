@@ -167,8 +167,9 @@ $bronze: #f1734f;
     opacity: 0.5;
 }
 
-.card-footer {
+.card-footer#footerRankingPosicao{
     padding: .625rem 1.25rem !important;
+    background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .progress {

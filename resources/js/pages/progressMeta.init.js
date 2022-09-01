@@ -3,3 +3,15 @@ if (progress) {
     progress.style.width = progress.getAttribute("data-complete") + "%";
     progress.style.opacity = 1;
 }
+
+const marcosMetaSegundo = document.querySelector(".marcosMetaSegundo");
+if (marcosMetaSegundo) {
+    marcosMetaSegundo.style.paddingLeft = marcosMetaSegundo.getAttribute("data-complete-meta") + "%";
+    marcosMetaSegundo.style.opacity = 1;
+}
+
+const marcosMetaTerceiro = document.querySelector(".marcosMetaTerceiro");
+if (marcosMetaTerceiro) {
+    marcosMetaTerceiro.style.paddingLeft = marcosMetaTerceiro.getAttribute("data-complete-meta") + "%";
+    marcosMetaTerceiro.style.opacity = 1;
+}
