@@ -285,16 +285,20 @@
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium"><?php echo e($item['nm_indicador']); ?></p>
                                 <h5 class="mb-0">
-                                    <?php if($item['cd_indicador'] > 9 ||
-                                        $item['cd_indicador'] == 8 ||
-                                        $item['cd_indicador'] == 3 ||
-                                        $item['cd_indicador'] == 4): ?>
-                                        <?php echo e($item['delta'] * 100); ?> %
-                                    <?php else: ?>
-                                        <?php
-                                            echo "R$ " . number_format($item['vl_lcto'], 0, ',', '.');
-                                        ?>
-                                    <?php endif; ?>
+                                            <?php if($item['sufixo']!=null): ?> 
+                                                <?php echo e($item['vl_lcto']*100); ?>
+
+                                                <?php echo e($item['sufixo']); ?>
+
+                                            <?php else: ?> 
+                                            <?php echo e($item['prefixo']); ?>
+
+                                            <?php echo e(number_format($item['vl_lcto'], 0, ',', '.')); ?>
+
+                                            <?php endif; ?>
+
+                                           
+                                            
                                 </h5>
                             </div>
                             <div class="flex-shrink-0 align-self-center">
