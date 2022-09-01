@@ -267,7 +267,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="flex-grow-1">
-                            <h3 style="color: #fff; text-align: center; opacity: .7; margin-bottom: 0px">
+                            <h3 style="color: #fff; text-align: center; margin-bottom: 0px">
                                 POSIÇÃO ATUAL</h3>
                         </div>
                     </div>

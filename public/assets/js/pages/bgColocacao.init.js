@@ -24,7 +24,7 @@ switch (posicao.innerText) {
     break;
 
   default:
-    bgIndicador.classList.add("bg-primary");
+    bgIndicador.classList.add("bg-ranking");
     break;
 }
 
