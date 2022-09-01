@@ -280,16 +280,16 @@
                             <div class="flex-grow-1">
                                 <p class="text-muted fw-medium">{{ $item['nm_indicador'] }}</p>
                                 <h5 class="mb-0">
-                                    @if ($item['cd_indicador'] > 9 ||
-                                        $item['cd_indicador'] == 8 ||
-                                        $item['cd_indicador'] == 3 ||
-                                        $item['cd_indicador'] == 4)
-                                        {{ $item['delta'] * 100 }} %
-                                    @else
-                                        @php
-                                            echo "R$ " . number_format($item['vl_lcto'], 0, ',', '.');
-                                        @endphp
-                                    @endif
+                                            @if ($item['sufixo']!=null) {{-- caso tenha sufixo (porcentagem) --}}
+                                                {{$item['vl_lcto']*100}}
+                                                {{$item['sufixo']}}
+                                            @else {{-- caso nao  tenha sufixo (cifrao) --}}
+                                            {{$item['prefixo']}}
+                                            {{ number_format($item['vl_lcto'], 0, ',', '.')}}
+                                            @endif
+
+                                           
+                                            
                                 </h5>
                             </div>
                             <div class="flex-shrink-0 align-self-center">
