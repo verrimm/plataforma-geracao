@@ -1,13 +1,1 @@
-/******/ (function() { // webpackBootstrap
-var __webpack_exports__ = {};
-/*!*************************************************!*\
-  !*** ./resources/js/pages/progressMeta.init.js ***!
-  \*************************************************/
-var progress = document.querySelector(".js-completed-bar");
-
-if (progress) {
-  progress.style.width = progress.getAttribute("data-complete") + "%";
-  progress.style.opacity = 1;
-}
-/******/ })()
-;
+!function(){var t=document.querySelector(".js-completed-bar");t&&(t.style.width=t.getAttribute("data-complete")+"%",t.style.opacity=1)}();
