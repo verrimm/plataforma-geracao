@@ -27,6 +27,7 @@ Página Inicial
 <link href="{{ URL::asset('/assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.css') }}" rel="stylesheet"
     type="text/css" />
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/datepicker/datepicker.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('/assets/libs/jbox/jbox.min.css') }}">
 @endsection
 
 
@@ -236,15 +237,30 @@ Página Inicial
                                     </g>
                                 </svg>
                             </div>
-                          
-                                <div class="marcosMetaTerceiro marcos myDIV" style="z-index: 100" data-complete-meta="70">
-                                    <i class="bx bxs-trophy third">|</i>
-                                    <div class="hide">I am shown when someone hovers over the div above.</div>
+
+                            {{-- MARCOS Segundo e Terceiro Lugar --}}
+                            <div class="marcos">
+                                <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute" data-complete-meta="70">
+                                    <i class="bx bxs-trophy third tooltipMarcoTerceiro" data-jbox-title="Pontos: {{$rankingPodio[2]['pt_ranking']}}">|</i>
                                 </div>
-                                <div class="marcosMetaSegundo marcos" style="z-index: 100" data-complete-meta="85">
-                                    <i class="bx bxs-trophy second">|</i>
+                                <div class="marcosMetaSegundo" style="z-index: 100" data-complete-meta="85">
+                                    <i class="bx bxs-trophy second tooltipMarcoSegundo" data-jbox-title="Pontos: {{$rankingPodio[1]['pt_ranking']}}">|</i>
                                 </div>
-                            
+                            </div>
+                            {{-- END MARCOS --}}
+
+                            {{-- TOOLTIPS CONTENT --}}
+                            <div style="display: none" id="conteudoMarcoSegundo">
+                                <div class="d-flex" style="margin-top: 10px">
+                                    <i class="fas fa-trophy second fa-3x" style="margin-right: 10px"></i><h5>Faltam <strong>150</strong> pontos para a próxima colocação</h5>
+                                </div>
+                            </div>
+                            <div style="display: none" id="conteudoMarcoTerceiro">
+                                <div class="d-flex" style="margin-top: 10px">
+                                    <i class="fas fa-trophy third fa-3x" style="margin-right: 10px"></i><h5>Faltam <strong>100</strong> pontos para a próxima colocação</h5>
+                                </div>
+                            </div>
+                            {{-- END TOOLTIPS --}}
 
                             <div class="avatar-xs progress-icon-start">
                                 <span class="avatar-title start border iconePosicaoRanking">{{
@@ -293,9 +309,6 @@ Página Inicial
                                 {{$item['prefixo']}}
                                 {{ number_format($item['vl_lcto'], 0, ',', '.')}}
                                 @endif
-
-
-
                             </h5>
                         </div>
                         <div class="flex-shrink-0 align-self-center">
@@ -323,6 +336,7 @@ Página Inicial
 @endsection
 @section('script')
 <script>
+
     // Carrega Loader por 1seg na troca de modo noturno TESTE
     $('.loader').show();
     setTimeout(function () {
@@ -354,6 +368,8 @@ Página Inicial
 
 </script>
 
+<!-- define cor da posição ranking  -->
+<script src="{{ URL::asset('/assets/js/pages/jbox-tooltips.init.js') }}"></script>
 <!-- define cor da posição ranking  -->
 <script src="{{ URL::asset('/assets/js/pages/bgColocacao.init.js') }}"></script>
 <!-- define cor da posição  -->

@@ -442,14 +442,12 @@ mark {
 
 //Classe dos MARCOS na progress bar
 .marcos{
-    position: absolute;
+    position: relative;
 }
 
-.hide {
-    display: none;
+.marcosMetaSegundo{
+    cursor: pointer;
 }
-
-.myDIV:hover+.hide {
-    display: block;
-    color: red;
+.marcosMetaTerceiro{
+    cursor: pointer;
 }

@@ -4,6 +4,8 @@
 <script src="<?php echo e(URL::asset('assets/libs/metismenu/metismenu.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/libs/simplebar/simplebar.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/libs/node-waves/node-waves.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/libs/jbox/jbox.min.js')); ?>"></script>
+
 <script>
     $('#change-password').on('submit',function(event){
         event.preventDefault();

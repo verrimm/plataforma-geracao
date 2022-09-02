@@ -115,7 +115,8 @@ var third_party_assets = {
         { "name": "flot-curvedLines", "assets": ["./node_modules/flot.curvedlines/curvedLines.js"] },
         { "name": "jquery-validation", "assets": ["./node_modules/jquery-validation/dist/jquery.validate.min.js"] },
         { "name": "spectrum-colorpicker", "assets": ["./node_modules/spectrum-colorpicker2/dist/spectrum.min.js", "./node_modules/spectrum-colorpicker2/dist/spectrum.min.css"] },
-        { "name": "jquery-steps", "assets": ["./node_modules/jquery-steps/build/jquery.steps.min.js"] }
+        { "name": "jquery-steps", "assets": ["./node_modules/jquery-steps/build/jquery.steps.min.js"] },
+        { "name": "jbox", "assets": ["./node_modules/jbox/dist/jBox.all.min.js", "./node_modules/jbox/dist/jBox.all.min.css"] }
     ]
 };
 
@@ -176,6 +177,7 @@ mix.webpackConfig({
 //copying demo pages related assets
 var app_pages_assets = {
     js: [
+        folder.src + "js/pages/jbox-tooltips.init.js",
         folder.src + "js/pages/bgColocacao.init.js",
         folder.src + "js/pages/iconColocacao.init.js",
         folder.src + "js/pages/progressMeta.init.js",
