@@ -236,11 +236,16 @@ Página Inicial
                                     </g>
                                 </svg>
                             </div>
+                          
+                                <div class="marcosMetaTerceiro marcos myDIV" style="z-index: 100" data-complete-meta="70">
+                                    <i class="bx bxs-trophy third">|</i>
+                                    <div class="hide">I am shown when someone hovers over the div above.</div>
+                                </div>
+                                <div class="marcosMetaSegundo marcos" style="z-index: 100" data-complete-meta="85">
+                                    <i class="bx bxs-trophy second">|</i>
+                                </div>
+                            
 
-                            <div class="row" style="display: inline">
-                                <div class="marcosMetaSegundo" data-complete-meta="70">|</div>
-                                <div class="marcosMetaTerceiro" data-complete-meta="85">|</div>
-                            </div>
                             <div class="avatar-xs progress-icon-start">
                                 <span class="avatar-title start border iconePosicaoRanking">{{
                                     $ranking['posicao_ranking'] }}º</span>
@@ -346,6 +351,7 @@ Página Inicial
             botao.classList.replace("shrink", "expand");
         }
     }
+
 </script>
 
 <!-- define cor da posição ranking  -->
