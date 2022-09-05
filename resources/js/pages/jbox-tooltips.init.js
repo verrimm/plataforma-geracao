@@ -1,29 +1,33 @@
 $(document).ready(function () {
     new jBox('Tooltip', {
-        getTitle: 'data-jbox-title',
         attach: '.tooltipMarcoSegundo',
         animation: {
             open: 'pulse',
-            close: 'flip'
+            close: 'pulse'
         },
         position: {
             y: 'bottom'
         },
         width: 300,
-        content: $('#conteudoMarcoSegundo')
+        content: $('#conteudoMarcoSegundo'),
+        footer: $('#footerMarcoSegundo'),
+        closeOnMouseleave: true
     });
 
     new jBox('Tooltip', {
-        getTitle: 'data-jbox-title',
         attach: '.tooltipMarcoTerceiro',
         animation: {
             open: 'pulse',
-            close: 'flip'
+            close: 'pulse'
         },
         position: {
             y: 'bottom'
         },
         width: 300,
-        content: $('#conteudoMarcoTerceiro')
+        content: $('#conteudoMarcoTerceiro'),
+        footer: $('#footerMarcoTerceiro'),
+        closeOnMouseleave: true
     });
+
+
 });

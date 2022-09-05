@@ -102,7 +102,7 @@ Página Inicial
 
                                 </p>
                                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Grupo da sua agência no Superação 2022"><i
                                         class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     <?php echo e($dadosUsuario[0]['nm_posto']); ?>
@@ -113,7 +113,7 @@ Página Inicial
                                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-trophy"></span>
                                     Pontuação Total</p>
                                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Descrição"><i
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Número de pontos conquistados até agora no Superação 2022"><i
                                         class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     <?php echo e($dadosUsuario->sum('pontuacao')); ?>
@@ -124,14 +124,13 @@ Página Inicial
                     </div>
                     <div class="card-footer progressBarBG">
                         <div class="d-flex titleProgressBar">
-                            <h6>Faltam <strong class="success pontosInicio">267 pontos</strong> para
-                                próxima colocação</h6>
+                            <h6>Faltam <strong class="success pontosInicio"><?php echo e($rankingPodio[0]['pt_ranking']-$dadosUsuario->sum('pontuacao')+1); ?> pontos</strong> para a <p class="badge bg-success" style="font-size: 125%;">1º</p> colocação</h6>
                         </div>
 
                         <div class="custom-progess mt-3 mb-4">
                             <div class="progress animated-progess progress-lg">
                                 <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar"
-                                    role="progressbar" data-complete="60">
+                                    role="progressbar" data-complete="30">
                                 </div>
                                 <svg class="fogueteBar bx-spin" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
@@ -244,10 +243,10 @@ Página Inicial
                             
                             <div class="marcos">
                                 <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute" data-complete-meta="70">
-                                    <i class="bx bxs-trophy third tooltipMarcoTerceiro" data-jbox-title="Pontos: <?php echo e($rankingPodio[2]['pt_ranking']); ?>">|</i>
+                                    <a href="./ranking-geral" target="_blank"><i class="bx bxs-trophy third tooltipMarcoTerceiro" data-jbox-title="3º COLOCADO">|</i></a>
                                 </div>
                                 <div class="marcosMetaSegundo" style="z-index: 100" data-complete-meta="85">
-                                    <i class="bx bxs-trophy second tooltipMarcoSegundo" data-jbox-title="Pontos: <?php echo e($rankingPodio[1]['pt_ranking']); ?>">|</i>
+                                    <a href="./ranking-geral" target="_blank"><i class="bx bxs-trophy second tooltipMarcoSegundo" data-jbox-title="">|</i></a>
                                 </div>
                             </div>
                             
@@ -255,13 +254,15 @@ Página Inicial
                             
                             <div style="display: none" id="conteudoMarcoSegundo">
                                 <div class="d-flex" style="margin-top: 10px">
-                                    <i class="fas fa-trophy second fa-3x" style="margin-right: 10px"></i><h5>Faltam <strong>150</strong> pontos para a próxima colocação</h5>
+                                    <i class="fas fa-trophy second fa-3x iconMarco" style="margin-right: 10px" data-colocacao="<?php echo e($rankingPodio[1]['posicao_ranking']); ?>"></i><h5>Faltam <strong>150</strong> pontos para a colocação</h5>
                                 </div>
+                                <h6 id="footerMarcoSegundo"><strong><?php echo e($rankingPodio[1]['nm_posto']); ?> | Pontos: <?php echo e($rankingPodio[1]['pt_ranking']); ?></strong></h6>
                             </div>
                             <div style="display: none" id="conteudoMarcoTerceiro">
                                 <div class="d-flex" style="margin-top: 10px">
-                                    <i class="fas fa-trophy third fa-3x" style="margin-right: 10px"></i><h5>Faltam <strong>100</strong> pontos para a próxima colocação</h5>
+                                    <i class="fas fa-trophy third fa-3x iconMarco" style="margin-right: 10px" data-colocacao="<?php echo e($rankingPodio[2]['posicao_ranking']); ?>"></i><h5>Faltam <strong>100</strong> pontos para a colocação</h5>
                                 </div>
+                                <h6 id="footerMarcoTerceiro"><strong><?php echo e($rankingPodio[2]['nm_posto']); ?> | Pontos: <?php echo e($rankingPodio[2]['pt_ranking']); ?></strong></h6>
                             </div>
                             
 
@@ -281,13 +282,13 @@ Página Inicial
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <h1 class="posicaoRanking"
-                                    style="color: #fff; text-align: center; margin-bottom: 0px; font-size: 5.03125rem; margin-top: 15px;">
+                                    style="color: #fff; text-align: center; margin-bottom: 0px; font-size: 5.03125rem; margin-top: 22px; text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
                                     <?php echo e($ranking['posicao_ranking']); ?>º</h1>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer" id="footerRankingPosicao">
-                        <h3 style="color: #fff; text-align: center; margin-bottom: 0px">POSIÇÃO ATUAL</h3>
+                        <h3 style="color: #fff; text-align: center; margin-bottom: 34px; text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">POSIÇÃO ATUAL</h3>
                     </div>
                 </div>
             </div>
@@ -325,7 +326,8 @@ Página Inicial
                 </div>
                 <div class="card-footer">
                     <div class="carousel-align">
-                        <h6>10% <span class="separador primary"></span>
+                        <h6><?php echo e(number_format(($item['pontuacao']*100)/$dadosUsuario->sum('pontuacao'))); ?>%
+                            <span class="separador primary"></span>
                             <i class="bx bxs-upvote success"></i> <?php echo e($item['pontuacao']); ?>
 
                             Pts.
