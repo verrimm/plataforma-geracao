@@ -1,1 +1,260 @@
-!function(){var n,o={3238:function(){$(document).ready((function(){new jBox("Tooltip",{getTitle:"data-jbox-title",attach:".tooltipMarcoSegundo",animation:{open:"pulse",close:"flip"},position:{y:"bottom"},width:300,content:$("#conteudoMarcoSegundo")}),new jBox("Tooltip",{getTitle:"data-jbox-title",attach:".tooltipMarcoTerceiro",animation:{open:"pulse",close:"flip"},position:{y:"bottom"},width:300,content:$("#conteudoMarcoTerceiro")})}))},3524:function(){},4946:function(){},6626:function(){},3711:function(){},3354:function(){}},t={};function e(n){var i=t[n];if(void 0!==i)return i.exports;var r=t[n]={exports:{}};return o[n](r,r.exports,e),r.exports}e.m=o,n=[],e.O=function(o,t,i,r){if(!t){var u=1/0;for(l=0;l<n.length;l++){t=n[l][0],i=n[l][1],r=n[l][2];for(var c=!0,f=0;f<t.length;f++)(!1&r||u>=r)&&Object.keys(e.O).every((function(n){return e.O[n](t[f])}))?t.splice(f--,1):(c=!1,r<u&&(u=r));if(c){n.splice(l--,1);var a=i();void 0!==a&&(o=a)}}return o}r=r||0;for(var l=n.length;l>0&&n[l-1][2]>r;l--)n[l]=n[l-1];n[l]=[t,i,r]},e.o=function(n,o){return Object.prototype.hasOwnProperty.call(n,o)},function(){var n={7075:0,3186:0,4464:0,2316:0,8393:0,4673:0};e.O.j=function(o){return 0===n[o]};var o=function(o,t){var i,r,u=t[0],c=t[1],f=t[2],a=0;if(u.some((function(o){return 0!==n[o]}))){for(i in c)e.o(c,i)&&(e.m[i]=c[i]);if(f)var l=f(e)}for(o&&o(t);a<u.length;a++)r=u[a],e.o(n,r)&&n[r]&&n[r][0](),n[u[a]]=0;return e.O(l)},t=self.webpackChunkskote=self.webpackChunkskote||[];t.forEach(o.bind(null,0)),t.push=o.bind(null,t.push.bind(t))}(),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(3238)})),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(3524)})),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(4946)})),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(6626)})),e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(3711)}));var i=e.O(void 0,[3186,4464,2316,8393,4673],(function(){return e(3354)}));i=e.O(i)}();
+/******/ (function() { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./resources/js/pages/jbox-tooltips.init.js":
+/*!**************************************************!*\
+  !*** ./resources/js/pages/jbox-tooltips.init.js ***!
+  \**************************************************/
+/***/ (function() {
+
+$(document).ready(function () {
+  new jBox('Tooltip', {
+    getTitle: 'data-jbox-title',
+    attach: '.tooltipMarcoSegundo',
+    animation: {
+      open: 'pulse',
+      close: 'flip'
+    },
+    position: {
+      y: 'bottom'
+    },
+    width: 300,
+    content: $('#conteudoMarcoSegundo')
+  });
+  new jBox('Tooltip', {
+    getTitle: 'data-jbox-title',
+    attach: '.tooltipMarcoTerceiro',
+    animation: {
+      open: 'pulse',
+      close: 'flip'
+    },
+    position: {
+      y: 'bottom'
+    },
+    width: 300,
+    content: $('#conteudoMarcoTerceiro')
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/scss/bootstrap.scss":
+/*!***************************************!*\
+  !*** ./resources/scss/bootstrap.scss ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/scss/icons.scss":
+/*!***********************************!*\
+  !*** ./resources/scss/icons.scss ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/scss/app.scss":
+/*!*********************************!*\
+  !*** ./resources/scss/app.scss ***!
+  \*********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/scss/bootstrap-dark.scss":
+/*!********************************************!*\
+  !*** ./resources/scss/bootstrap-dark.scss ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/scss/app-dark.scss":
+/*!**************************************!*\
+  !*** ./resources/scss/app-dark.scss ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	!function() {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = function(result, chunkIds, fn, priority) {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var chunkIds = deferred[i][0];
+/******/ 				var fn = deferred[i][1];
+/******/ 				var priority = deferred[i][2];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every(function(key) { return __webpack_require__.O[key](chunkIds[j]); })) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	!function() {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/assets/js/pages/jbox-tooltips.init": 0,
+/******/ 			"assets/css/app-dark": 0,
+/******/ 			"assets/css/app": 0,
+/******/ 			"assets/css/bootstrap-dark": 0,
+/******/ 			"assets/css/icons": 0,
+/******/ 			"assets/css/bootstrap": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = function(chunkId) { return installedChunks[chunkId] === 0; };
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = function(parentChunkLoadingFunction, data) {
+/******/ 			var chunkIds = data[0];
+/******/ 			var moreModules = data[1];
+/******/ 			var runtime = data[2];
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some(function(id) { return installedChunks[id] !== 0; })) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkskote"] = self["webpackChunkskote"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/js/pages/jbox-tooltips.init.js"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/bootstrap.scss"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/icons.scss"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/app.scss"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/bootstrap-dark.scss"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/app-dark.scss"); })
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;

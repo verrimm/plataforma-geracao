@@ -3,6 +3,7 @@
 use App\Models\grupo;
 use App\Models\grupoPosto;
 use App\Models\indicador;
+use App\Models\lancamento;
 use App\Models\posto;
 use App\Models\User;
 use App\Models\usuario;
@@ -94,22 +95,24 @@ Route::get('comparador2', function () {
     ->where('cd_posto', '=', $usuario['cd_posto'])->first();
     return view('comparador2',[
 
-        'dadosUsuario' => posto::join("grupo_posto as gp", function ($join) {
-            $join->on("gp.cd_coop", "=", "postos.cd_coop")
-                ->on("gp.cd_posto", "=", "postos.cd_posto");
+        'dadosUsuario' => lancamento::leftJoin("lancamento_extra as le", function ($join) {
+            $join->on("l.cd_superacao", "=", "le.cd_superacao")
+                 ->on("l.cd_indicador", "=", "le.cd_indicador")
+                 ->on("l.cd_coop", "=", "le.cd_coop")
+                 ->on("l.cd_posto","=","le.cd_posto")
+                 ->on("l.dt_info","=","le.dt_info");
         })
-            ->join("grupos as g", 'g.cd_grupo', "=", 'gp.cd_grupo')
-            ->join("lancamento as l", function ($join) {
-                $join->on("l.cd_coop", "=", "postos.cd_coop")
-                    ->on("l.cd_posto", "=", "postos.cd_posto");
-            })
-            ->join("indicadores as i", function ($join) {
-                $join->on("i.cd_indicador", "=", "l.cd_indicador");
-            })
-            ->where('postos.cd_coop', $usuario['cd_coop'])
-            ->where('postos.cd_posto', $usuario['cd_posto'])
-            ->get()
-
+        ->join('indicadores as i','i.cd_indicador','=','l.cd_indicador')
+        ->join("grupo_posto as gp", function ($join) {
+            $join->on("l.cd_coop", "=", "gp.cd_coop")
+                ->on("l.cd_posto", "=", "gp.cd_posto");
+        })
+        ->join('indicadores_similares_grupo as is','is.cd_gr_similares','=','i.cd_gr_similares')
+        ->where('gp.cd_grupo','=',$grupo['cd_grupo'])
+        ->where('l.cd_coop', '=', $usuario['cd_coop'])
+        ->where('l.cd_posto', '=', $usuario['cd_posto'])
+        ->orderBy('i.cd_gr_similares','asc')
+        ->get()
     ]);
 });
 Route::get('simulador', function () {

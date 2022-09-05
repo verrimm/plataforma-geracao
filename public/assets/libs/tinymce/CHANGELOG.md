@@ -6,6 +6,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 5.10.5 - 2022-05-25
+
+### Fixed
+- Base64 data URIs were not extracted correctly during parsing when proceeded by `data:` text #TINY-8646
+- Empty lines that were formatted in a ranged selection using the `format_empty_lines` option were not kept in the serialized content #TINY-8639
+- The `s` element was missing from the default schema text inline elements #TINY-8639
+- Some text inline elements specified via the schema were not removed when empty by default #TINY-8639
+
+## 5.10.4 - 2022-04-27
+
+### Fixed
+- Inline toolbars flickered when switching between editors #TINY-8594
+- Multiple inline toolbars were shown if focused too quickly #TINY-8503
+
+## 5.10.3 - 2022-02-09
+
+### Fixed
+- Alignment would sometimes be removed on parent elements when changing alignment on certain inline nodes, such as images #TINY-8308
+- The `fullscreen` plugin would reset the scroll position when exiting fullscreen mode #TINY-8418
+
+## 5.10.2 - 2021-11-17
+
+### Fixed
+- Internal selectors were appearing in the style list when using the `importcss` plugin #TINY-8238
+
+## 5.10.1 - 2021-11-03
+
+### Fixed
+- The iframe aria help text was not read by some screen readers #TINY-8171
+- Clicking the `forecolor` or `backcolor` toolbar buttons would do nothing until selecting a color #TINY-7836
+- Crop functionality did not work in the `imagetools` plugin when the editor was rendered in a shadow root #TINY-6387
+- Fixed an exception thrown on Safari when closing the `searchreplace` plugin dialog #TINY-8166
+- The `autolink` plugin did not convert URLs to links when starting with a bracket #TINY-8091
+- The `autolink` plugin incorrectly created nested links in some cases #TINY-8091
+- Tables could have an incorrect height set on rows when rendered outside of the editor #TINY-7699
+- In certain circumstances, the table of contents plugin would incorrectly add an extra empty list item #TINY-4636
+- The insert table grid menu displayed an incorrect size when re-opening the grid #TINY-6532
+- The word count plugin was treating the zero width space character (`&#8203;`) as a word #TINY-7484
+
 ## 5.10.0 - 2021-10-11
 
 ### Added
