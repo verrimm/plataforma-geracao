@@ -121,7 +121,7 @@ Página Inicial
                     </div>
                     <div class="card-footer progressBarBG">
                         <div class="d-flex titleProgressBar">
-                            <h6>Faltam <strong class="success pontosInicio">{{$rankingPodio[0]['pt_ranking']-$dadosUsuario->sum('pontuacao')+1}} pontos</strong> para a <p class="badge bg-success" style="font-size: 125%;">1º</p> colocação</h6>
+                            <h5>Faltam <strong class="success pontosInicio">{{$rankingPodio[0]['pt_ranking']-$dadosUsuario->sum('pontuacao')+1}} pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p> colocação</h5>
                         </div>
 
                         <div class="custom-progess mt-3 mb-4">
@@ -240,10 +240,10 @@ Página Inicial
                             {{-- MARCOS Segundo e Terceiro Lugar --}}
                             <div class="marcos">
                                 <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute" data-complete-meta="70">
-                                    <a href="./ranking-geral" target="_blank"><i class="bx bxs-trophy third tooltipMarcoTerceiro" data-jbox-title="3º COLOCADO">|</i></a>
+                                    <a href="./ranking-geral" target="_blank"><i class="bx bxs-trophy third tooltipMarcoTerceiro">|</i></a>
                                 </div>
                                 <div class="marcosMetaSegundo" style="z-index: 100" data-complete-meta="85">
-                                    <a href="./ranking-geral" target="_blank"><i class="bx bxs-trophy second tooltipMarcoSegundo" data-jbox-title="">|</i></a>
+                                    <a href="./ranking-geral" target="_blank"><i class="bx bxs-trophy second tooltipMarcoSegundo">|</i></a>
                                 </div>
                             </div>
                             {{-- END MARCOS --}}
@@ -253,7 +253,9 @@ Página Inicial
                                 <div class="d-flex" style="margin-top: 10px">
                                     <i class="fas fa-trophy second fa-3x iconMarco" style="margin-right: 10px" data-colocacao="{{$rankingPodio[1]['posicao_ranking']}}"></i><h5>Faltam <strong>150</strong> pontos para a colocação</h5>
                                 </div>
-                                <h6 id="footerMarcoSegundo"><strong>{{$rankingPodio[1]['nm_posto']}} | Pontos: {{$rankingPodio[1]['pt_ranking']}}</strong></h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6 id="footerMarcoSegundo"><strong>{{$rankingPodio[1]['nm_posto']}} | Pontos: {{$rankingPodio[1]['pt_ranking']}}</strong></h6>
+                                </div>
                             </div>
                             <div style="display: none" id="conteudoMarcoTerceiro">
                                 <div class="d-flex" style="margin-top: 10px">
@@ -297,7 +299,7 @@ Página Inicial
     @foreach ($dadosUsuario as $item)
     <div class="col-md-3 indicadorCard">
         <a href="./{{ $item['url'] }}">
-            <div class="card mini-stats-wid">
+            <div class="card mini-stats-wid cardDescricaoRapida">
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
@@ -331,6 +333,11 @@ Página Inicial
                 </div>
             </div>
         </a>
+    </div>
+    <div style="display: none" id="conteudoCardDescricaoRapida">
+        <div class="d-flex" style="margin-top: 10px">
+            <h5>DESCRIÇÃO RÁPIDA</h5>
+        </div>
     </div>
     @endforeach
 
