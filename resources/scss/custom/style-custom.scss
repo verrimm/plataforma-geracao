@@ -471,3 +471,7 @@ mark {
     font-size: 1rem;
 }
 
+// EVITA QUE A PAGINA SEJA AUMENTADA AO FECHAR O MENU LATERAL
+body[data-sidebar=dark].vertical-collpsed{ 
+    min-height: auto !important;
+}

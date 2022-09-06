@@ -14,10 +14,16 @@ Superação
 Superação
 <?php $__env->endSlot(); ?>
 <?php $__env->slot('title'); ?>
-Página Inicial
+Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
+
 <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php $__env->startSection('css'); ?>
+<style>
+    .page-title-right{
+        display: none;
+    }
+</style>
 <link href="<?php echo e(URL::asset('/assets/libs/select2/select2.min.css')); ?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css')); ?>" rel="stylesheet"
     type="text/css">
@@ -130,7 +136,7 @@ Página Inicial
                         <div class="custom-progess mt-3 mb-4">
                             <div class="progress animated-progess progress-lg">
                                 <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar"
-                                    role="progressbar" data-complete="30">
+                                    role="progressbar" data-complete="<?php echo e(($dadosUsuario->sum('pontuacao')*100)/$rankingPodio[0]['pt_ranking']); ?>">
                                 </div>
                                 <svg class="fogueteBar bx-spin" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
@@ -242,11 +248,11 @@ Página Inicial
 
                             
                             <div class="marcos">
-                                <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute" data-complete-meta="70">
-                                    <a href="./ranking-geral" target="_blank"><i class="bx bxs-trophy third tooltipMarcoTerceiro">|</i></a>
+                                <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute" data-complete-meta="<?php echo e(($rankingPodio[2]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']); ?>">
+                                    <a href="./ranking-geral" target="_blank" class="third">|<i class="bx bxs-trophy third tooltipMarcoTerceiro bx-tada"></i></a>
                                 </div>
-                                <div class="marcosMetaSegundo" style="z-index: 100" data-complete-meta="85">
-                                    <a href="./ranking-geral" target="_blank"><i class="bx bxs-trophy second tooltipMarcoSegundo">|</i></a>
+                                <div class="marcosMetaSegundo" style="z-index: 100" data-complete-meta="<?php echo e(($rankingPodio[1]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']); ?>">
+                                    <a href="./ranking-geral" target="_blank" class="second">|<i class="bx bxs-trophy second tooltipMarcoSegundo bx-tada"></i></a>
                                 </div>
                             </div>
                             
@@ -254,7 +260,7 @@ Página Inicial
                             
                             <div style="display: none" id="conteudoMarcoSegundo">
                                 <div class="d-flex" style="margin-top: 10px">
-                                    <i class="fas fa-trophy second fa-3x iconMarco" style="margin-right: 10px" data-colocacao="<?php echo e($rankingPodio[1]['posicao_ranking']); ?>"></i><h5>Faltam <strong>150</strong> pontos para a colocação</h5>
+                                    <i class="fas fa-trophy second fa-3x iconMarco" style="margin-right: 10px" data-colocacao="<?php echo e($rankingPodio[1]['posicao_ranking']); ?>"></i><h5>Faltam <strong><?php echo e(($rankingPodio[1]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1); ?></strong> pontos para a colocação</h5>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <h6 id="footerMarcoSegundo"><strong><?php echo e($rankingPodio[1]['nm_posto']); ?> | Pontos: <?php echo e($rankingPodio[1]['pt_ranking']); ?></strong></h6>
@@ -262,7 +268,7 @@ Página Inicial
                             </div>
                             <div style="display: none" id="conteudoMarcoTerceiro">
                                 <div class="d-flex" style="margin-top: 10px">
-                                    <i class="fas fa-trophy third fa-3x iconMarco" style="margin-right: 10px" data-colocacao="<?php echo e($rankingPodio[2]['posicao_ranking']); ?>"></i><h5>Faltam <strong>100</strong> pontos para a colocação</h5>
+                                    <i class="fas fa-trophy third fa-3x iconMarco" style="margin-right: 10px" data-colocacao="<?php echo e($rankingPodio[2]['posicao_ranking']); ?>"></i><h5>Faltam <strong><?php echo e(($rankingPodio[2]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1); ?></strong> pontos para a colocação</h5>
                                 </div>
                                 <h6 id="footerMarcoTerceiro"><strong><?php echo e($rankingPodio[2]['nm_posto']); ?> | Pontos: <?php echo e($rankingPodio[2]['pt_ranking']); ?></strong></h6>
                             </div>

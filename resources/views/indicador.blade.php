@@ -84,21 +84,21 @@
               <div class="flex-grow-1">
                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-line-chart"></span> Volume</p>
                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true" data-bs-toggle="tooltip"
-                  data-bs-placement="top" title="Descrição"><i class="far fa-question-circle"></i></button>
-                <h5 class="mb-0"><i class="bx bxs-upvote success"></i> 14%</h5>
+                  data-bs-placement="top" title="Quantos % deste indicador compõe a pontuação total"><i class="far fa-question-circle"></i></button>
+                <h5 class="mb-0"><i class="bx bxs-upvote success"></i> {{number_format(($pontuacaoIndicador['pontuacao']*100)/$dadosUsuario->sum('pontuacao'))}}%</h5>
               </div>
               <div class="flex-grow-1">
                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-trophy"></span> Pontuação</p>
                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true" data-bs-toggle="tooltip"
                   data-bs-placement="top" title="Descrição"><i class="far fa-question-circle"></i></button>
                 <h5 class="mb-0"><i class="bx bxs-upvote success"></i> {{$pontuacaoIndicador['pontuacao']}}<span
-                    class="lead descTotalPontos">/ {{$pontuacaoTotal->sum('pontuacao')}}</span></h5>
+                    class="lead descTotalPontos">/ {{$indicador["pontuacao_base"]*$infoGrupo["total_participantes"]}}</span></h5>
               </div>
               <div class="flex-grow-1">
                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-dollar"></span> Valor</p>
                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true" data-bs-toggle="tooltip"
                   data-bs-placement="top" title="Descrição"><i class="far fa-question-circle"></i></button>
-                <h5 class="mb-0"><i class="bx bxs-downvote danger"></i> R$ 1.550.000</h5>
+                <h5 class="mb-0"><i class="bx bxs-downvote danger"></i> {{ number_format($pontuacaoIndicador['vl_lcto'], 0, ',', '.')}}</h5>
               </div>
               {{-- <div class="flex-grow-1">
                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-target-lock"></span> Expectativa
@@ -109,14 +109,13 @@
           </div>
           <div class="card-footer progressBarBG">
             <div class="d-flex titleProgressBar">
-              <h6>Faltam <strong class="success pontosInicio">155 pontos</strong> para alcançar a
-                próxima colocação nesta categoria</h6>
+              <h6>Você está a <strong class="success pontosInicio">{{$rankingIndicador[0]['pontuacao']-$pontuacaoIndicador['pontuacao']}} pontos</strong> de atingir a pontuação máxima deste indicador</h6>
             </div>
 
             <div class="custom-progess mt-3 mb-3">
 
               <div class="progress animated-progess progress-lg">
-                <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar" role="progressbar" data-complete="70">
+                <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar" role="progressbar" data-complete="{{($pontuacaoIndicador['pontuacao']*100)/$rankingIndicador[0]['pontuacao']}}">
                 </div>
                 <svg class="fogueteBar bx-spin" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                   xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
@@ -213,10 +212,16 @@
               </div>
 
               <div class="avatar-xs progress-icon-start">
-                <span class="avatar-title start border iconePosicaoRanking">2º</span>
+                <span class="avatar-title start border iconePosicaoRanking">
+                  @foreach ($rankingIndicador as $item)
+                      @if($item['cd_coop'] == $infoUsuario['cd_coop'] && $item['cd_posto'] == $infoUsuario['cd_posto'])
+                        {{$item['ordem']}}
+                      @endif
+                  @endforeach
+                </span>
               </div>
               <div class="avatar-xs progress-icon-end">
-                <span class="avatar-title-card border iconePosicaoRanking">1º</span>
+                <span class="avatar-title-card border iconePosicaoRanking">{{$rankingIndicador[0]['ordem']}}º</span>
               </div>
             </div>
           </div>
@@ -239,6 +244,7 @@
       </div>
     </div>
 
+  
   </div>
 </div>
 @section('script')
@@ -248,6 +254,77 @@
 <script src="{{ URL::asset('./assets/js/pages/iconColocacao.init.js') }}"></script>
 
 <script>
+   
+   var resultAjax = [];
+   var url = 'graficoIndicadores/creditopf';
+
+   $.getJSON(url, function(data) {
+    resultAjax = data
+    console.log(resultAjax)
+    
+
+    var options = {
+          series: [
+            {
+              name: 'funcionarios',
+              data: resultAjax
+            }
+          ],
+          chart: {
+          height: 350,
+          type: 'bar',
+        },
+        dataLabels: {
+          enabled: false
+        },
+        title: {
+          text: 'Ajax Example',
+        },
+        noData: {
+          text: 'Loading...'
+        },
+        xaxis: {
+          type: 'category',
+          tickPlacement: 'on',
+          labels: {
+            rotate: -45,
+            rotateAlways: true
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#ranking-mensal"), options);
+        chart.render();
+
+    
+    });
+    
+
+    
+
+    // $.getJSON("graficoIndicadores/creditopf", function(result){
+    //   $.each(result, function(i, field){
+    //     $("div").append(field + " ");
+    //   });
+    // });
+
+
+
+  //  $.ajax({url: "graficoIndicadores/creditopf", success: function(result){
+      
+  //   }});
+
+     
+      
+      
+      //   $.getJSON('http://my-json-server.typicode.com/apexcharts/apexcharts.js/yearly', function(response) {
+      //   chart.updateSeries([{
+      //     name: 'Sales',
+      //     data: response
+      //   }])
+      // });
+      
+
   //Função para esconder card de regra na página do indicador
   function hideShow() {
     var botao = document.getElementById("botaoDescricao");

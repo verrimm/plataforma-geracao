@@ -9,5 +9,5 @@ class grupoPosto extends Model
 {
     use HasFactory;
 
-    protected $table = 'grupo_posto';
+    protected $table = 'grupo_posto as gp';
 }
