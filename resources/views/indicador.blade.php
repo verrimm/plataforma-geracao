@@ -258,46 +258,78 @@
    var resultAjax = [];
    var url = 'graficoIndicadores/creditopf';
 
-   $.getJSON(url, function(data) {
-    resultAjax = data
-    console.log(resultAjax)
+  //  $.getJSON(url, function(data) {
+  //   resultAjax = data
+  //   console.log(resultAjax)
     
 
-    var options = {
-          series: [
-            {
-              name: 'funcionarios',
-              data: resultAjax
-            }
-          ],
-          chart: {
-          height: 350,
-          type: 'bar',
+  var url = 'graficoIndicadores/creditopf';
+
+
+
+
+  var options = {
+    series: [{
+        name: 'Volume (R$)',
+        type: 'column',
+        data: []
+    }, {
+        name: 'Posição',
+        type: 'line',
+        data: []
+    }],
+    chart: {
+        height: 300,
+        type: 'line',
+        opposite: true
+    },
+    colors: ['#556ee6', '#34c38f'],
+    stroke: {
+        curve: 'smooth',
+        width: [0, 4]
+    },
+    title: {
+        text: 'Pontos'
+    },
+    dataLabels: {
+        style: {
+            colors: ['#34c38f']
         },
-        dataLabels: {
-          enabled: false
-        },
+        enabled: true,
+        enabledOnSeries: [1]
+    },
+    labels: [],
+    xaxis: {
+        type: 'date'
+    },
+    yaxis: [{
         title: {
-          text: 'Ajax Example',
-        },
-        noData: {
-          text: 'Loading...'
-        },
-        xaxis: {
-          type: 'category',
-          tickPlacement: 'on',
-          labels: {
-            rotate: -45,
-            rotateAlways: true
-          }
+            text: 'Volume (R$)',
         }
-        };
+    }, {
+        reversed: true,
+        opposite: true,
+        title: {
+            text: 'Posição',
+        }
+    }]
+};
+
+
+
+
+   
 
         var chart = new ApexCharts(document.querySelector("#ranking-mensal"), options);
         chart.render();
 
-    
-    });
+        $.getJSON(url, function(response) {
+        console.log(response)
+        chart.updateSeries([{
+        name: 'Pontuação',
+        data: response
+  }])
+});
     
 
     

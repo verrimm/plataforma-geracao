@@ -10,6 +10,7 @@ use App\Models\usuario;
 use App\Models\rankingPosto;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -286,34 +287,38 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
     }
 
     if ($varTemp != 'z') {
-    $usuario = usuario::select('nm_usuario') 
-    ->where('cd_usuario', '=', auth::id())->first();
+        $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
 
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
     ->where('cd_posto', '=', $usuario['cd_posto'])
     ->join('grupos as g', 'g.cd_grupo', '=', 'gp.cd_grupo')
     ->first();
+        
 
-        $rankingIndicador = lancamento::select('ordem as y', 'dt_info as x')
+       
+        // $rankingIndicador = lancamento::select( 'l.dt_info as x', 'l.ordem as y')
+       
+        $raw = DB::statement("SET lc_time_names = 'pt_BR'");
+       
+        $rankingIndicador = lancamento::select(lancamento::raw(' monthname(l.dt_info ) as x'), 'l.ordem as y')
+       
         ->join("indicadores as i", 'i.cd_indicador', "=", 'l.cd_indicador')
         ->join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "l.cd_coop")
             ->on("gp.cd_posto", "=", "l.cd_posto");
         })
             ->where('url', '=', $varTemp)
-            ->where('gp.cd_grupo', '=','2')
+            ->where('gp.cd_grupo', '=',$grupo['cd_grupo'])
+            // ->where('l.cd_coop','=',$usuario['cd_coop'])
+            // ->where('l.cd_posto', '=', $usuario['cd_posto'])
+           
             ->get();
 
 
-    return $rankingIndicador ->toJson(JSON_PRETTY_PRINT);
 
-    }
-    else {
-        if (view()->exists($indicador)) {
-            return view($indicador);
-        } else {
-            return view('pages-404');
-        }
+    return $rankingIndicador ->toJson();
+   
+
     }
 
 });
