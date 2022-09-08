@@ -315,11 +315,6 @@
     }]
 };
 
-
-
-
-   
-
         var chart = new ApexCharts(document.querySelector("#ranking-mensal"), options);
         chart.render();
 
@@ -328,6 +323,7 @@
         chart.updateSeries([{
         name: 'Pontuação',
         data: response
+        
   }])
 });
     

@@ -29,19 +29,4 @@ $(document).ready(function () {
         closeOnMouseleave: true
     });
 
-    new jBox('Tooltip', {
-        attach: '.cardDescricaoRapida',
-        animation: {
-            open: 'pulse',
-            close: 'pulse'
-        },
-        position: {
-            x: 'middle',
-            y: 'middle'
-        },
-        width: 150,
-        content: $('#conteudoCardDescricaoRapida'),
-        closeOnMouseleave: true
-    });
-
 });

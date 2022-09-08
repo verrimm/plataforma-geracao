@@ -19,7 +19,7 @@ Bem-Vindo {{$usuario['nm_usuario']}}
 @endcomponent
 @section('css')
 <style>
-    .page-title-right{
+    .page-title-right {
         display: none;
     }
 </style>
@@ -106,7 +106,8 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                                     {{ $dadosUsuario[0]['nm_grupo'] }}
                                 </p>
                                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Grupo da sua agência no Superação 2022"><i
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Grupo da sua agência no Superação 2022"><i
                                         class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     {{ $dadosUsuario[0]['nm_posto'] }}
@@ -116,7 +117,8 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-trophy"></span>
                                     Pontuação Total</p>
                                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Número de pontos conquistados até agora no Superação 2022"><i
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Número de pontos conquistados até agora no Superação 2022"><i
                                         class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     {{ $dadosUsuario->sum('pontuacao') }}
@@ -126,13 +128,17 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                     </div>
                     <div class="card-footer progressBarBG">
                         <div class="d-flex titleProgressBar">
-                            <h5>Faltam <strong class="success pontosInicio">{{$rankingPodio[0]['pt_ranking']-$dadosUsuario->sum('pontuacao')+1}} pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p> colocação</h5>
+                            <h5>Faltam <strong
+                                    class="success pontosInicio">{{$rankingPodio[0]['pt_ranking']-$dadosUsuario->sum('pontuacao')+1}}
+                                    pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p>
+                                colocação</h5>
                         </div>
 
                         <div class="custom-progess mt-3 mb-4">
                             <div class="progress animated-progess progress-lg">
                                 <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar"
-                                    role="progressbar" data-complete="{{($dadosUsuario->sum('pontuacao')*100)/$rankingPodio[0]['pt_ranking']}}">
+                                    role="progressbar"
+                                    data-complete="{{($dadosUsuario->sum('pontuacao')*100)/$rankingPodio[0]['pt_ranking']}}">
                                 </div>
                                 <svg class="fogueteBar bx-spin" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
@@ -244,11 +250,15 @@ Bem-Vindo {{$usuario['nm_usuario']}}
 
                             {{-- MARCOS Segundo e Terceiro Lugar --}}
                             <div class="marcos">
-                                <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute" data-complete-meta="{{($rankingPodio[2]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']}}">
-                                    <a href="./ranking-geral" target="_blank" class="third">|<i class="bx bxs-trophy third tooltipMarcoTerceiro bx-tada"></i></a>
+                                <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute"
+                                    data-complete-meta="{{($rankingPodio[2]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']}}">
+                                    <a href="./ranking-geral" target="_blank" class="third">|<i
+                                            class="bx bxs-trophy third tooltipMarcoTerceiro bx-tada"></i></a>
                                 </div>
-                                <div class="marcosMetaSegundo" style="z-index: 100" data-complete-meta="{{($rankingPodio[1]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']}}">
-                                    <a href="./ranking-geral" target="_blank" class="second">|<i class="bx bxs-trophy second tooltipMarcoSegundo bx-tada"></i></a>
+                                <div class="marcosMetaSegundo" style="z-index: 100"
+                                    data-complete-meta="{{($rankingPodio[1]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']}}">
+                                    <a href="./ranking-geral" target="_blank" class="second">|<i
+                                            class="bx bxs-trophy second tooltipMarcoSegundo bx-tada"></i></a>
                                 </div>
                             </div>
                             {{-- END MARCOS --}}
@@ -256,17 +266,27 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                             {{-- TOOLTIPS CONTENT --}}
                             <div style="display: none" id="conteudoMarcoSegundo">
                                 <div class="d-flex" style="margin-top: 10px">
-                                    <i class="fas fa-trophy second fa-3x iconMarco" style="margin-right: 10px" data-colocacao="{{$rankingPodio[1]['posicao_ranking']}}"></i><h5>Faltam <strong>{{($rankingPodio[1]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1}}</strong> pontos para a colocação</h5>
+                                    <i class="fas fa-trophy second fa-3x iconMarco" style="margin-right: 10px"
+                                        data-colocacao="{{$rankingPodio[1]['posicao_ranking']}}"></i>
+                                    <h5>Faltam
+                                        <strong>{{($rankingPodio[1]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1}}</strong>
+                                        pontos para a colocação</h5>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <h6 id="footerMarcoSegundo"><strong>{{$rankingPodio[1]['nm_posto']}} | Pontos: {{$rankingPodio[1]['pt_ranking']}}</strong></h6>
+                                    <h6 id="footerMarcoSegundo"><strong>{{$rankingPodio[1]['nm_posto']}} | Pontos:
+                                            {{$rankingPodio[1]['pt_ranking']}}</strong></h6>
                                 </div>
                             </div>
                             <div style="display: none" id="conteudoMarcoTerceiro">
                                 <div class="d-flex" style="margin-top: 10px">
-                                    <i class="fas fa-trophy third fa-3x iconMarco" style="margin-right: 10px" data-colocacao="{{$rankingPodio[2]['posicao_ranking']}}"></i><h5>Faltam <strong>{{($rankingPodio[2]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1}}</strong> pontos para a colocação</h5>
+                                    <i class="fas fa-trophy third fa-3x iconMarco" style="margin-right: 10px"
+                                        data-colocacao="{{$rankingPodio[2]['posicao_ranking']}}"></i>
+                                    <h5>Faltam
+                                        <strong>{{($rankingPodio[2]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1}}</strong>
+                                        pontos para a colocação</h5>
                                 </div>
-                                <h6 id="footerMarcoTerceiro"><strong>{{$rankingPodio[2]['nm_posto']}} | Pontos: {{$rankingPodio[2]['pt_ranking']}}</strong></h6>
+                                <h6 id="footerMarcoTerceiro"><strong>{{$rankingPodio[2]['nm_posto']}} | Pontos:
+                                        {{$rankingPodio[2]['pt_ranking']}}</strong></h6>
                             </div>
                             {{-- END TOOLTIPS --}}
 
@@ -294,7 +314,9 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                         </div>
                     </div>
                     <div class="card-footer" id="footerRankingPosicao">
-                        <h3 style="color: #fff; text-align: center; margin-bottom: 34px; text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">POSIÇÃO ATUAL</h3>
+                        <h3
+                            style="color: #fff; text-align: center; margin-bottom: 34px; text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
+                            POSIÇÃO ATUAL</h3>
                     </div>
                 </div>
             </div>
@@ -304,45 +326,59 @@ Bem-Vindo {{$usuario['nm_usuario']}}
     @foreach ($dadosUsuario as $item)
     <div class="col-md-3 indicadorCard">
         <a href="./{{ $item['url'] }}">
-            <div class="card mini-stats-wid cardDescricaoRapida">
-                <div class="card-body">
-                    <div class="d-flex">
-                        <div class="flex-grow-1">
-                            <p class="text-muted fw-medium">{{ $item['nm_indicador'] }}</p>
-                            <h5 class="mb-0">
-                                @if ($item['sufixo']!=null) {{-- caso tenha sufixo (porcentagem) --}}
-                                {{$item['vl_lcto']*100}}
-                                {{$item['sufixo']}}
-                                @else {{-- caso nao tenha sufixo (cifrao) --}}
-                                {{$item['prefixo']}}
-                                {{ number_format($item['vl_lcto'], 0, ',', '.')}}
-                                @endif
-                            </h5>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        {{-- CONTEÚDO DO CARD --}}
+                        <div class="card mini-stats-wid">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium">{{ $item['nm_indicador'] }}</p>
+                                        <h5 class="mb-0">
+                                            @if ($item['sufixo']!=null) {{-- caso tenha sufixo (porcentagem) --}}
+                                            {{$item['vl_lcto']*100}}
+                                            {{$item['sufixo']}}
+                                            @else {{-- caso nao tenha sufixo (cifrao) --}}
+                                            {{$item['prefixo']}}
+                                            {{ number_format($item['vl_lcto'], 0, ',', '.')}}
+                                            @endif
+                                        </h5>
+                                    </div>
+                                    <div class="flex-shrink-0 align-self-center">
+                                        <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                            <span
+                                                class="avatar-title rounded-circle avatarRanking iconePosicaoRanking">{{
+                                                $item['ordem'] }}º</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="carousel-align">
+                                    <h6>{{number_format(($item['pontuacao']*100)/$dadosUsuario->sum('pontuacao'))}}%
+                                        <span class="separador primary"></span>
+                                        <i class="bx bxs-upvote success"></i> {{ $item['pontuacao'] }}
+                                        Pts.
+                                    </h6>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex-shrink-0 align-self-center">
-                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                <span class="avatar-title rounded-circle avatarRanking iconePosicaoRanking">{{
-                                    $item['ordem'] }}º</span>
+                        {{-- END CONTEUDO --}}
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="d-flex" style="justify-content: space-evenly;">
+                            <div class="flex-grow-1">
+                                <h6><i class="fas fa-wallet"></i> Unicred: <span>R$11.588.399</span></h6>
+                                <h6><i class="fas fa-wallet"></i> PR: <span>R$5.570.322</span></h6>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="carousel-align">
-                        <h6>{{number_format(($item['pontuacao']*100)/$dadosUsuario->sum('pontuacao'))}}%
-                            <span class="separador primary"></span>
-                            <i class="bx bxs-upvote success"></i> {{ $item['pontuacao'] }}
-                            Pts.
-                        </h6>
-                    </div>
-                </div>
             </div>
+
         </a>
-    </div>
-    <div style="display: none" id="conteudoCardDescricaoRapida">
-        <div class="d-flex" style="margin-top: 10px">
-            <h5>DESCRIÇÃO RÁPIDA</h5>
-        </div>
     </div>
     @endforeach
 

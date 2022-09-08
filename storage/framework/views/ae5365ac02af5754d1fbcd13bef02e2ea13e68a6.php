@@ -20,7 +20,7 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php $__env->startSection('css'); ?>
 <style>
-    .page-title-right{
+    .page-title-right {
         display: none;
     }
 </style>
@@ -108,7 +108,8 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
 
                                 </p>
                                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Grupo da sua agência no Superação 2022"><i
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Grupo da sua agência no Superação 2022"><i
                                         class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     <?php echo e($dadosUsuario[0]['nm_posto']); ?>
@@ -119,7 +120,8 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
                                 <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-trophy"></span>
                                     Pontuação Total</p>
                                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Número de pontos conquistados até agora no Superação 2022"><i
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Número de pontos conquistados até agora no Superação 2022"><i
                                         class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
                                     <?php echo e($dadosUsuario->sum('pontuacao')); ?>
@@ -130,13 +132,18 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
                     </div>
                     <div class="card-footer progressBarBG">
                         <div class="d-flex titleProgressBar">
-                            <h5>Faltam <strong class="success pontosInicio"><?php echo e($rankingPodio[0]['pt_ranking']-$dadosUsuario->sum('pontuacao')+1); ?> pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p> colocação</h5>
+                            <h5>Faltam <strong
+                                    class="success pontosInicio"><?php echo e($rankingPodio[0]['pt_ranking']-$dadosUsuario->sum('pontuacao')+1); ?>
+
+                                    pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p>
+                                colocação</h5>
                         </div>
 
                         <div class="custom-progess mt-3 mb-4">
                             <div class="progress animated-progess progress-lg">
                                 <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar"
-                                    role="progressbar" data-complete="<?php echo e(($dadosUsuario->sum('pontuacao')*100)/$rankingPodio[0]['pt_ranking']); ?>">
+                                    role="progressbar"
+                                    data-complete="<?php echo e(($dadosUsuario->sum('pontuacao')*100)/$rankingPodio[0]['pt_ranking']); ?>">
                                 </div>
                                 <svg class="fogueteBar bx-spin" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
@@ -248,11 +255,15 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
 
                             
                             <div class="marcos">
-                                <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute" data-complete-meta="<?php echo e(($rankingPodio[2]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']); ?>">
-                                    <a href="./ranking-geral" target="_blank" class="third">|<i class="bx bxs-trophy third tooltipMarcoTerceiro bx-tada"></i></a>
+                                <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute"
+                                    data-complete-meta="<?php echo e(($rankingPodio[2]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']); ?>">
+                                    <a href="./ranking-geral" target="_blank" class="third">|<i
+                                            class="bx bxs-trophy third tooltipMarcoTerceiro bx-tada"></i></a>
                                 </div>
-                                <div class="marcosMetaSegundo" style="z-index: 100" data-complete-meta="<?php echo e(($rankingPodio[1]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']); ?>">
-                                    <a href="./ranking-geral" target="_blank" class="second">|<i class="bx bxs-trophy second tooltipMarcoSegundo bx-tada"></i></a>
+                                <div class="marcosMetaSegundo" style="z-index: 100"
+                                    data-complete-meta="<?php echo e(($rankingPodio[1]['pt_ranking']*100)/$rankingPodio[0]['pt_ranking']); ?>">
+                                    <a href="./ranking-geral" target="_blank" class="second">|<i
+                                            class="bx bxs-trophy second tooltipMarcoSegundo bx-tada"></i></a>
                                 </div>
                             </div>
                             
@@ -260,17 +271,27 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
                             
                             <div style="display: none" id="conteudoMarcoSegundo">
                                 <div class="d-flex" style="margin-top: 10px">
-                                    <i class="fas fa-trophy second fa-3x iconMarco" style="margin-right: 10px" data-colocacao="<?php echo e($rankingPodio[1]['posicao_ranking']); ?>"></i><h5>Faltam <strong><?php echo e(($rankingPodio[1]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1); ?></strong> pontos para a colocação</h5>
+                                    <i class="fas fa-trophy second fa-3x iconMarco" style="margin-right: 10px"
+                                        data-colocacao="<?php echo e($rankingPodio[1]['posicao_ranking']); ?>"></i>
+                                    <h5>Faltam
+                                        <strong><?php echo e(($rankingPodio[1]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1); ?></strong>
+                                        pontos para a colocação</h5>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <h6 id="footerMarcoSegundo"><strong><?php echo e($rankingPodio[1]['nm_posto']); ?> | Pontos: <?php echo e($rankingPodio[1]['pt_ranking']); ?></strong></h6>
+                                    <h6 id="footerMarcoSegundo"><strong><?php echo e($rankingPodio[1]['nm_posto']); ?> | Pontos:
+                                            <?php echo e($rankingPodio[1]['pt_ranking']); ?></strong></h6>
                                 </div>
                             </div>
                             <div style="display: none" id="conteudoMarcoTerceiro">
                                 <div class="d-flex" style="margin-top: 10px">
-                                    <i class="fas fa-trophy third fa-3x iconMarco" style="margin-right: 10px" data-colocacao="<?php echo e($rankingPodio[2]['posicao_ranking']); ?>"></i><h5>Faltam <strong><?php echo e(($rankingPodio[2]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1); ?></strong> pontos para a colocação</h5>
+                                    <i class="fas fa-trophy third fa-3x iconMarco" style="margin-right: 10px"
+                                        data-colocacao="<?php echo e($rankingPodio[2]['posicao_ranking']); ?>"></i>
+                                    <h5>Faltam
+                                        <strong><?php echo e(($rankingPodio[2]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1); ?></strong>
+                                        pontos para a colocação</h5>
                                 </div>
-                                <h6 id="footerMarcoTerceiro"><strong><?php echo e($rankingPodio[2]['nm_posto']); ?> | Pontos: <?php echo e($rankingPodio[2]['pt_ranking']); ?></strong></h6>
+                                <h6 id="footerMarcoTerceiro"><strong><?php echo e($rankingPodio[2]['nm_posto']); ?> | Pontos:
+                                        <?php echo e($rankingPodio[2]['pt_ranking']); ?></strong></h6>
                             </div>
                             
 
@@ -296,7 +317,9 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
                         </div>
                     </div>
                     <div class="card-footer" id="footerRankingPosicao">
-                        <h3 style="color: #fff; text-align: center; margin-bottom: 34px; text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">POSIÇÃO ATUAL</h3>
+                        <h3
+                            style="color: #fff; text-align: center; margin-bottom: 34px; text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
+                            POSIÇÃO ATUAL</h3>
                     </div>
                 </div>
             </div>
@@ -306,49 +329,63 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
     <?php $__currentLoopData = $dadosUsuario; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-md-3 indicadorCard">
         <a href="./<?php echo e($item['url']); ?>">
-            <div class="card mini-stats-wid cardDescricaoRapida">
-                <div class="card-body">
-                    <div class="d-flex">
-                        <div class="flex-grow-1">
-                            <p class="text-muted fw-medium"><?php echo e($item['nm_indicador']); ?></p>
-                            <h5 class="mb-0">
-                                <?php if($item['sufixo']!=null): ?> 
-                                <?php echo e($item['vl_lcto']*100); ?>
 
-                                <?php echo e($item['sufixo']); ?>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        
+                        <div class="card mini-stats-wid">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted fw-medium"><?php echo e($item['nm_indicador']); ?></p>
+                                        <h5 class="mb-0">
+                                            <?php if($item['sufixo']!=null): ?> 
+                                            <?php echo e($item['vl_lcto']*100); ?>
 
-                                <?php else: ?> 
-                                <?php echo e($item['prefixo']); ?>
+                                            <?php echo e($item['sufixo']); ?>
 
-                                <?php echo e(number_format($item['vl_lcto'], 0, ',', '.')); ?>
+                                            <?php else: ?> 
+                                            <?php echo e($item['prefixo']); ?>
 
-                                <?php endif; ?>
-                            </h5>
+                                            <?php echo e(number_format($item['vl_lcto'], 0, ',', '.')); ?>
+
+                                            <?php endif; ?>
+                                        </h5>
+                                    </div>
+                                    <div class="flex-shrink-0 align-self-center">
+                                        <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                            <span
+                                                class="avatar-title rounded-circle avatarRanking iconePosicaoRanking"><?php echo e($item['ordem']); ?>º</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="carousel-align">
+                                    <h6><?php echo e(number_format(($item['pontuacao']*100)/$dadosUsuario->sum('pontuacao'))); ?>%
+                                        <span class="separador primary"></span>
+                                        <i class="bx bxs-upvote success"></i> <?php echo e($item['pontuacao']); ?>
+
+                                        Pts.
+                                    </h6>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex-shrink-0 align-self-center">
-                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                <span class="avatar-title rounded-circle avatarRanking iconePosicaoRanking"><?php echo e($item['ordem']); ?>º</span>
+                        
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="d-flex" style="justify-content: space-evenly;">
+                            <div class="flex-grow-1">
+                                <h6><i class="fas fa-wallet"></i> Unicred: <span>R$11.588.399</span></h6>
+                                <h6><i class="fas fa-wallet"></i> PR: <span>R$5.570.322</span></h6>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="carousel-align">
-                        <h6><?php echo e(number_format(($item['pontuacao']*100)/$dadosUsuario->sum('pontuacao'))); ?>%
-                            <span class="separador primary"></span>
-                            <i class="bx bxs-upvote success"></i> <?php echo e($item['pontuacao']); ?>
-
-                            Pts.
-                        </h6>
-                    </div>
-                </div>
             </div>
+
         </a>
-    </div>
-    <div style="display: none" id="conteudoCardDescricaoRapida">
-        <div class="d-flex" style="margin-top: 10px">
-            <h5>DESCRIÇÃO RÁPIDA</h5>
-        </div>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
