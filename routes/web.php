@@ -8,7 +8,7 @@ use App\Models\posto;
 use App\Models\User;
 use App\Models\usuario;
 use App\Models\rankingPosto;
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +36,10 @@ Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class
 
 Route::get('index', function () {
 
+    $ultimaData = lancamento::select( lancamento::raw('max(dt_info) as ultimaData'))
+    ->first()
+   ;
+    
     $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
         ->where('cd_posto', '=', $usuario['cd_posto'])->first();
@@ -78,8 +82,10 @@ Route::get('index', function () {
         })
         ->where('postos.cd_coop', $usuario['cd_coop'])
         ->where('postos.cd_posto', $usuario['cd_posto'])
+        ->where('l.dt_info','=',$ultimaData['ultimaData'])
         ->get();
-
+    
+        // return $ultimaData['ultimaData'];
     return view('index', [
         'rankingPodio' => $rankingPodio,
         'usuario' => $usuario,
@@ -314,11 +320,11 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
            
             ->get();
 
-
-
-    return $rankingIndicador ->toJson();
+            
+      $data = Carbon::now();
+    // return $rankingIndicador ->toJson();
    
-
+        return $data;
     }
 
 });
