@@ -474,5 +474,11 @@
     "/assets/js/app.min.js": "/assets/js/app.min.js",
     "/assets/js/pages/calendars.js": "/assets/js/pages/calendars.js",
     "/assets/js/pages/schedules.js": "/assets/js/pages/schedules.js",
-    "/assets/js/pages/leaflet-us-states.js": "/assets/js/pages/leaflet-us-states.js"
+    "/assets/js/pages/leaflet-us-states.js": "/assets/js/pages/leaflet-us-states.js",
+    "/assets/images/logo/uniscore/PNG/fundo_branco - png.png": "/assets/images/logo/uniscore/PNG/fundo_branco - png.png",
+    "/assets/images/logo/uniscore/PNG/fundo_colorido - png.png": "/assets/images/logo/uniscore/PNG/fundo_colorido - png.png",
+    "/assets/images/logo/uniscore/PNG/fundo_dourado - png.png": "/assets/images/logo/uniscore/PNG/fundo_dourado - png.png",
+    "/assets/images/logo/uniscore/SVG/fundo_branco - png.svg": "/assets/images/logo/uniscore/SVG/fundo_branco - png.svg",
+    "/assets/images/logo/uniscore/SVG/fundo_colorido - png.svg": "/assets/images/logo/uniscore/SVG/fundo_colorido - png.svg",
+    "/assets/images/logo/uniscore/SVG/fundo_dourado - png.svg": "/assets/images/logo/uniscore/SVG/fundo_dourado - png.svg"
 }

@@ -270,7 +270,8 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                                         data-colocacao="{{$rankingPodio[1]['posicao_ranking']}}"></i>
                                     <h5>Faltam
                                         <strong>{{($rankingPodio[1]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1}}</strong>
-                                        pontos para a colocação</h5>
+                                        pontos para a colocação
+                                    </h5>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <h6 id="footerMarcoSegundo"><strong>{{$rankingPodio[1]['nm_posto']}} | Pontos:
@@ -283,7 +284,8 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                                         data-colocacao="{{$rankingPodio[2]['posicao_ranking']}}"></i>
                                     <h5>Faltam
                                         <strong>{{($rankingPodio[2]['pt_ranking']-$dadosUsuario->sum('pontuacao'))+1}}</strong>
-                                        pontos para a colocação</h5>
+                                        pontos para a colocação
+                                    </h5>
                                 </div>
                                 <h6 id="footerMarcoTerceiro"><strong>{{$rankingPodio[2]['nm_posto']}} | Pontos:
                                         {{$rankingPodio[2]['pt_ranking']}}</strong></h6>
@@ -326,7 +328,6 @@ Bem-Vindo {{$usuario['nm_usuario']}}
     @foreach ($dadosUsuario as $item)
     <div class="col-md-3 indicadorCard">
         <a href="./{{ $item['url'] }}">
-
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -368,16 +369,23 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                         {{-- END CONTEUDO --}}
                     </div>
                     <div class="flip-card-back">
-                        <div class="d-flex" style="justify-content: space-evenly;">
-                            <div class="flex-grow-1">
-                                <h6><i class="fas fa-wallet"></i> Unicred: <span>R$11.588.399</span></h6>
-                                <h6><i class="fas fa-wallet"></i> PR: <span>R$5.570.322</span></h6>
+                        <div class="card-body">
+                            <div class="d-flex" style="justify-content: space-evenly;">
+                                <div class="flex-grow-1">
+                                    <p style="color: #556ee6"><small><strong>RESUMO</strong></small></p>
+                                    <h6 class="lead"><small><i class="fas fa-wallet"></i> <strong style="font-weight: 700;">Carteira:</strong> <span style="font-weight: 300;">R$ 11.588.399</span></small></h6>
+                                    <h6 class="lead"><small><i class="fas fa-comment-dollar"></i> <strong style="font-weight: 700;">PR:</strong> <span style="font-weight: 300;">R$ 5.570.322</span></small></h6>  
+                                </div>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <div class="carousel-align">
+                                <h6>Clique para saber mais<i class="fas fa-plus success"></i></h6>
+                            </div>
+                        </div>                 
                     </div>
                 </div>
             </div>
-
         </a>
     </div>
     @endforeach
