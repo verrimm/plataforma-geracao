@@ -306,7 +306,7 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
        
         $raw = DB::statement("SET lc_time_names = 'pt_BR'");
        
-        $rankingIndicador = lancamento::select(lancamento::raw(' monthname(l.dt_info ) as x'), 'l.ordem as y')
+        $rankingIndicador = lancamento::select(lancamento::raw(' monthname(l.dt_info ) as x'), 'l.vl_lcto as y')
        
         ->join("indicadores as i", 'i.cd_indicador', "=", 'l.cd_indicador')
         ->join("grupo_posto as gp", function ($join) {
@@ -321,10 +321,12 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
             ->get();
 
             
-      $data = Carbon::now();
-    // return $rankingIndicador ->toJson();
+
+
+      
+    return $rankingIndicador ->toJson();
    
-        return $data;
+
     }
 
 });
