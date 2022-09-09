@@ -21,9 +21,6 @@
 <link rel="stylesheet" href="{{ URL::asset('./assets/libs/datepicker/datepicker.min.css') }}">
 @endsection
 
-
-
-
 <div class="row">
   <div class="col-xl-12">
     <div class="col-xl-12">
@@ -112,7 +109,7 @@
           </div>
           <div class="card-footer progressBarBG">
             <div class="d-flex titleProgressBar">
-              <h6>Você está a <strong class="success pontosInicio">{{ $pontuacaoIndicador['pontuacao']- ($indicador["pontuacao_base"]*$infoGrupo["total_participantes"])}} pontos</strong> de atingir a pontuação máxima deste indicador</h6>
+              <h6>Você está a <strong class="success pontosInicio">{{($indicador["pontuacao_base"]*$infoGrupo["total_participantes"])-$pontuacaoIndicador['pontuacao']}} pontos</strong> de atingir a pontuação máxima deste indicador</h6>
             </div>
 
             <div class="custom-progess mt-3 mb-3">
