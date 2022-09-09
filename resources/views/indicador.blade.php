@@ -21,7 +21,8 @@
 <link rel="stylesheet" href="{{ URL::asset('./assets/libs/datepicker/datepicker.min.css') }}">
 @endsection
 
-{{$rankingIndicador}}
+
+
 
 <div class="row">
   <div class="col-xl-12">
@@ -111,13 +112,13 @@
           </div>
           <div class="card-footer progressBarBG">
             <div class="d-flex titleProgressBar">
-              <h6>Você está a <strong class="success pontosInicio">{{ $rankingIndicador['pontuacao']-$pontuacaoIndicador['pontuacao']}} pontos</strong> de atingir a pontuação máxima deste indicador</h6>
+              <h6>Você está a <strong class="success pontosInicio">{{ $pontuacaoIndicador['pontuacao']- ($indicador["pontuacao_base"]*$infoGrupo["total_participantes"])}} pontos</strong> de atingir a pontuação máxima deste indicador</h6>
             </div>
 
             <div class="custom-progess mt-3 mb-3">
 
               <div class="progress animated-progess progress-lg">
-                <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar" role="progressbar" data-complete="{{($pontuacaoIndicador['pontuacao']*100)/ $rankingIndicador['pontuacao']}}">
+                <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar" role="progressbar" data-complete="{{($pontuacaoIndicador['pontuacao']*100)/ ($indicador["pontuacao_base"]*$infoGrupo["total_participantes"])}}">
                 </div>
                 <svg class="fogueteBar bx-spin" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                   xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
@@ -216,18 +217,18 @@
               <div class="avatar-xs progress-icon-start">
                 <span class="avatar-title start border iconePosicaoRanking">
 
-                      @if($rankingIndicador['cd_coop'] == $infoUsuario['cd_coop'] && $rankingIndicador['cd_posto'] == $infoUsuario['cd_posto'])
+                      {{-- @if($rankingIndicador['cd_coop'] == $infoUsuario['cd_coop'] && $rankingIndicador['cd_posto'] == $infoUsuario['cd_posto']) --}}
                         
-                      {{$rankingIndicador['ordem']}}
+                      {{-- {{$rankingIndicador['ordem']}}
 
                       @else
                       oi
                       @endif
-               
+                --}}
                 </span>
               </div>
               <div class="avatar-xs progress-icon-end">
-                <span class="avatar-title-card border iconePosicaoRanking">{{ $rankingIndicador['ordem']}}º</span>
+                {{-- <span class="avatar-title-card border iconePosicaoRanking">{{ $rankingIndicador['ordem']}}º</span> --}}
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\indicadorController;
 use App\Models\grupo;
 use App\Models\grupoPosto;
 use App\Models\indicador;
@@ -169,123 +169,7 @@ Route::get('ranking-geral', function () {
 });
 
 //rotas indicadores e rotas default e 404
-Route::get('/{indicador}', function ($indicador) {
-    
-
-    $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
-    $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
-    ->where('cd_posto', '=', $usuario['cd_posto'])
-    ->join('grupos as g', 'g.cd_grupo', '=', 'gp.cd_grupo')
-    ->first();
-    $dadosUsuario = posto::join("grupo_posto as gp", function ($join) {
-        $join->on("gp.cd_coop", "=", "postos.cd_coop")
-            ->on("gp.cd_posto", "=", "postos.cd_posto");
-    })
-        ->join("grupos as g", 'g.cd_grupo', "=", 'gp.cd_grupo')
-        ->join("lancamento as l", function ($join) {
-            $join->on("l.cd_coop", "=", "postos.cd_coop")
-                ->on("l.cd_posto", "=", "postos.cd_posto");
-        })
-        ->join("indicadores as i", function ($join) {
-            $join->on("i.cd_indicador", "=", "l.cd_indicador");
-        })
-        ->where('postos.cd_coop', $usuario['cd_coop'])
-        ->where('postos.cd_posto', $usuario['cd_posto'])
-        ->get();
-        
-
-    $varTemp = 'z';
-    $listaIndicadores = indicador::all();
-
-    foreach ($listaIndicadores as $item) {
-        if ($indicador == $item['url']) {
-
-            $varTemp = $indicador;
-        }
-    }
-
-    if ($varTemp != 'z') {
-        $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
-        $cd_indicador = indicador::where('url', '=', $varTemp)->first();
-
-        $ranking = posto::join("grupo_posto as gp", function ($join) {
-            $join->on("gp.cd_coop", "=", "postos.cd_coop")
-            ->on("gp.cd_posto", "=", "postos.cd_posto");
-        })
-            ->join("ranking_posto as rp", function ($join) {
-                $join->on("rp.cd_coop", "=", "postos.cd_coop")
-                ->on("rp.cd_posto", "=", "postos.cd_posto");
-            })
-            ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
-            ->where('postos.cd_coop', '=', $usuario['cd_coop'])
-            ->where('postos.cd_posto', '=', $usuario['cd_posto'])
-            ->first();
-        
-        $ultimaData = lancamento::select( lancamento::raw('max(dt_info) as ultimaData'));
-
-        $rankingIndicador = lancamento::select('l.cd_coop','l.cd_posto','l.ordem','l.pontuacao')
-        ->join("indicadores as i", 'i.cd_indicador', "=", 'l.cd_indicador')
-        ->join("grupo_posto as gp", function ($join) {
-            $join->on("gp.cd_coop", "=", "l.cd_coop")
-            ->on("gp.cd_posto", "=", "l.cd_posto");
-        })
-        ->where('url', '=', $varTemp)
-        ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
-        ->where('l.cd_coop', '=', $usuario['cd_coop'])
-        ->where('l.cd_posto', '=', $usuario['cd_posto'])
-        
-        ->orderby('l.ordem', 'ASC')
-        ->first();
-
-        return view('indicador', [
-            'infoUsuario' => $usuario,
-            'ranking' => $ranking,
-            'rankingIndicador' => $rankingIndicador,
-            'dadosUsuario' => $dadosUsuario,
-            'infoGrupo'=>$grupo,
-            'indicador' => indicador::where('url', '=', $varTemp)->first(),
-            'pontuacaoIndicador' => posto::join("grupo_posto as gp", function ($join) {
-                $join->on("gp.cd_coop", "=", "postos.cd_coop")
-                    ->on("gp.cd_posto", "=", "postos.cd_posto");
-            })
-                ->join("grupos as g", 'g.cd_grupo', "=", 'gp.cd_grupo')
-                ->join("lancamento as l", function ($join) {
-                    $join->on("l.cd_coop", "=", "postos.cd_coop")
-                        ->on("l.cd_posto", "=", "postos.cd_posto");
-                })
-                ->join("indicadores as i", function ($join) {
-                    $join->on("i.cd_indicador", "=", "l.cd_indicador");
-                })
-                ->where('postos.cd_coop', $usuario['cd_coop'])
-                ->where('postos.cd_posto', $usuario['cd_posto'])
-                ->where('l.cd_indicador', "=", $cd_indicador['cd_indicador'])
-                ->first(),
-
-            'pontuacaoTotal' => posto::join("grupo_posto as gp", function ($join) {
-                $join->on("gp.cd_coop", "=", "postos.cd_coop")
-                    ->on("gp.cd_posto", "=", "postos.cd_posto");
-            })
-                ->join("grupos as g", 'g.cd_grupo', "=", 'gp.cd_grupo')
-                ->join("lancamento as l", function ($join) {
-                    $join->on("l.cd_coop", "=", "postos.cd_coop")
-                        ->on("l.cd_posto", "=", "postos.cd_posto");
-                })
-                ->join("indicadores as i", function ($join) {
-                    $join->on("i.cd_indicador", "=", "l.cd_indicador");
-                })
-                ->where('postos.cd_coop', $usuario['cd_coop'])
-                ->where('postos.cd_posto', $usuario['cd_posto'])
-                ->get()
-        ]);
-    } else {
-        if (view()->exists($indicador)) {
-            return view($indicador);
-        } else {
-            return view('pages-404');
-        }
-    }
-});
-
+Route::get('/{indicador}', [indicadorController::class, 'show']);
 
 Route::get('graficoIndicadores/{indicador}', function ($indicador) {
 
