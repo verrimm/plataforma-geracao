@@ -369,18 +369,24 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                         {{-- END CONTEUDO --}}
                     </div>
                     <div class="flip-card-back">
+                        <div class="card-title">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <p class="titleCard"><small><strong>RESUMO</strong></small></p>        
+                                </div>
+                            </div>
+                        </div>                        
                         <div class="card-body">
                             <div class="d-flex" style="justify-content: space-evenly;">
                                 <div class="flex-grow-1">
-                                    <p style="color: #556ee6"><small><strong>RESUMO</strong></small></p>
                                     <h6 class="lead"><small><i class="fas fa-wallet"></i> <strong style="font-weight: 700;">Carteira:</strong> <span style="font-weight: 300;">R$ 11.588.399</span></small></h6>
                                     <h6 class="lead"><small><i class="fas fa-comment-dollar"></i> <strong style="font-weight: 700;">PR:</strong> <span style="font-weight: 300;">R$ 5.570.322</span></small></h6>  
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <div class="carousel-align">
-                                <h6>Clique para saber mais<i class="fas fa-plus success"></i></h6>
+                        <div class="card-footer" style="position: absolute; width: 100%; left: 0px;">
+                            <div class="d-flex" style="justify-content: space-evenly;">
+                                <h6 style="padding-top: 10px"><small>CLIQUE E SAIBA MAIS <i class="fas fa-sign-in-alt primary"></i></small></h6>
                             </div>
                         </div>                 
                     </div>
