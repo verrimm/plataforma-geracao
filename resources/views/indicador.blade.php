@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="{{ URL::asset('./assets/libs/datepicker/datepicker.min.css') }}">
 @endsection
 
+{{$rankingIndicador}}
+
 <div class="row">
   <div class="col-xl-12">
     <div class="col-xl-12">
@@ -109,13 +111,13 @@
           </div>
           <div class="card-footer progressBarBG">
             <div class="d-flex titleProgressBar">
-              <h6>Você está a <strong class="success pontosInicio">{{$rankingIndicador[0]['pontuacao']-$pontuacaoIndicador['pontuacao']}} pontos</strong> de atingir a pontuação máxima deste indicador</h6>
+              <h6>Você está a <strong class="success pontosInicio">{{ $rankingIndicador['pontuacao']-$pontuacaoIndicador['pontuacao']}} pontos</strong> de atingir a pontuação máxima deste indicador</h6>
             </div>
 
             <div class="custom-progess mt-3 mb-3">
 
               <div class="progress animated-progess progress-lg">
-                <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar" role="progressbar" data-complete="{{($pontuacaoIndicador['pontuacao']*100)/$rankingIndicador[0]['pontuacao']}}">
+                <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar" role="progressbar" data-complete="{{($pontuacaoIndicador['pontuacao']*100)/ $rankingIndicador['pontuacao']}}">
                 </div>
                 <svg class="fogueteBar bx-spin" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                   xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
@@ -213,15 +215,19 @@
 
               <div class="avatar-xs progress-icon-start">
                 <span class="avatar-title start border iconePosicaoRanking">
-                  @foreach ($rankingIndicador as $item)
-                      @if($item['cd_coop'] == $infoUsuario['cd_coop'] && $item['cd_posto'] == $infoUsuario['cd_posto'])
-                        {{$item['ordem']}}
+
+                      @if($rankingIndicador['cd_coop'] == $infoUsuario['cd_coop'] && $rankingIndicador['cd_posto'] == $infoUsuario['cd_posto'])
+                        
+                      {{$rankingIndicador['ordem']}}
+
+                      @else
+                      oi
                       @endif
-                  @endforeach
+               
                 </span>
               </div>
               <div class="avatar-xs progress-icon-end">
-                <span class="avatar-title-card border iconePosicaoRanking">{{$rankingIndicador[0]['ordem']}}º</span>
+                <span class="avatar-title-card border iconePosicaoRanking">{{ $rankingIndicador['ordem']}}º</span>
               </div>
             </div>
           </div>
@@ -330,27 +336,10 @@
 
     
 
-    // $.getJSON("graficoIndicadores/creditopf", function(result){
-    //   $.each(result, function(i, field){
-    //     $("div").append(field + " ");
-    //   });
-    // });
-
-
-
-  //  $.ajax({url: "graficoIndicadores/creditopf", success: function(result){
-      
-  //   }});
 
      
       
       
-      //   $.getJSON('http://my-json-server.typicode.com/apexcharts/apexcharts.js/yearly', function(response) {
-      //   chart.updateSeries([{
-      //     name: 'Sales',
-      //     data: response
-      //   }])
-      // });
       
 
   //Função para esconder card de regra na página do indicador

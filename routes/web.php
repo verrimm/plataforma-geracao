@@ -65,6 +65,7 @@ Route::get('index', function () {
                 ->on("rp.cd_posto", "=", "postos.cd_posto");
         })
         ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
+        
         ->orderBy('posicao_ranking', 'ASC')
         ->get();
 
@@ -219,16 +220,22 @@ Route::get('/{indicador}', function ($indicador) {
             ->where('postos.cd_coop', '=', $usuario['cd_coop'])
             ->where('postos.cd_posto', '=', $usuario['cd_posto'])
             ->first();
+        
+        $ultimaData = lancamento::select( lancamento::raw('max(dt_info) as ultimaData'));
 
-        $rankingIndicador = lancamento::join("indicadores as i", 'i.cd_indicador', "=", 'l.cd_indicador')
+        $rankingIndicador = lancamento::select('l.cd_coop','l.cd_posto','l.ordem','l.pontuacao')
+        ->join("indicadores as i", 'i.cd_indicador', "=", 'l.cd_indicador')
         ->join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "l.cd_coop")
             ->on("gp.cd_posto", "=", "l.cd_posto");
         })
         ->where('url', '=', $varTemp)
         ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
+        ->where('l.cd_coop', '=', $usuario['cd_coop'])
+        ->where('l.cd_posto', '=', $usuario['cd_posto'])
+        
         ->orderby('l.ordem', 'ASC')
-        ->get();
+        ->first();
 
         return view('indicador', [
             'infoUsuario' => $usuario,
@@ -283,6 +290,7 @@ Route::get('/{indicador}', function ($indicador) {
 Route::get('graficoIndicadores/{indicador}', function ($indicador) {
 
     $varTemp = 'z';
+    $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
     $listaIndicadores = indicador::all();
 
     foreach ($listaIndicadores as $item) {
@@ -293,7 +301,7 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
     }
 
     if ($varTemp != 'z') {
-        $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
+    
 
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
     ->where('cd_posto', '=', $usuario['cd_posto'])
@@ -315,8 +323,8 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
         })
             ->where('url', '=', $varTemp)
             ->where('gp.cd_grupo', '=',$grupo['cd_grupo'])
-            // ->where('l.cd_coop','=',$usuario['cd_coop'])
-            // ->where('l.cd_posto', '=', $usuario['cd_posto'])
+            ->where('l.cd_coop','=',$usuario['cd_coop'])
+            ->where('l.cd_posto', '=', $usuario['cd_posto'])
            
             ->get();
 
