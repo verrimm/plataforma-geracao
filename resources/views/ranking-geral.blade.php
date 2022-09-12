@@ -11,7 +11,6 @@
 @slot('title') Ranking GRUPO {{$dadosRanking[0]['cd_grupo']}} @endslot
 @endcomponent
 
-
 <div class="col-xl-12">
     <div class="row" style="justify-content: flex-start;">
         <div class="col-md-8">
@@ -128,170 +127,69 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="row">
-                <div class="card border border-primary mini-stats-wid rankingCards" data-bs-toggle="modal"
-                    data-bs-target=".bs-example-modal-lg" style="align-items: center">
+           
+                @foreach ($listaGrupos as $item)
+                @unless ($dadosRanking[0]['cd_grupo'] == $item['cd_grupo'])
+
+                <div class="card border border-primary mini-stats-wid rankingCards bg-ranking-grupos" data-bs-toggle="modal"
+                    data-bs-target=".{{$item['nm_grupo']}}" style="align-items: center">
                     <div class="card-body">
                         <div class="row">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <h3 style="font-size: 2rem">Grupo 1</h3>
+                                    <h3>{{$item['nm_grupo']}}</h3>
                                 </div>
                             </div>    
                         </div>
                     </div>
                 </div>
-                <div class="card border border-primary mini-stats-wid rankingCards" data-bs-toggle="modal"
-                    data-bs-target=".bs-example-modal-lg">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <p class="badge bg-primary" style="font-size: 100%;"><i class="bx bx-filter-alt"></i>
-                                    Grupo 1</p>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <span class="img-fluid"><i class="bx bxs-trophy first"></i> Mãe de Deus <span
-                                                class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy second"></i> Bento Gonçalves
-                                            <span class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy third"></i> Fortaleza </span>
-                                    </div>
-                                </div>
+
+               <!--  Large modal example -->
+                <div class="modal fade {{$item['nm_grupo']}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myLargeModalLabel">Ranking - {{$item['nm_grupo']}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border border-primary mini-stats-wid rankingCards" data-bs-toggle="modal"
-                    data-bs-target=".bs-example-modal-lg">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <p class="badge bg-primary" style="font-size: 100%;"><i class="bx bx-filter-alt"></i>
-                                    Grupo 1</p>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <span class="img-fluid"><i class="bx bxs-trophy first"></i> Mãe de Deus <span
-                                                class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy second"></i> Bento Gonçalves
-                                            <span class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy third"></i> Fortaleza </span>
-                                    </div>
-                                </div>
+                            <div class="modal-body"> 
+                                <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Posição</th>
+                                    <th scope="col">Agência</th>
+                                    <th scope="col">Pontuação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($listaGruposRanking as $itemLista)
+                                        @if ($itemLista['cd_grupo'] == $item['cd_grupo'])         
+                                            
+                                        <tr>
+                                            <th scope="row">{{$itemLista['posicao_ranking']}}</th>
+                                            <td>{{$itemLista['nm_posto']}}</td>
+                                            <td>{{$itemLista['pt_ranking']}}</td>
+                                        </tr>
+
+                                    @endif
+                                @endforeach
+
+                                </tbody>
+                                </table>
+
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border border-primary mini-stats-wid rankingCards" data-bs-toggle="modal"
-                    data-bs-target=".bs-example-modal-lg">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <p class="badge bg-primary" style="font-size: 100%;"><i class="bx bx-filter-alt"></i>
-                                    Grupo 1</p>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <span class="img-fluid"><i class="bx bxs-trophy first"></i> Mãe de Deus <span
-                                                class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy second"></i> Bento Gonçalves
-                                            <span class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy third"></i> Fortaleza </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border border-primary mini-stats-wid rankingCards" data-bs-toggle="modal"
-                    data-bs-target=".bs-example-modal-lg">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <p class="badge bg-primary" style="font-size: 100%;"><i class="bx bx-filter-alt"></i>
-                                    Grupo 1</p>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <span class="img-fluid"><i class="bx bxs-trophy first"></i> Mãe de Deus <span
-                                                class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy second"></i> Bento Gonçalves
-                                            <span class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy third"></i> Fortaleza </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border border-primary mini-stats-wid rankingCards" data-bs-toggle="modal"
-                    data-bs-target=".bs-example-modal-lg">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <p class="badge bg-primary" style="font-size: 100%;"><i class="bx bx-filter-alt"></i>
-                                    Grupo 1</p>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <span class="img-fluid"><i class="bx bxs-trophy first"></i> Mãe de Deus <span
-                                                class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy second"></i> Bento Gonçalves
-                                            <span class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy third"></i> Fortaleza </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border border-primary mini-stats-wid rankingCards" data-bs-toggle="modal"
-                    data-bs-target=".bs-example-modal-lg">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <p class="badge bg-primary" style="font-size: 100%;"><i class="bx bx-filter-alt"></i>
-                                    Grupo 1</p>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <span class="img-fluid"><i class="bx bxs-trophy first"></i> Mãe de Deus <span
-                                                class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy second"></i> Bento Gonçalves
-                                            <span class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy third"></i> Fortaleza </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            
+
+                @endunless
+                @endforeach
+            
         </div>
     </div>
 </div>
-
-<!--  Large modal example -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">Large modal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Cras mattis consectetur purus sit amet fermentum.
-                    Cras justo odio, dapibus ac facilisis in,
-                    egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.</p>
-                <p>Praesent commodo cursus magna, vel scelerisque
-                    nisl consectetur et. Vivamus sagittis lacus vel
-                    augue laoreet rutrum faucibus dolor auctor.</p>
-                <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur.
-                    Praesent commodo cursus magna, vel scelerisque
-                    nisl consectetur et. Donec sed odio dui. Donec
-                    ullamcorper nulla non metus auctor
-                    fringilla.</p>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 @endsection
 

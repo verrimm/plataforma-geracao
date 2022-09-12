@@ -103,9 +103,6 @@ class indicadorController extends Controller
                 ->first();
 
 
-           
-
-
             //fim  da criação das  variaveis utilizadas na pagina, atraves de consultas sql   
             return view('indicador', [
                 'infoUsuario' => $usuario,

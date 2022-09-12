@@ -1,3 +1,19 @@
+//== Cores ==//
+$blue: #556ee6;
+$indigo: #564ab1;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #f46a6a;
+$orange: #f1734f;
+$yellow: #f1b44c;
+$green: #34c38f;
+$teal: #050505;
+$cyan: #50a5f1;
+
+$ouro: #ecc81a;
+$prata: #9aa0a5;
+$bronze: #f1734f;
+
 #contain-all {
     width: 100%;
     overflow: hidden;
@@ -361,7 +377,16 @@ ellipse #Oval-17 {
 }
 
 .rankingCards{
-    div.card-body{
-        padding: 1px;
+    h3{
+        font-size: 1.5rem;
+        color: #fff;
+        text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        transition: font-size .3s ease;
+    }
+}
+
+.rankingCards:hover{
+    h3{
+        font-size: 1.6rem;
     }
 }
