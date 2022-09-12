@@ -100,11 +100,6 @@
                   data-bs-placement="top" title="Descrição"><i class="far fa-question-circle"></i></button>
                 <h5 class="mb-0"><i class="bx bxs-downvote danger"></i> {{ number_format($pontuacaoIndicador['vl_lcto'], 0, ',', '.')}}</h5>
               </div>
-              {{-- <div class="flex-grow-1">
-                <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-target-lock"></span> Expectativa
-                </p>
-                <h5 class="mb-0"> </h5>
-              </div> --}}
             </div>
           </div>
           <div class="card-footer progressBarBG">
@@ -213,19 +208,11 @@
 
               <div class="avatar-xs progress-icon-start">
                 <span class="avatar-title start border iconePosicaoRanking">
-
-                      {{-- @if($rankingIndicador['cd_coop'] == $infoUsuario['cd_coop'] && $rankingIndicador['cd_posto'] == $infoUsuario['cd_posto']) --}}
-                        
-                      {{-- {{$rankingIndicador['ordem']}}
-
-                      @else
-                      oi
-                      @endif
-                --}}
+                  {{$pontuacaoIndicador['ordem']}}º
                 </span>
               </div>
               <div class="avatar-xs progress-icon-end">
-                {{-- <span class="avatar-title-card border iconePosicaoRanking">{{ $rankingIndicador['ordem']}}º</span> --}}
+                <span class="avatar-title-card border iconePosicaoRanking">1º</span>
               </div>
             </div>
           </div>
