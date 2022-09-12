@@ -128,24 +128,16 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="row" style="justify-content: flex-start;">
+            <div class="row">
                 <div class="card border border-primary mini-stats-wid rankingCards" data-bs-toggle="modal"
-                    data-bs-target=".bs-example-modal-lg">
+                    data-bs-target=".bs-example-modal-lg" style="align-items: center">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xl-12">
-                                <p class="badge bg-primary" style="font-size: 100%;"><i class="bx bx-filter-alt"></i>
-                                    Grupo 1</p>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <span class="img-fluid"><i class="bx bxs-trophy first"></i> Mãe de Deus <span
-                                                class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy second"></i> Bento Gonçalves
-                                            <span class="separador"></span></span>
-                                        <span class="img-fluid"><i class="bx bxs-trophy third"></i> Fortaleza </span>
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <h3 style="font-size: 2rem">Grupo 1</h3>
                                 </div>
-                            </div>
+                            </div>    
                         </div>
                     </div>
                 </div>
