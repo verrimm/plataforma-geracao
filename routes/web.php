@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\comparadorAjaxController;
 use App\Http\Controllers\comparadorController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\indicadorController;
@@ -13,6 +14,7 @@ use App\Models\User;
 use App\Models\usuario;
 use App\Models\rankingPosto;
 use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -55,8 +57,7 @@ Route::get('regulamento', function () {
 });
 
 Route::get('ranking-geral', [rankingController::class, 'show']);
-//rotas indicadores e rotas default e 404
-Route::get('/{indicador}', [indicadorController::class, 'show']);
+
 
 Route::get('graficoIndicadores/{indicador}', function ($indicador) {
 
@@ -109,3 +110,8 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
     }
 
 });
+
+Route::post('comparadorAjax', [comparadorAjaxController::class, 'show'])->name('comparadorAjax');
+
+//rotas indicadores e rotas default e 404
+Route::get('/{indicador}', [indicadorController::class, 'show']);

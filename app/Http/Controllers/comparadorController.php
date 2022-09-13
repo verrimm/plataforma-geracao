@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\grupoPosto;
 use App\Models\lancamento;
+use App\Models\posto;
 use App\Models\usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,18 @@ class comparadorController extends Controller
         $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
         $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
         ->where('cd_posto', '=', $usuario['cd_posto'])->first();
-        return view('comparador2', [
+        $participantesGrupo = posto::join("grupo_posto as gp", function ($join) {
+            $join->on("p.cd_coop", "=", "gp.cd_coop")
+                ->on("p.cd_posto", "=", "gp.cd_posto");
+        })
+        ->join('grupos as g','gp.cd_grupo','=','g.cd_grupo')
+        ->where('gp.cd_grupo','=', $grupo['cd_grupo'])
+        ->get();
 
-        'dadosUsuario' => lancamento::leftJoin("lancamento_extra as le", function ($join) {
+        $minhaUnidade = posto::where('cd_coop', '=', $usuario['cd_coop'])
+        ->where('cd_posto', '=', $usuario['cd_posto'])->first();
+
+        $dadosUsuario = lancamento::leftJoin("lancamento_extra as le", function ($join) {
             $join->on("l.cd_superacao", "=", "le.cd_superacao")
                 ->on("l.cd_indicador", "=", "le.cd_indicador")
                 ->on("l.cd_coop", "=", "le.cd_coop")
@@ -39,7 +49,14 @@ class comparadorController extends Controller
             ->where('l.cd_posto', '=', $usuario['cd_posto'])
             ->where('l.dt_info', '=', $ultimaData['ultimaData'])
             ->orderBy('i.cd_gr_similares', 'asc')
-            ->get()
+            ->get();
+       
+       
+        return view('comparador2', [
+
+        'participantesGrupo'=>$participantesGrupo,
+        'minhaUnidade'=>$minhaUnidade,
+        'dadosUsuario' => $dadosUsuario
     ]);
 
 

@@ -22,23 +22,23 @@ class rankingController extends Controller
     
     
         $rankingTop = posto::join("grupo_posto as gp", function ($join) {
-            $join->on("gp.cd_coop", "=", "postos.cd_coop")
-                ->on("gp.cd_posto", "=", "postos.cd_posto");
+            $join->on("gp.cd_coop", "=", "p.cd_coop")
+                ->on("gp.cd_posto", "=", "p.cd_posto");
         })
             ->join("ranking_posto as rp", function ($join) {
-                $join->on("rp.cd_coop", "=", "postos.cd_coop")
-                    ->on("rp.cd_posto", "=", "postos.cd_posto");
+                $join->on("rp.cd_coop", "=", "p.cd_coop")
+                    ->on("rp.cd_posto", "=", "p.cd_posto");
             })
             ->orderby('gp.cd_grupo', 'asc')
             ->orderby('rp.posicao_ranking', 'asc')
             ->get();
         $ranking = posto::join("grupo_posto as gp", function ($join) {
-            $join->on("gp.cd_coop", "=", "postos.cd_coop")
-                ->on("gp.cd_posto", "=", "postos.cd_posto");
+            $join->on("gp.cd_coop", "=", "p.cd_coop")
+                ->on("gp.cd_posto", "=", "p.cd_posto");
         })
             ->join("ranking_posto as rp", function ($join) {
-                $join->on("rp.cd_coop", "=", "postos.cd_coop")
-                    ->on("rp.cd_posto", "=", "postos.cd_posto");
+                $join->on("rp.cd_coop", "=", "p.cd_coop")
+                    ->on("rp.cd_posto", "=", "p.cd_posto");
             })
             ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
             ->orderByDesc('pt_ranking')
