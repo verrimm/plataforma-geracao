@@ -21,25 +21,25 @@ class indexController extends Controller
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
         ->where('cd_posto', '=', $usuario['cd_posto'])->first();
     $ranking = posto::join("grupo_posto as gp", function ($join) {
-        $join->on("gp.cd_coop", "=", "postos.cd_coop")
-            ->on("gp.cd_posto", "=", "postos.cd_posto");
+        $join->on("gp.cd_coop", "=", "p.cd_coop")
+            ->on("gp.cd_posto", "=", "p.cd_posto");
     })
         ->join("ranking_posto as rp", function ($join) {
-            $join->on("rp.cd_coop", "=", "postos.cd_coop")
-                ->on("rp.cd_posto", "=", "postos.cd_posto");
+            $join->on("rp.cd_coop", "=", "p.cd_coop")
+                ->on("rp.cd_posto", "=", "p.cd_posto");
         })
         ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
-        ->where('postos.cd_coop', '=', $usuario['cd_coop'])
-        ->where('postos.cd_posto', '=', $usuario['cd_posto'])
+        ->where('p.cd_coop', '=', $usuario['cd_coop'])
+        ->where('p.cd_posto', '=', $usuario['cd_posto'])
         ->first();
 
     $rankingPodio = posto::join("grupo_posto as gp", function ($join) {
-        $join->on("gp.cd_coop", "=", "postos.cd_coop")
-            ->on("gp.cd_posto", "=", "postos.cd_posto");
+        $join->on("gp.cd_coop", "=", "p.cd_coop")
+            ->on("gp.cd_posto", "=", "p.cd_posto");
     })
         ->join("ranking_posto as rp", function ($join) {
-            $join->on("rp.cd_coop", "=", "postos.cd_coop")
-                ->on("rp.cd_posto", "=", "postos.cd_posto");
+            $join->on("rp.cd_coop", "=", "p.cd_coop")
+                ->on("rp.cd_posto", "=", "p.cd_posto");
         })
 
         ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
@@ -61,17 +61,18 @@ class indexController extends Controller
             ->get();
 
     $dadosUsuario = posto::join("grupo_posto as gp", function ($join) {
-        $join->on("gp.cd_coop", "=", "postos.cd_coop")
-            ->on("gp.cd_posto", "=", "postos.cd_posto");
+        $join->on("gp.cd_coop", "=", "p.cd_coop")
+            ->on("gp.cd_posto", "=", "p.cd_posto");
     })
         ->join("grupos as g", 'g.cd_grupo', "=", 'gp.cd_grupo')
         ->join("lancamento as l", function ($join) {
-            $join->on("l.cd_coop", "=", "postos.cd_coop")
-                ->on("l.cd_posto", "=", "postos.cd_posto");
+            $join->on("l.cd_coop", "=", "p.cd_coop")
+                ->on("l.cd_posto", "=", "p.cd_posto");
         })
         ->join("indicadores as i", function ($join) {
             $join->on("i.cd_indicador", "=", "l.cd_indicador");
         })
+
         ->join("indicadores_similares_grupo as isg", "i.cd_gr_similares", "=", "isg.cd_gr_similares")
         ->leftJoin("lancamento_extra as le", function ($join) {
             $join->on("l.cd_superacao", "=", "le.cd_superacao")
@@ -82,6 +83,7 @@ class indexController extends Controller
         })
         ->where('postos.cd_coop', $usuario['cd_coop'])
         ->where('postos.cd_posto', $usuario['cd_posto'])
+
         ->where('l.dt_info','=',$ultimaData['ultimaData'])
         ->get();
 
