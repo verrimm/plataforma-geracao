@@ -42,12 +42,7 @@ Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class
 //para modificar as funcoes ctrl+click no controlador para ir para o arquivo 
 Route::get('index', [indexController::class, 'show']);
 
-Route::get('comparador2', [comparadorController::class, 'show']);
-
-Route::get('comparador', function () {
-    $usuario = usuario::where('cd_usuario', '=', auth::id())->first();
-    return view('comparador');
-});
+Route::get('comparador', [comparadorController::class, 'show']);
 
 Route::get('simulador', function () {
     return view('simulador');
@@ -81,7 +76,6 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
     ->first();
         
 
-       
         // $rankingIndicador = lancamento::select( 'l.dt_info as x', 'l.ordem as y')
        
         $raw = DB::statement("SET lc_time_names = 'pt_BR'");
