@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class indicador extends Model
+class indicadoresSimilares extends Model
 {
     use HasFactory;
 
-    protected $table = 'indicadores as i';
+    protected $table = 'indicadores_similares_grupo as isg';
 }

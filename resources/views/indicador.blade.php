@@ -317,14 +317,6 @@
         
   }])
 });
-    
-
-    
-
-
-     
-      
-      
       
 
   //Função para esconder card de regra na página do indicador

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class grupo extends Model
 {
     use HasFactory;
+
+    protected $table = 'grupos as g';
 }
