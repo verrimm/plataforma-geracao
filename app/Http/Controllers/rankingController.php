@@ -78,8 +78,8 @@ class rankingController extends Controller
             // -where('cd_grupo' = '')
             ->get();
 
-            $listaGrupos = grupo::join("superacao as s", "s.cd_superacao", "=", "g.cd_superacao")
-            ->get();
+        $listaGrupos = grupo::join("superacao as s", "s.cd_superacao", "=", "g.cd_superacao")
+        ->get();
     
         return view('ranking-geral', [
             'dadosUsuario' => $dadosUsuario,

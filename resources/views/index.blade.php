@@ -35,7 +35,6 @@ Bem-Vindo {{$usuario['nm_usuario']}}
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/jbox/jbox.min.css') }}">
 @endsection
 
-
 <div class="row">
     <div class="col-xl-12">
         <div class="row mx-0 my-2" style="justify-content: flex-end;">
@@ -377,14 +376,16 @@ Bem-Vindo {{$usuario['nm_usuario']}}
                             </div>
                         </div>                        
                         <div class="card-body">
-                            <div class="d-flex" style="justify-content: space-evenly;">
+                            <div class="d-flex" style="justify-content: space-evenly; ">
                                 <div class="flex-grow-1">
-                                    <h6 class="lead"><small><i class="bx bx-wallet"></i> <strong style="font-weight: 500;">Carteira:</strong> <span style="font-weight: 300;">R$ 11.588.399</span></small></h6>
-                                    <h6 class="lead"><small><i class="bx bx-food-menu"></i> <strong style="font-weight: 500;">PR:</strong> <span style="font-weight: 300;">R$ 5.570.322</span></small></h6>  
+                                    @unless ($item['label_vl_extra_1'] == null)
+                                    <h6 class="lead"><small><i class="bx bx-wallet"></i> <strong style="font-weight: 500;">{{$item['label_vl_extra_1']}}:</strong> <span style="font-weight: 300;">{{$item['prefixo_1']}}{{number_format($item['vl_extra_1'], 0, ',', '.')}}{{$item['sufixo_1']}}</span></small></h6>   
+                                    @endunless
+                                    <h6 class="lead"><small><i class="bx bx-food-menu"></i> <strong style="font-weight: 500;">{{$item['label_vl_extra_2']}}:</strong> <span style="font-weight: 300;">{{$item['prefixo_2']}}{{number_format($item['vl_extra_2'], 0, ',', '.')}}{{$item['sufixo_2']}}</span></small></h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer" style="position: absolute; width: 100%; left: 0px;">
+                        <div class="card-footer" style="position: absolute; width: 100%; left: 0px; bottom: 0px">
                             <div class="d-flex" style="justify-content: space-evenly;">
                                 <h6 style="padding-top: 10px"><small>CLIQUE E SAIBA MAIS <i class="fas fa-plus-circle primary"></i></small></h6>
                             </div>

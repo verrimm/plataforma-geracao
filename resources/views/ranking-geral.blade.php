@@ -162,22 +162,18 @@
                                     <th scope="col">Pontuação</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="tableRanking">
                                     @foreach ($listaGruposRanking as $itemLista)
                                         @if ($itemLista['cd_grupo'] == $item['cd_grupo'])         
-                                            
                                         <tr>
                                             <th scope="row">{{$itemLista['posicao_ranking']}}</th>
                                             <td>{{$itemLista['nm_posto']}}</td>
                                             <td>{{$itemLista['pt_ranking']}}</td>
                                         </tr>
-
-                                    @endif
-                                @endforeach
-
+                                        @endif
+                                    @endforeach
                                 </tbody>
                                 </table>
-
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->

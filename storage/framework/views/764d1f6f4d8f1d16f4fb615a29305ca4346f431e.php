@@ -33,51 +33,25 @@
             <div class="carousel-align">
                 <div id="carouselRanking" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
                     <div class="carousel-inner" role="listbox">
-                        
-                        <div class="carousel-item">
-                            <span class="img-fluid badge badge-soft-dark">Ranking</span>
-                            <span class="img-fluid badge badge-soft-success">Grupo 0</span>
-                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> Canoas <span
-                                    class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> Guaíba <span
-                                    class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> Lajeado </span>
-                        </div>
-                        <div class="carousel-item">
-                            <span class="img-fluid badge badge-soft-dark">Ranking</span>
-                            <span class="img-fluid badge badge-soft-success">Grupo 1</span>
-                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> Marau <span
-                                    class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> Venâncio <span
-                                    class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> Projeta </span>
-                        </div>
+
                         <div class="carousel-item active">
                             <span class="img-fluid badge badge-soft-dark">Ranking</span>
-                            <span class="img-fluid badge badge-soft-success">Grupo 2</span>
-                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> Capão da Canoa <span
+                            <span class="img-fluid badge badge-soft-success">1</span>
+                                <span class="img-fluid"><i class="bx bxs-trophy first"></i> <?php echo e($rankingCarousel[0]['nm_posto']); ?> <span
                                     class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> Porto Alegre <span
+                                <span class="img-fluid"><i class="bx bxs-trophy first"></i> <?php echo e($rankingCarousel[1]['nm_posto']); ?> <span
                                     class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> Casca </span>
+                                <span class="img-fluid"><i class="bx bxs-trophy first"></i> <?php echo e($rankingCarousel[2]['nm_posto']); ?> <span
+                                    class="separador"></span></span>
                         </div>
                         <div class="carousel-item">
                             <span class="img-fluid badge badge-soft-dark">Ranking</span>
-                            <span class="img-fluid badge badge-soft-success">Grupo 3</span>
-                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> Gramado <span
+                            <span class="img-fluid badge badge-soft-success">1</span>
+                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> teste 1 <span
                                     class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> Caruaru <span
+                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> teste 2 <span
                                     class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> Recife</span>
-                        </div>
-                        <div class="carousel-item">
-                            <span class="img-fluid badge badge-soft-dark">Ranking</span>
-                            <span class="img-fluid badge badge-soft-success">Grupo 4</span>
-                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> Mãe de Deus <span
-                                    class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> Bento Gonçalves <span
-                                    class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> Fortaleza </span>
+                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> teste 3 </span>
                         </div>
                     </div>
                 </div>
