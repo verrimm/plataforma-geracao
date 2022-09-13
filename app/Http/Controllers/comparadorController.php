@@ -50,13 +50,27 @@ class comparadorController extends Controller
             ->where('l.dt_info', '=', $ultimaData['ultimaData'])
             ->orderBy('i.cd_gr_similares', 'asc')
             ->get();
-       
-       
-        return view('comparador2', [
+
+        $rankingCarousel = posto::join("grupo_posto as gp", function ($join) {
+            $join->on("gp.cd_coop", "=", "p.cd_coop")
+                ->on("gp.cd_posto", "=", "p.cd_posto");
+        })
+            ->join("ranking_posto as rp", function ($join) {
+                $join->on("rp.cd_coop", "=", "p.cd_coop")
+                    ->on("rp.cd_posto", "=", "p.cd_posto");
+            })
+            ->where('posicao_ranking', '<', '4')
+            ->orderby('cd_grupo', 'asc')
+            ->orderBy('posicao_ranking', 'asc')
+            ->get();
+            
+
+        return view('comparador', [
 
         'participantesGrupo'=>$participantesGrupo,
         'minhaUnidade'=>$minhaUnidade,
-        'dadosUsuario' => $dadosUsuario
+        'dadosUsuario' => $dadosUsuario,
+        'rankingCarousel' => $rankingCarousel
     ]);
 
 

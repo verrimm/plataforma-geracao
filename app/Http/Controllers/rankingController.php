@@ -23,20 +23,20 @@ class rankingController extends Controller
 
         //começo  da criação das  variaveis utilizadas na pagina, atraves de consultas sql
         $dadosUsuario = posto::join("grupo_posto as gp", function ($join) {
-            $join->on("gp.cd_coop", "=", "postos.cd_coop")
-            ->on("gp.cd_posto", "=", "postos.cd_posto");
+            $join->on("gp.cd_coop", "=", "p.cd_coop")
+            ->on("gp.cd_posto", "=", "p.cd_posto");
         })
             ->join("grupos as g", 'g.cd_grupo', "=", 'gp.cd_grupo')
             ->join("lancamento as l", function ($join) {
-                $join->on("l.cd_coop", "=", "postos.cd_coop")
-                ->on("l.cd_posto", "=", "postos.cd_posto");
+                $join->on("l.cd_coop", "=", "p.cd_coop")
+                ->on("l.cd_posto", "=", "p.cd_posto");
             })
             ->join("indicadores as i", function ($join) {
                 $join->on("i.cd_indicador", "=", "l.cd_indicador");
             })
-            ->where('postos.cd_coop', $usuario['cd_coop'])
+            ->where('p.cd_coop', $usuario['cd_coop'])
             ->where('l.dt_info', '=', $ultimaData['ultimaData'])
-            ->where('postos.cd_posto', $usuario['cd_posto'])
+            ->where('p.cd_posto', $usuario['cd_posto'])
             ->get();
 
         $rankingTop = posto::join("grupo_posto as gp", function ($join) {
@@ -64,18 +64,31 @@ class rankingController extends Controller
             ->get();
 
         $listaGruposRanking = posto::join("grupo_posto as gp", function ($join) {
-            $join->on("gp.cd_coop", "=", "postos.cd_coop")
-            ->on("gp.cd_posto", "=", "postos.cd_posto");
+            $join->on("gp.cd_coop", "=", "p.cd_coop")
+            ->on("gp.cd_posto", "=", "p.cd_posto");
         })
             ->join("ranking_posto as rp", function ($join) {
-                $join->on("rp.cd_coop", "=", "postos.cd_coop")
-                ->on("rp.cd_posto", "=", "postos.cd_posto");
+                $join->on("rp.cd_coop", "=", "p.cd_coop")
+                ->on("rp.cd_posto", "=", "p.cd_posto");
             })
             // ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
             ->orderBy('pt_ranking', 'desc')
             ->orderby('cd_grupo', 'asc')
             ->where('rp.dt_info', '=', $ultimaData['ultimaData'])
             // -where('cd_grupo' = '')
+            ->get();
+
+        $rankingCarousel = posto::join("grupo_posto as gp", function ($join) {
+            $join->on("gp.cd_coop", "=", "p.cd_coop")
+                ->on("gp.cd_posto", "=", "p.cd_posto");
+        })
+            ->join("ranking_posto as rp", function ($join) {
+                $join->on("rp.cd_coop", "=", "p.cd_coop")
+                    ->on("rp.cd_posto", "=", "p.cd_posto");
+            })
+            ->where('posicao_ranking', '<', '4')
+            ->orderby('cd_grupo', 'asc')
+            ->orderBy('posicao_ranking', 'asc')
             ->get();
 
         $listaGrupos = grupo::join("superacao as s", "s.cd_superacao", "=", "g.cd_superacao")
@@ -87,7 +100,8 @@ class rankingController extends Controller
             'dadosRanking' => $ranking,
             'rankingTop' => $rankingTop,
             'listaGrupos' => $listaGrupos,
-            'listaGruposRanking' => $listaGruposRanking
+            'listaGruposRanking' => $listaGruposRanking,
+            'rankingCarousel' => $rankingCarousel
         ]);
 
 

@@ -9,17 +9,19 @@
                             height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('assets/images/logo/unicred-preto.png') }}" alt="" height="17">
+                        <img src="{{ URL::asset('assets/images/logo/unicred-preto.png') }}" alt=""
+                            height="17">
                     </span>
                 </a>
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('/assets/images/logo/logo-pinheiro-unicred-branco.svg') }}" alt=""
-                            height="22">
+                        <img src="{{ URL::asset('/assets/images/logo/logo-pinheiro-unicred-branco.svg') }}"
+                            alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('/assets/images/logo/logo-unicred-branco.svg') }}" alt="" height="25">
+                        <img src="{{ URL::asset('/assets/images/logo/logo-unicred-branco.svg') }}" alt=""
+                            height="25">
                     </span>
                 </a>
             </div>
@@ -36,23 +38,57 @@
 
                         <div class="carousel-item active">
                             <span class="img-fluid badge badge-soft-dark">Ranking</span>
-                            <span class="img-fluid badge badge-soft-success">1</span>
-                                <span class="img-fluid"><i class="bx bxs-trophy first"></i> {{$rankingCarousel[0]['nm_posto']}} <span
+                            <span class="img-fluid badge badge-soft-success">G1</span>
+                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> {{ $rankingCarousel[3]['nm_posto'] }} <span
                                     class="separador"></span></span>
-                                <span class="img-fluid"><i class="bx bxs-trophy first"></i> {{$rankingCarousel[1]['nm_posto']}} <span
+                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> {{ $rankingCarousel[4]['nm_posto'] }} <span
                                     class="separador"></span></span>
-                                <span class="img-fluid"><i class="bx bxs-trophy first"></i> {{$rankingCarousel[2]['nm_posto']}} <span
-                                    class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> {{ $rankingCarousel[5]['nm_posto'] }}</span>
                         </div>
+
                         <div class="carousel-item">
                             <span class="img-fluid badge badge-soft-dark">Ranking</span>
-                            <span class="img-fluid badge badge-soft-success">1</span>
-                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> teste 1 <span
-                                    class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> teste 2 <span
-                                    class="separador"></span></span>
-                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> teste 3 </span>
+                            <span class="img-fluid badge badge-soft-success">G2</span>
+                            <span class="img-fluid"><i class="bx bxs-trophy first"></i>
+                                {{ $rankingCarousel[6]['nm_posto'] }} <span class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy second"></i>
+                                {{ $rankingCarousel[7]['nm_posto'] }} <span class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy third"></i>
+                                {{ $rankingCarousel[8]['nm_posto'] }} <span class="separador"></span></span>
                         </div>
+
+                        <div class="carousel-item">
+                            <span class="img-fluid badge badge-soft-dark">Ranking</span>
+                            <span class="img-fluid badge badge-soft-success">G3</span>
+                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> {{ $rankingCarousel[9]['nm_posto'] }} <span
+                                    class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> {{ $rankingCarousel[10]['nm_posto'] }} <span
+                                    class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> {{ $rankingCarousel[11]['nm_posto'] }} </span>
+                        </div>
+
+                        <div class="carousel-item">
+                            <span class="img-fluid badge badge-soft-dark">Ranking</span>
+                            <span class="img-fluid badge badge-soft-success">G4</span>
+                            <span class="img-fluid"><i class="bx bxs-trophy first"></i>
+                                {{ $rankingCarousel[12]['nm_posto'] }} <span class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy second"></i>
+                                {{ $rankingCarousel[13]['nm_posto'] }} <span class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy third"></i>
+                                {{ $rankingCarousel[14]['nm_posto'] }} <span class="separador"></span></span>
+                        </div>
+
+                        <div class="carousel-item">
+                            <span class="img-fluid badge badge-soft-dark">Ranking</span>
+                            <span class="img-fluid badge badge-soft-success">G5</span>
+                            <span class="img-fluid"><i class="bx bxs-trophy first"></i> {{ $rankingCarousel[15]['nm_posto'] }}<span
+                                    class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy second"></i> {{ $rankingCarousel[16]['nm_posto'] }} <span
+                                    class="separador"></span></span>
+                            <span class="img-fluid"><i class="bx bxs-trophy third"></i> {{ $rankingCarousel[17]['nm_posto'] }} </span>
+                        </div>
+
+
                     </div>
                 </div>
             </div> <!-- carrousel superior -->
@@ -68,19 +104,19 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/github.png') }}" alt="Github">
+                                    <img src="{{ URL::asset('/assets/images/brands/github.png') }}" alt="Github">
                                     <span>Sistema 1</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/bitbucket.png') }}" alt="bitbucket">
+                                    <img src="{{ URL::asset('/assets/images/brands/bitbucket.png') }}" alt="bitbucket">
                                     <span>Sistema 2</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/dribbble.png') }}" alt="dribbble">
+                                    <img src="{{ URL::asset('/assets/images/brands/dribbble.png') }}" alt="dribbble">
                                     <span>Sistema 3</span>
                                 </a>
                             </div>
@@ -88,20 +124,20 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/dropbox.png') }}" alt="dropbox">
+                                    <img src="{{ URL::asset('/assets/images/brands/dropbox.png') }}" alt="dropbox">
                                     <span>Sistema 4</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/mail_chimp.png') }}"
+                                    <img src="{{ URL::asset('/assets/images/brands/mail_chimp.png') }}"
                                         alt="mail_chimp">
                                     <span>Sistema 5</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset ('/assets/images/brands/slack.png') }}" alt="slack">
+                                    <img src="{{ URL::asset('/assets/images/brands/slack.png') }}" alt="slack">
                                     <span>Sistema 6</span>
                                 </a>
                             </div>
@@ -121,7 +157,8 @@
                     <img class="rounded-circle header-profile-user"
                         src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-2.jpg') }}"
                         alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->name)}}</span>
+                    <span class="d-none d-xl-inline-block ms-1"
+                        key="t-henry">{{ ucfirst(Auth::user()->name) }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
@@ -158,12 +195,11 @@
 </header>
 
 <script>
-    
     function toggleMode() {
 
         // Carrega Loader por 2seg na troca de modo noturno
         $('.loader').show();
-        setTimeout(function(){
+        setTimeout(function() {
             $('.loader').hide();
         }, 1000);
         // ================================================//
@@ -172,8 +208,7 @@
 
         if (botaoSwitcherModo.className == "bx bxs-moon") {
             botaoSwitcherModo.className = "bx bxs-sun";
-        }
-        else {
+        } else {
             botaoSwitcherModo.className = "bx bxs-moon";
         }
     }
@@ -196,10 +231,11 @@
                     <div class="mb-3">
                         <label for="current_password">Current Password</label>
                         <input id="current-password" type="password"
-                            class="form-control @error('current_password') is-invalid @enderror" name="current_password"
-                            autocomplete="current_password" placeholder="Enter Current Password"
-                            value="{{ old('current_password') }}">
-                        <div class="text-danger" id="current_passwordError" data-ajax-feedback="current_password"></div>
+                            class="form-control @error('current_password') is-invalid @enderror"
+                            name="current_password" autocomplete="current_password"
+                            placeholder="Enter Current Password" value="{{ old('current_password') }}">
+                        <div class="text-danger" id="current_passwordError" data-ajax-feedback="current_password">
+                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -212,9 +248,11 @@
 
                     <div class="mb-3">
                         <label for="userpassword">Confirm Password</label>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            autocomplete="new_password" placeholder="Enter New Confirm password">
-                        <div class="text-danger" id="password_confirmError" data-ajax-feedback="password-confirm"></div>
+                        <input id="password-confirm" type="password" class="form-control"
+                            name="password_confirmation" autocomplete="new_password"
+                            placeholder="Enter New Confirm password">
+                        <div class="text-danger" id="password_confirmError" data-ajax-feedback="password-confirm">
+                        </div>
                     </div>
 
                     <div class="mt-3 d-grid">

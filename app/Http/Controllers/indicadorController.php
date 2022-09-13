@@ -89,7 +89,20 @@ class indicadorController extends Controller
                 ->where('p.cd_posto', $usuario['cd_posto'])
                 ->where('l.dt_info', '=', $ultimaData['ultimaData'])
                 ->get();
-            
+
+                $rankingCarousel = posto::join("grupo_posto as gp", function ($join) {
+                    $join->on("gp.cd_coop", "=", "p.cd_coop")
+                    ->on("gp.cd_posto", "=", "p.cd_posto");
+                })
+                ->join("ranking_posto as rp", function ($join) {
+                    $join->on("rp.cd_coop", "=", "p.cd_coop")
+                    ->on("rp.cd_posto", "=", "p.cd_posto");
+                })
+                ->where('posicao_ranking', '<', '4')
+                ->orderby('cd_grupo', 'asc')
+                ->orderBy('posicao_ranking', 'asc')
+                ->get();
+
 
              $pontuacaoIndicador = posto::join("grupo_posto as gp", function ($join) {
                 $join->on("gp.cd_coop", "=", "p.cd_coop")
@@ -117,7 +130,8 @@ class indicadorController extends Controller
                 'infoGrupo' => $grupo,
                 'indicador' => indicador::where('url', '=', $varTemp)->first(),
                 'pontuacaoIndicador' => $pontuacaoIndicador,
-                'pontuacaoTotal' => $pontuacaoTotal 
+                'pontuacaoTotal' => $pontuacaoTotal,
+                'rankingCarousel' => $rankingCarousel
             ]);
         } else {
             if (view()->exists($indicador)) {
