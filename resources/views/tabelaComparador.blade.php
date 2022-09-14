@@ -15,7 +15,7 @@
                     @endphp
 
                     @if ($grupoSimilar!=$grupoSimilarTemp)
-                    <thead style="height: 50px">
+                    <thead style="height: 50px; border-top: 2px solid rgb(85, 110, 230, .5);">
                         <tr>
                        
                           <th data-priority="1">Posição</th>
