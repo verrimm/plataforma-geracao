@@ -67,7 +67,7 @@
              
                @foreach ($participantesGrupo as $item)
                @unless ($item['nm_posto']==$minhaUnidade['nm_posto'])
-              <option id="{{$item['cd_posto']}} ">{{$item['nm_posto']}}</option>
+              <option id="{{$item['cd_coop']}}-{{$item['cd_posto']}}">{{$item['nm_posto']}}</option>
               @endunless 
              @endforeach
 
@@ -137,7 +137,6 @@
                           
                           <th data-priority="3"> {{ $item['label_vl_lcto']}}  </th>
                           <th data-priority="3">Pts</th>
-                          <th data-priority="3">Peso</th>
                         </tr>
                       </thead> 
                     @endif
@@ -186,7 +185,6 @@
                     </td>
                     
                     <td> {{$item['pontuacao']}} </td>
-                    <td> {{$item['pontuacao_base']}} </td>
                     </tr>
                     @php
                 
