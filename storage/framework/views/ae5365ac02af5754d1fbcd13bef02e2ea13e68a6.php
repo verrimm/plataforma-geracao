@@ -409,7 +409,7 @@ Bem-Vindo <?php echo e($usuario['nm_usuario']); ?>
 <?php $__env->startSection('script'); ?>
 <script>
 
-    // Carrega Loader por 1seg na troca de modo noturno TESTE
+    // Carrega Loader por 1seg na troca de modo noturno
     $('.loader').show();
     setTimeout(function () {
         $('.loader').hide();

@@ -2,9 +2,6 @@
 
 @section('title') Superação @endsection
 
-
-
-
 @section('css')
     <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
    
@@ -19,26 +16,23 @@
     }
     </style>
 
-
 @endsection
 
 
 @section('content')
-
+{{-- LOADER DA PAGINA --}}
+<div class="loader" id="fadeOut"
+    style="position: fixed; z-index: 999999; top: 0; left: 0; width: 100%; height: 100%; background: #222736; display: block; justify-content: center; align-items: center;">
+    <img style="left: 50%;top: 50%;position: absolute;" src="{{ URL::asset('assets/images/preloader.gif') }}" />
+</div>
 @component('components.breadcrumb')
 @slot('li_1') Superação @endslot
 @slot('title') Comparador @endslot
 @endcomponent
-
-
-
+<!-- end page title -->
 
 <div class="row">
   <div class="col-12">
-
-
-    <!-- end page title -->
-
     <!-- start page content -->
     <div class="row">
       <p>
@@ -51,10 +45,7 @@
         <label class="col-md-3 col-form-label">Minha unidade:</label>
         <select class="form-select" disabled="">
           <option>
-
             {{ $minhaUnidade['nm_posto'] }}
-
-
           </option>
         </select>
       </div>
@@ -64,52 +55,26 @@
         <select id="selectUnidades" class="form-control select2">
           <option id="opcaoPadrao">Selecione</option>
           <optgroup label="Unidades grupo {{$participantesGrupo[0]['nm_grupo']}}">
-             
                @foreach ($participantesGrupo as $item)
                @unless ($item['nm_posto']==$minhaUnidade['nm_posto'])
               <option id="{{$item['cd_coop']}}-{{$item['cd_posto']}}">{{$item['nm_posto']}}</option>
               @endunless 
              @endforeach
-
           </optgroup>
-        
-         
-          
-      
       </select>
       </div>
 
-
-      
-
-
-      <label class="col-md-6 col-form-label">Class. Geral: 2º</label>
+      <label class="col-md-6 col-form-label">Classificação Geral: {{$ranking['posicao_ranking']}}º</label>
     </div>
 
     <div class="row">
       <!-- COOPERATIVA DEFAULT -->
-
-
-      <div class="col-lg-6">
-
-
-
+      <div class="col-lg-6 dividerComparador">{{-- dividerComparador cria um separador após coluna --}}
         {{-- inicio primeiro foreach --}}
-    
         <div class="row">
-          <div class="table-rep-plugin">
-            <div class="table-responsive table-bordered mb-0">
-              <table id="1" class="table table-striped">
-                {{-- <thead>
-                  <tr>
-                    <th>Indicadores</th>
-                    <th data-priority="1">Class.</th>
-                    <th data-priority="3">Criar campo no banco</th>
-                    <th data-priority="1">label do banco</th>
-                    <th data-priority="3">Pontos</th>
-                    <th data-priority="3">Peso</th>
-                  </tr>
-                </thead> --}}
+           <div class="table-rep-plugin"> {{-- class="table-rep-plugin" --}}
+            <div class="table-responsive mb-0"> {{-- table-responsive table-bordered --}}
+              <table id="tabelaInicialComparador" class="table table-lg table-striped align-middle">
                 <tbody>
 
                   @php
@@ -122,11 +87,10 @@
                     @endphp
 
                     @if ($grupoSimilar!=$grupoSimilarTemp)
-                    <thead>
+                    <thead style="height: 50px">
                         <tr>
                           <th>Indicador</th>
-                          <th data-priority="1">Class.</th>
-                          
+                          <th data-priority="1">Posição</th>
 
                           @if ($item['label_vl_extra_1']!=0)
                           <th data-priority="1"> {{ $item['label_vl_extra_1']}} </th>
@@ -135,8 +99,8 @@
                           <th data-priority="1"> {{ $item['label_vl_extra_2']}} </th>
                           @endif
                           
-                          <th data-priority="3"> {{ $item['label_vl_lcto']}}  </th>
-                          <th data-priority="3">Pts</th>
+                          <th data-priority="3" colspan="2"> {{ $item['label_vl_lcto']}}  </th>
+                          {{-- <th data-priority="3">Pts</th> --}}
                         </tr>
                       </thead> 
                     @endif
@@ -159,23 +123,16 @@
                   
                     </td>  
                   @endif
-
                         @if ($item['label_vl_extra_2']!=0)
                           <td> 
                             @if ($item['sufixo_2']!=null) {{-- caso tenha sufixo (porcentagem) --}}
                             {{$item['vl_extra_2']*100}}{{$item['sufixo_2']}}
                             @else
                             {{$item['prefixo_2']}}{{ number_format( $item['vl_extra_2'], 0, ',', '.')}} 
-
                             @endif
-                        
                           </td>  
                         @endif
-
-                    
-                    
-
-                    <td>
+                    <td colspan="2">
                       @if ($item['sufixo']!=null) {{-- caso tenha sufixo (porcentagem) --}}
                       {{$item['vl_lcto']*100}}{{$item['sufixo']}}
                       @else {{-- caso nao tenha sufixo (cifrao) --}}
@@ -184,7 +141,7 @@
 
                     </td>
                     
-                    <td> {{$item['pontuacao']}} </td>
+                    {{-- <td> {{$item['pontuacao']}} </td> --}}
                     </tr>
                     @php
                 
@@ -199,20 +156,11 @@
         </div>
         {{-- fim primeiro foreach --}}
 
-        
-
-
-
       </div>
-
       <div id="example" class="col-lg-6">
         
-        </div>
-
-
       </div>
-
-
+      </div>
     </div>
   </div>
 </div>
@@ -223,10 +171,7 @@
 
   <input name="unidade"  class="inputComparador" type="text">
 
-
 </form>
-
-
 
 <!-- COOPERATIVA DEFAULT FIM -->
 
@@ -235,13 +180,8 @@
 <!-- container-fluid -->
 </div>
 
-
-
 </div>
 </div>
-
-
-
     
  @section('script-bottom')
  <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
@@ -249,21 +189,23 @@
    
  <script>
 
+      // Carrega Loader por 1seg na troca de modo noturno
+    $('.loader').show();
+    //Adiciona classe para fechar sidebar
+    document.getElementById("body").classList.add("sidebar-enable");
+    document.getElementById("body").classList.add("vertical-collpsed");
+    setTimeout(function () {
+        $('.loader').hide();
+    }, 500);
+    // ================================================//
+
   var teste  = []
-
-
-
-
+  
   function tabelaComparador(){
 
-
-    var formulario = document.getElementById('formComparador')
-  
+    var formulario = document.getElementById('formComparador')  
     var formData = new FormData(formulario)
-
     var link = "comparadorAjax"
-
-
 
     $.ajax({
         type: 'POST',
@@ -271,23 +213,12 @@
         data: formData ,
         processData: false,
         contentType: false
-        , success: function(resposta){
-        
+        , success: function(resposta){  
           teste = resposta
-       
-
            var formulario = document.getElementById('example')
            formulario.innerHTML=resposta
-
-
-
         }
-
-
     })
-
-
-
   }
 
   function imprimirComparador(){
@@ -302,27 +233,15 @@
 
   } 
 
-
  $(document).ready(function() {
-
-
   $('#formComparador').submit(function(e) {
         e.preventDefault();
-     
     });
     
   imprimirComparador()
-
-
-
 })
 
  
-
-
 </script>
  @endsection
-
-
-
 @endsection

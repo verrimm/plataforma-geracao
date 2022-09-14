@@ -582,3 +582,26 @@ hr.divider2 {
 }
 
 // =============================== //
+
+table#tabelaInicialComparador{
+    tbody, td, th{
+        font-size: 13px !important;
+    }
+}
+
+.table>:not(caption)>*>* {
+    padding: 0.45rem !important;
+}
+
+// Separador vertical do comparador
+.dividerComparador:after {
+    content: "";
+    background-color: $blue;
+    opacity: 1;
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    top: 0px;
+    left: 100%;
+    display: block
+}

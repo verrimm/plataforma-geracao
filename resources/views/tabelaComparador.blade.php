@@ -1,7 +1,7 @@
   <div class="row">
           <div class="table-rep-plugin">
-            <div class="table-responsive table-bordered mb-0">
-              <table id="1" class="table table-striped">
+            <div class="table-responsive mb-0">
+              <table id="tabelaInicialComparador" class="table table-lg table-striped align-middle">
              
                 <tbody>
 
@@ -15,10 +15,10 @@
                     @endphp
 
                     @if ($grupoSimilar!=$grupoSimilarTemp)
-                    <thead>
+                    <thead style="height: 50px">
                         <tr>
                        
-                          <th data-priority="1">Class.</th>
+                          <th data-priority="1">Posição</th>
                           
 
                           @if ($item['label_vl_extra_1']!=0)
@@ -28,8 +28,8 @@
                           <th data-priority="1"> {{ $item['label_vl_extra_2']}} </th>
                           @endif
                           
-                          <th data-priority="3"> {{ $item['label_vl_lcto']}}  </th>
-                          <th data-priority="3">Pts</th>
+                          <th data-priority="3" colspan="3"> {{ $item['label_vl_lcto']}}  </th>
+                          {{-- <th data-priority="3">Pts</th> --}}
                          
                         </tr>
                       </thead> 
@@ -66,10 +66,7 @@
                           </td>  
                         @endif
 
-                    
-                    
-
-                    <td>
+                    <td colspan="3">
                       @if ($item['sufixo']!=null) {{-- caso tenha sufixo (porcentagem) --}}
                       {{$item['vl_lcto']*100}}{{$item['sufixo']}}
                       @else {{-- caso nao tenha sufixo (cifrao) --}}
@@ -78,7 +75,7 @@
 
                     </td>
                     
-                    <td> {{$item['pontuacao']}} </td>
+                    {{-- <td> {{$item['pontuacao']}} </td> --}}
                    
                     </tr>
                     @php

@@ -402,7 +402,7 @@ Bem-Vindo {{$usuario['nm_usuario']}}
 @section('script')
 <script>
 
-    // Carrega Loader por 1seg na troca de modo noturno TESTE
+    // Carrega Loader por 1seg na troca de modo noturno
     $('.loader').show();
     setTimeout(function () {
         $('.loader').hide();

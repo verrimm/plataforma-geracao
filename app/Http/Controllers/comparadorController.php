@@ -51,6 +51,19 @@ class comparadorController extends Controller
             ->orderBy('i.cd_gr_similares', 'asc')
             ->get();
 
+        $ranking = posto::join("grupo_posto as gp", function ($join) {
+            $join->on("gp.cd_coop", "=", "p.cd_coop")
+                ->on("gp.cd_posto", "=", "p.cd_posto");
+        })
+        ->join("ranking_posto as rp", function ($join) {
+            $join->on("rp.cd_coop", "=", "p.cd_coop")
+                ->on("rp.cd_posto", "=", "p.cd_posto");
+        })
+            ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
+            ->where('p.cd_coop', '=', $usuario['cd_coop'])
+            ->where('p.cd_posto', '=', $usuario['cd_posto'])
+            ->first();
+            
         $rankingCarousel = posto::join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "p.cd_coop")
                 ->on("gp.cd_posto", "=", "p.cd_posto");
@@ -70,7 +83,8 @@ class comparadorController extends Controller
         'participantesGrupo'=>$participantesGrupo,
         'minhaUnidade'=>$minhaUnidade,
         'dadosUsuario' => $dadosUsuario,
-        'rankingCarousel' => $rankingCarousel
+        'rankingCarousel' => $rankingCarousel,
+        'ranking' =>  $ranking
     ]);
 
 
