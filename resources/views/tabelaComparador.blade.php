@@ -1,7 +1,7 @@
   <div class="row">
           <div class="table-rep-plugin">
             <div class="table-responsive mb-0">
-              <table id="tabelaInicialComparador" class="table table-lg table-striped align-middle">
+              <table id="tabelaObjetivoComparador" class="table table-lg align-middle">
              
                 <tbody>
 
@@ -15,7 +15,7 @@
                     @endphp
 
                     @if ($grupoSimilar!=$grupoSimilarTemp)
-                    <thead style="height: 50px; border-top: 2px solid rgb(85, 110, 230, .5);">
+                    <thead class="headComparador">
                         <tr>
                        
                           <th data-priority="1">Posição</th>
@@ -35,9 +35,8 @@
                       </thead> 
                     @endif
 
-                    <tr>
-               
-                    <td>
+                    <tr class="linhaMeta">{{-- define linha para comparador.js.init --}}
+                    <td td class="metaComparador">
                       {{$item['ordem']}}º
                       {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
                     </td>

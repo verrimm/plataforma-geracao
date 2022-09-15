@@ -590,7 +590,7 @@ table#tabelaInicialComparador{
 }
 
 .table>:not(caption)>*>* {
-    padding: 0.45rem !important;
+    padding: 0.35rem !important;
 }
 
 // Separador vertical do comparador
@@ -599,9 +599,26 @@ table#tabelaInicialComparador{
     background-color: $blue;
     opacity: 1;
     position: absolute;
-    width: 2px;
+    width: 1px;
     height: 100%;
     top: 0px;
     left: 100%;
     display: block
+}
+
+.headComparador{
+    height: 50px;
+    border-top: 1px solid $teal !important;
+}
+
+.bg-success{
+    color: #fff;
+}
+
+.bg-danger {
+    color: #fff;
+}
+
+.bg-warning {
+    color: #fff;
 }
