@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-6 mb-3">
         <label class="col-md-3 col-form-label">Minha unidade:</label>
-        <select class="form-select" disabled="">
+        <select class="form-select" disabled>
           <option>
             {{ $minhaUnidade['nm_posto'] }}
           </option>

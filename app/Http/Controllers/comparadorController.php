@@ -25,7 +25,11 @@ class comparadorController extends Controller
                 ->on("p.cd_posto", "=", "gp.cd_posto");
         })
         ->join('grupos as g','gp.cd_grupo','=','g.cd_grupo')
-        ->join('ranking_posto as rp', 'gp.cd_grupo', '=', 'rp.cd_grupo')
+        ->join("ranking_posto as rp", function ($join) {
+            $join->on("rp.cd_coop", "=", "gp.cd_coop")
+            ->on("rp.cd_posto", "=", "gp.cd_posto");
+        })
+
         ->where('gp.cd_grupo','=', $grupo['cd_grupo'])
         ->get();
 
