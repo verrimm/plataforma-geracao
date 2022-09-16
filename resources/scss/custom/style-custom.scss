@@ -596,33 +596,40 @@ table#tabelaInicialComparador{
 // Separador vertical do comparador
 .dividerComparador:after {
     content: "";
-    background-color: $blue;
+    background-color: #c7c7c7;
     opacity: 1;
     position: absolute;
-    width: 1px;
-    height: 100%;
-    top: 0px;
+    width: 2px;
+    height: 94%;
+    top: 20px;
     left: 100%;
-    display: block
+    display: block;
+    z-index: 1000;
 }
-
 .headComparador{
     height: 50px;
     border-top: 1px solid $teal !important;
 }
 
-.bg-success{
-    color: #fff;
+.bg-success-comparador{
+    font-weight: bold;
+    background-color: #d2fbd0 !important;
+    color: #0d5f07;
 }
 
-.bg-danger {
-    color: #fff;
+.bg-danger-comparador {
+    font-weight: bold;
+    background-color: #fbd0da !important;
+    color: #5f071c;
 }
 
-.bg-warning {
-    color: #fff;
+.bg-warning-comparador {
+    font-weight: bold;
+    background-color: #fbf5d0 !important;
+    color: #5f5207;
 }
 
 .table-bordered>:not(caption)>* {
     border-width: 4px 0 !important;
 }
+
