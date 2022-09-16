@@ -73,7 +73,7 @@
         {{-- inicio primeiro foreach --}}
         <div class="row">
            <div class="table-rep-plugin"> {{-- class="table-rep-plugin" --}}
-            <div class="table-responsive mb-0"> {{-- table-responsive table-bordered --}}
+            <div class="table-responsive table-bordered mb-0">
               <table id="tabelaInicialComparador" class="table table-lg align-middle">
                 <tbody>
                   @php  
@@ -208,7 +208,10 @@
           teste = resposta
            var formulario = document.getElementById('example')
            formulario.innerHTML=resposta
-          validaComparador();
+          validaComparador()
+        },
+        error: function(resposta){
+          validaComparador()
         }
     })
   }
@@ -230,20 +233,29 @@
     var metaComparador = document.querySelectorAll(".metaComparador");
     var linhaReferencia = document.querySelectorAll(".linhaReferencia");
     var linhaMeta = document.querySelectorAll(".linhaMeta");
+    var selecao = document.getElementById("select2-selectUnidades-container"); //Caixa de seleção
 
-    for (var i = 0; i < referenciaComparador.length; i++) {
-        if (referenciaComparador[i].innerText < metaComparador[i].innerText) {
-            linhaReferencia[i].classList.add("bg-success");
-            linhaMeta[i].classList.add("bg-danger");
-        }
-        else if (referenciaComparador[i].innerText > metaComparador[i].innerText) {
-            linhaReferencia[i].classList.add("bg-danger");
-            linhaMeta[i].classList.add("bg-success");
-        } else {
-            linhaReferencia[i].classList.add("bg-warning");
-            linhaMeta[i].classList.add("bg-warning");
-        }
+    if (selecao.innerHTML == 'Selecione') {
+      for (var i = 0; i < referenciaComparador.length; i++) {
+            linhaReferencia[i].classList.remove("bg-success");
+            linhaReferencia[i].classList.remove("bg-danger");
+      }
+    } else {
 
+      for (var i = 0; i < referenciaComparador.length; i++) {
+          if (referenciaComparador[i].innerText < metaComparador[i].innerText) {
+              linhaReferencia[i].classList.add("bg-success");
+              linhaMeta[i].classList.add("bg-danger");
+          }
+          else if (referenciaComparador[i].innerText > metaComparador[i].innerText) {
+              linhaReferencia[i].classList.add("bg-danger");
+              linhaMeta[i].classList.add("bg-success");
+          } else {
+              linhaReferencia[i].classList.add("bg-warning");
+              linhaMeta[i].classList.add("bg-warning");
+          }
+
+      }
     }
   }
 
