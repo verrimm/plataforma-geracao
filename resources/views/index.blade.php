@@ -103,7 +103,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-map-pin"></span>
+                                <p class="badge bg-primary" style="font-size: 100%; margin-bottom: 8px !important;"><span class="bx bx-map-pin"></span>
                                     {{ $dadosUsuario[0]['nm_grupo'] }}
                                 </p>
                                 <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
@@ -115,7 +115,7 @@
                                 </h5>
                             </div>
                             <div class="flex-grow-1">
-                                <p class="badge bg-primary" style="font-size: 100%;"><span class="bx bx-trophy"></span>
+                                <p class="badge bg-primary" style="font-size: 100%; margin-bottom: 8px !important;"><span class="bx bx-trophy"></span>
                                     Pontuação Total</p>
                                 <button type="button" class="btn btn-outline-light tooltipIndicador"
                                     draggable="true" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -136,7 +136,7 @@
                             </h5>
                         </div>
                         <div class="d-flex align-items-center">
-                            <div class="avatar-xs progress-icon-start" style="position: relative">
+                            <div class="avatar-xs progress-icon-start" style="position: relative; top: -14px;">
                                 <span
                                     class="avatar-title start border iconePosicaoRanking">{{ $ranking['posicao_ranking'] }}º</span>
                             </div>
