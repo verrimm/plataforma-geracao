@@ -16,55 +16,55 @@
         @endslot
     @endcomponent
 
-    <div class="col-xl-12">
+    <div class="col-xl-12" id="paginaRanking">
 
         <div class="row my-3">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link active" id="janeiro" data-bs-toggle="pill" data-bs-target="#pills-janeiro"
                         type="button" role="tab" aria-controls="pills-home" aria-selected="true">Janeiro</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                    <button id="fevereiro"  class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
                         type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Fevereiro</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="marco" data-bs-toggle="pill" data-bs-target="#pills-marco"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Março</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="abril" data-bs-toggle="pill" data-bs-target="#pills-abril"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Abril</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="maio" data-bs-toggle="pill" data-bs-target="#pills-contact"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Maio</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="junho" data-bs-toggle="pill" data-bs-target="#pills-contact"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Junho</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="julho" data-bs-toggle="pill" data-bs-target="#pills-contact"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Julho</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="agosto" data-bs-toggle="pill" data-bs-target="#pills-contact"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Agosto</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="setembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Setembro</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="outubro" data-bs-toggle="pill" data-bs-target="#pills-contact"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Outubro</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="novembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Novembro</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="dezembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
                         type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Dezembro</button>
                 </li>
@@ -240,6 +240,17 @@
             </div>
         </div>
     </div>
+
+
+    
+<form id="formSeletorMes"  action="{{ route('comparadorAjax') }}" class="form-horizontal d-none " method="POST"  enctype="multipart/form-data">
+    @csrf
+  
+    <input name="mes"  class="inputMes" type="text">
+  
+  </form>
+
+
 @endsection
 
 @section('script')
@@ -247,4 +258,42 @@
     <script src="{{ URL::asset('/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
     {{-- select box filtro --}}
     <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
+
+    <script>
+
+            
+  function seletorMes(elemento){
+
+    var formulario = document.getElementById('formSeletorMes')  
+    var formData = new FormData(formulario)
+    var link = "seletorMesRanking"
+
+    $.ajax({
+        type: 'POST',
+        url: link,
+        data: formData ,
+        processData: false,
+        contentType: false
+        , success: function(resposta){  
+          teste = resposta
+           var formulario = document.getElementById('paginaRanking')
+           formulario.innerHTML=resposta
+        console.log("sucesso")
+        },
+        error: function(resposta){
+            console.log("erro")
+        }
+    })
+
+
+    }
+
+
+
+    
+
+
+    </script>
+
+
 @endsection

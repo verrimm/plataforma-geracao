@@ -5,6 +5,7 @@ use App\Http\Controllers\comparadorController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\indicadorController;
 use App\Http\Controllers\rankingController;
+use App\Http\Controllers\seletorMes;
 use App\Models\grupo;
 use App\Models\grupoPosto;
 use App\Models\indicador;
@@ -104,6 +105,8 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
     }
 
 });
+
+Route::post('seletorMesRanking',[seletorMes::class,'ranking'])->name('seletorMesRanking');
 
 Route::post('comparadorAjax', [comparadorAjaxController::class, 'show'])->name('comparadorAjax');
 
