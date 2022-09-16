@@ -31,7 +31,7 @@
 @endcomponent
 <!-- end page title -->
 
-<div class="row">
+<div class="row" style="text-align: center;">
   <div class="col-12">
     <!-- start page content -->
     <div class="row">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-6 mb-3">
         <label class="col-md-3 col-form-label">Minha unidade:</label>
-        <select class="form-select" disabled>
+        <select class="form-select" style="text-align: center" disabled>
           <option>
             {{ $minhaUnidade['nm_posto'] }}
           </option>
@@ -72,6 +72,8 @@
       <div class="col-lg-6 dividerComparador">{{-- dividerComparador cria um separador após coluna --}}
         {{-- inicio primeiro foreach --}}
         <div class="row">
+          <div class="card">
+            <div class="card-body">
            <div class="table-rep-plugin"> {{-- class="table-rep-plugin" --}}
             <div class="table-responsive table-bordered mb-0">
               <table id="tabelaInicialComparador" class="table table-lg align-middle">
@@ -104,10 +106,7 @@
                     @endif
                     <tr class="linhaReferencia">
                     <th>{{$item['nm_indicador']}}</th>
-                    <td class="referenciaComparador">
-                      {{$item['ordem']}}º
-                      {{-- <i class="fas fa-arrow-circle-down" style="color: #f46a6a"></i> --}}
-                    </td>
+                    <td class="referenciaComparador">{{$item['ordem']}}º</td>
                     @if ($item['label_vl_extra_1']!=0)
                     <td> 
                       @if ($item['sufixo_1']!=null) {{-- caso tenha sufixo (porcentagem) --}}
@@ -141,6 +140,8 @@
                     @endforeach
                 </tbody>
               </table>
+            </div>
+            </div>
             </div>
           </div>
         </div>
@@ -237,22 +238,25 @@
 
     if (selecao.innerHTML == 'Selecione') {
       for (var i = 0; i < referenciaComparador.length; i++) {
-            linhaReferencia[i].classList.remove("bg-success");
-            linhaReferencia[i].classList.remove("bg-danger");
+            linhaReferencia[i].classList.remove("bg-success-comparador");
+            linhaReferencia[i].classList.remove("bg-danger-comparador");
       }
     } else {
 
       for (var i = 0; i < referenciaComparador.length; i++) {
-          if (referenciaComparador[i].innerText < metaComparador[i].innerText) {
-              linhaReferencia[i].classList.add("bg-success");
-              linhaMeta[i].classList.add("bg-danger");
+
+          if (parseInt(referenciaComparador[i].innerText) < parseInt(metaComparador[i].innerText)) {
+              linhaReferencia[i].classList.remove("bg-danger-comparador");
+              linhaReferencia[i].classList.add("bg-success-comparador");
+              linhaMeta[i].classList.add("bg-danger-comparador");
           }
-          else if (referenciaComparador[i].innerText > metaComparador[i].innerText) {
-              linhaReferencia[i].classList.add("bg-danger");
-              linhaMeta[i].classList.add("bg-success");
+          else if (parseInt(referenciaComparador[i].innerText) > parseInt(metaComparador[i].innerText)) {
+              linhaReferencia[i].classList.remove("bg-success-comparador");
+              linhaReferencia[i].classList.add("bg-danger-comparador");
+              linhaMeta[i].classList.add("bg-success-comparador");
           } else {
-              linhaReferencia[i].classList.add("bg-warning");
-              linhaMeta[i].classList.add("bg-warning");
+              linhaReferencia[i].classList.add("bg-warning-comparador");
+              linhaMeta[i].classList.add("bg-warning-comparador");
           }
 
       }
