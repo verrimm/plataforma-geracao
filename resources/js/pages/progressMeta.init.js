@@ -12,6 +12,6 @@ if (marcosMetaSegundo) {
 
 const marcosMetaTerceiro = document.querySelector(".marcosMetaTerceiro");
 if (marcosMetaTerceiro) {
-    marcosMetaTerceiro.style.paddingLeft = (marcosMetaSegundo.getAttribute("data-complete-meta")-4)+ "%";
+    marcosMetaTerceiro.style.paddingLeft = (marcosMetaTerceiro.getAttribute("data-complete-meta")-4)+ "%";
     marcosMetaTerceiro.style.opacity = 1;
 }

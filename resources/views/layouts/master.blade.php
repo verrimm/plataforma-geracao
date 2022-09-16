@@ -21,7 +21,8 @@
 @show
     <div class="loader" id="fadeOut" style="position: fixed; z-index: 999999; top: 0; left: 0; width: 100%; height: 100%; background: #222736; display: none; justify-content: center; align-items: center;">
           <img style="left: 50%;top: 50%;position: absolute;" src="{{ URL::asset('assets/images/preloader.gif') }}" />
-    </div>
+            
+        </div>
     <!-- Begin page -->
     <div id="layout-wrapper">
         @include('layouts.topbar')
