@@ -16,12 +16,14 @@ class seletorMes extends Controller
     //
 
     public function ranking(Request $request){
-        $ultimaData =  $request->input('mes');
+        $ultimaData = lancamento::select(lancamento::raw('max(dt_info) as ultimaData'))
+        ->first();
 
-        $raw = DB::statement("SET lc_time_names = 'pt_BR'");
+        // arrumar
+        // $ultimaData =  $request->input('mes');
+        //  $raw = DB::statement("SET lc_time_names = 'pt_BR'");
        
-        $rankingIndicador = lancamento::select(lancamento::raw(' monthname(l.dt_info ) as x'), 'l.vl_lcto as y');
-       
+      
 
         $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
         $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])

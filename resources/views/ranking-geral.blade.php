@@ -250,6 +250,7 @@
   
   </form>
 
+  
 
 @endsection
 
@@ -278,7 +279,7 @@
           teste = resposta
            var formulario = document.getElementById('paginaRanking')
            formulario.innerHTML=resposta
-        console.log("sucesso")
+        console.log("sucesso")  
         },
         error: function(resposta){
             console.log("erro")
