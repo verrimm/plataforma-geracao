@@ -35,6 +35,8 @@ Bem-Vindo {{$usuario['nm_usuario']}}
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/jbox/jbox.min.css') }}">
 @endsection
 
+
+
 <div class="row">
     <div class="col-xl-12">
         <div class="row mx-0 my-2" style="justify-content: flex-end;">
