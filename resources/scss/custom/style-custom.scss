@@ -192,17 +192,19 @@ $bronze: #f1734f;
 }
 
 .progress-bar {
+    border-radius: 3px !important;
     align-items: flex-end !important;
 }
 
 .progress-icon-end {
     position: absolute;
     top: -11px;
-    right: -12px;
+    right: -2px;
     border-radius: 15px 50px 30px 5px !important;
 }
 
 .progress-icon-start {
+    left: 10px;
     position: absolute;
     top: -11px;
     border-radius: 15px 50px 30px 5px !important;
@@ -606,6 +608,7 @@ table#tabelaInicialComparador{
     display: block;
     z-index: 1000;
 }
+
 .headComparador{
     height: 50px;
     border-top: 1px solid $teal !important;
@@ -632,4 +635,3 @@ table#tabelaInicialComparador{
 .table-bordered>:not(caption)>* {
     border-width: 4px 0 !important;
 }
-
