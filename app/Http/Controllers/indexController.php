@@ -63,6 +63,7 @@ class indexController extends Controller
         })
 
         ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
+        ->where('rp.dt_info','=',$ultimaData['ultimaData'])
         ->orderBy('posicao_ranking', 'asc')
         ->get();
 
