@@ -6,15 +6,20 @@ use App\Models\grupo;
 use App\Models\grupoPosto;
 use App\Models\lancamento;
 use App\Models\posto;
+use App\Models\rankingPosto;
 use App\Models\usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class rankingController extends Controller
 {
     public function show(){
 
         $ultimaData = lancamento::select(lancamento::raw('max(dt_info) as ultimaData'))
+        ->first();
+
+        $mesAnterior = rankingPosto::select(lancamento::raw('max(dt_info), date_add(max(dt_info), INTERVAL - 1 MONTH) as "mesAnterior"'))
         ->first();
         
         $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
@@ -50,7 +55,11 @@ class rankingController extends Controller
             ->orderby('gp.cd_grupo', 'asc')
             ->orderby('rp.posicao_ranking', 'asc')
             ->get();
-        $ranking = posto::join("grupo_posto as gp", function ($join) {
+        $ranking = posto::select("p.nm_posto",'rp.pt_ranking','rp.posicao_ranking',DB::raw("  CASE
+        WHEN rp.posicao_ranking > rp2.posicao_ranking THEN 1
+        WHEN rp.posicao_ranking < rp2.posicao_ranking THEN - 1
+        ELSE 0    END AS 'evolucao'"))
+        ->join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "p.cd_coop")
                 ->on("gp.cd_posto", "=", "p.cd_posto");
         })
@@ -58,8 +67,16 @@ class rankingController extends Controller
                 $join->on("rp.cd_coop", "=", "p.cd_coop")
                     ->on("rp.cd_posto", "=", "p.cd_posto");
             })
+            ->leftJoin("ranking_posto as rp2", function ($join) {
+                $join->on("rp.cd_superacao", "=", "rp2.cd_superacao")
+                ->on("rp.cd_coop", "=", "rp2.cd_coop")
+                ->on("rp.cd_posto", "=", "rp2.cd_posto")
+                ->on("rp2.dt_info","=",DB::raw('date_add(rp.dt_info, INTERVAL - 1 MONTH)'))
+                ;
+            })
+
             ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
-            ->orderByDesc('pt_ranking')
+            ->orderByDesc('rp.pt_ranking')
             ->where('rp.dt_info', '=', $ultimaData['ultimaData'])
             ->get();
 

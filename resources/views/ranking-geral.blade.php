@@ -16,6 +16,8 @@
         @endslot
     @endcomponent
 
+
+
     <div class="col-xl-12" id="paginaRanking">
 
         <div class="row my-3">
@@ -106,7 +108,15 @@
                                                     {{ $itemRanking['pt_ranking'] }}
                                                 </div>
                                                 <div class="ranking-table-data" style="padding-right: 1.125rem">
+                                                    @if ($itemRanking['evolucao']==-1)
                                                     <i class="fas fa-angle-up fa-2x success"></i>
+                                                @else
+                                                    @if ($itemRanking['evolucao']==1)
+                                                        <i class="fas fa-angle-down fa-2x danger"></i>
+                                                    @else
+                                                        <i class="fas fa-minus fa-1x"></i>
+                                                    @endif
+                                                @endif
                                                 </div>
                                             </div>
                                         @endif
@@ -122,7 +132,15 @@
                                                     {{ $itemRanking['pt_ranking'] }}
                                                 </div>
                                                 <div class="ranking-table-data" style="padding-right: 1.125rem">
-                                                    <i class="fas fa-angle-down fa-2x danger"></i>
+                                                    @if ($itemRanking['evolucao']==-1)
+                                                    <i class="fas fa-angle-up fa-2x success"></i>
+                                                @else
+                                                    @if ($itemRanking['evolucao']==1)
+                                                        <i class="fas fa-angle-down fa-2x danger"></i>
+                                                    @else
+                                                        <i class="fas fa-minus fa-1x"></i>
+                                                    @endif
+                                                @endif
                                                 </div>
                                             </div>
                                         @endif
@@ -138,7 +156,15 @@
                                                     {{ $itemRanking['pt_ranking'] }}
                                                 </div>
                                                 <div class="ranking-table-data" style="padding-right: 1.125rem">
+                                                    @if ($itemRanking['evolucao']==-1)
                                                     <i class="fas fa-angle-up fa-2x success"></i>
+                                                @else
+                                                    @if ($itemRanking['evolucao']==1)
+                                                        <i class="fas fa-angle-down fa-2x danger"></i>
+                                                    @else
+                                                        <i class="fas fa-minus fa-1x"></i>
+                                                    @endif
+                                                @endif
                                                 </div>
                                             </div>
                                         @endif
@@ -168,7 +194,19 @@
                                                         {{ $itemRanking2['pt_ranking'] }}
                                                     </div>
                                                     <div class="ranking-table-data" style="padding-right: 1.125rem">
-                                                        <i class="fas fa-minus fa-1x"></i>
+                                                       
+
+                                                            @if ($itemRanking2['evolucao']==-1)
+                                                                <i class="fas fa-angle-up fa-2x success"></i>
+                                                            @else
+                                                                @if ($itemRanking2['evolucao']==1)
+                                                                    <i class="fas fa-angle-down fa-2x danger"></i>
+                                                                @else
+                                                                    <i class="fas fa-minus fa-1x"></i>
+                                                                @endif
+                                                            @endif
+
+
                                                     </div>
                                                 </div>
                                             @endif

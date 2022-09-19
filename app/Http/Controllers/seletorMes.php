@@ -62,7 +62,11 @@ class seletorMes extends Controller
             ->orderby('gp.cd_grupo', 'asc')
             ->orderby('rp.posicao_ranking', 'asc')
             ->get();
-        $ranking = posto::join("grupo_posto as gp", function ($join) {
+        $ranking = posto::select("p.nm_posto",'rp.pt_ranking','rp.posicao_ranking',DB::raw("  CASE
+        WHEN rp.posicao_ranking > rp2.posicao_ranking THEN 1
+        WHEN rp.posicao_ranking < rp2.posicao_ranking THEN - 1
+        ELSE 0    END AS 'evolucao'"))
+        ->join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "p.cd_coop")
                 ->on("gp.cd_posto", "=", "p.cd_posto");
         })
@@ -70,9 +74,18 @@ class seletorMes extends Controller
                 $join->on("rp.cd_coop", "=", "p.cd_coop")
                     ->on("rp.cd_posto", "=", "p.cd_posto");
             })
+            ->leftJoin("ranking_posto as rp2", function ($join) {
+                $join->on("rp.cd_superacao", "=", "rp2.cd_superacao")
+                ->on("rp.cd_coop", "=", "rp2.cd_coop")
+                ->on("rp.cd_posto", "=", "rp2.cd_posto")
+                ->on("rp2.dt_info","=",DB::raw('date_add(rp.dt_info, INTERVAL - 1 MONTH)'))
+                ;
+            })
+
             ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
-            ->orderByDesc('pt_ranking')
             ->where('rp.dt_info', '=',  $ultimaDataTemp['dt_info'])
+            ->orderByDesc('rp.pt_ranking')
+           
             ->get();
 
         $listaGruposRanking = posto::join("grupo_posto as gp", function ($join) {

@@ -1,59 +1,60 @@
 <div class="col-xl-12" id="paginaRanking">
 
+  
     <div class="row my-3">
         <div class="card mini-stats-wid border-primary">
             <div class="card-body" style="padding: 15px 0 0 0">
-                <ul class="nav nav-pills mb-3" style="justify-content: space-evenly;padding-right: 0px;" id="pills-tab" role="tablist" data-messelecionado="{{$ultimaData}}" data-ultimaData = "{{$ultimaData1}}" >
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="janeiro" data-bs-toggle="pill" data-bs-target="#pills-janeiro"
-                            type="button" role="tab" aria-controls="pills-home" data-mes="1" aria-selected="true">Janeiro</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button id="fevereiro"  class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
-                            type="button" role="tab" aria-controls="pills-profile" data-mes="2"aria-selected="false">Fevereiro</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="marco" data-bs-toggle="pill" data-bs-target="#pills-marco"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="3"aria-selected="false">Março</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="abril" data-bs-toggle="pill" data-bs-target="#pills-abril"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="4"aria-selected="false">Abril</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="maio" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="5"aria-selected="false">Maio</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="junho" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="6"aria-selected="false">Junho</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="julho" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="7"aria-selected="false">Julho</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="agosto" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="8" aria-selected="false">Agosto</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="setembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="9"aria-selected="false">Setembro</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="outubro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="10" aria-selected="false">Outubro</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="novembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="11" aria-selected="false">Novembro</button>
-                    </li>
-                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                        <button class="nav-link" id="dezembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                            type="button" role="tab" aria-controls="pills-contact" data-mes="12" aria-selected="false">Dezembro</button>
-                    </li>
-                </ul>
-            </div>
+        <ul class="nav nav-pills mb-3" style="justify-content: space-evenly; padding-right: 0px;" id="pills-tab" data-mesSelecionado="{{$ultimaData}}" role="tablist" data-ultimaData = "{{$ultimaData1}}" >
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="janeiro" data-bs-toggle="pill" data-bs-target="#pills-janeiro"
+                    type="button" role="tab" aria-controls="pills-home" data-mes="1" aria-selected="true">Janeiro</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button id="fevereiro" class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
+                    type="button" role="tab" aria-controls="pills-profile" data-mes="2"aria-selected="false">Fevereiro</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="marco" data-bs-toggle="pill" data-bs-target="#pills-marco"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="3"aria-selected="false">Março</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="abril" data-bs-toggle="pill" data-bs-target="#pills-abril"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="4"aria-selected="false">Abril</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="maio" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="5"aria-selected="false">Maio</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="junho" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="6"aria-selected="false">Junho</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="julho" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="7"aria-selected="false">Julho</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="agosto" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="8" aria-selected="false">Agosto</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="setembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="9"aria-selected="false">Setembro</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="outubro" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="10" aria-selected="false">Outubro</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="novembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="11" aria-selected="false">Novembro</button>
+            </li>
+            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                <button class="nav-link" id="dezembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" data-mes="12" aria-selected="false">Dezembro</button>
+            </li>
+        </ul>
+        </div>
         </div>
     </div>
 
@@ -75,20 +76,28 @@
                                 @php
                                     $contador = 0;
                                 @endphp
-                                @foreach ($dadosRanking as $itemRaking)
+                                @foreach ($dadosRanking as $itemRanking)
                                     @if ($contador == 0)
                                         <div class="ranking-table-row-leader-1">
                                             <div class="ranking-table-data-leader-1">
                                                 <div class="medal-gold"></div>
                                             </div>
                                             <div class="ranking-table-data">
-                                                {{ $itemRaking['nm_posto'] }}
+                                                {{ $itemRanking['nm_posto'] }}
                                             </div>
                                             <div class="ranking-table-data">
-                                                {{ $itemRaking['pt_ranking'] }}
+                                                {{ $itemRanking['pt_ranking'] }}
                                             </div>
                                             <div class="ranking-table-data" style="padding-right: 1.125rem">
+                                                @if ($itemRanking['evolucao']==-1)
                                                 <i class="fas fa-angle-up fa-2x success"></i>
+                                            @else
+                                                @if ($itemRanking['evolucao']==1)
+                                                    <i class="fas fa-angle-down fa-2x danger"></i>
+                                                @else
+                                                    <i class="fas fa-minus fa-1x"></i>
+                                                @endif
+                                            @endif
                                             </div>
                                         </div>
                                     @endif
@@ -98,13 +107,21 @@
                                                 <div class="medal-silver"></div>
                                             </div>
                                             <div class="ranking-table-data">
-                                                {{ $itemRaking['nm_posto'] }}
+                                                {{ $itemRanking['nm_posto'] }}
                                             </div>
                                             <div class="ranking-table-data">
-                                                {{ $itemRaking['pt_ranking'] }}
+                                                {{ $itemRanking['pt_ranking'] }}
                                             </div>
                                             <div class="ranking-table-data" style="padding-right: 1.125rem">
-                                                <i class="fas fa-angle-down fa-2x danger"></i>
+                                                @if ($itemRanking['evolucao']==-1)
+                                                <i class="fas fa-angle-up fa-2x success"></i>
+                                            @else
+                                                @if ($itemRanking['evolucao']==1)
+                                                    <i class="fas fa-angle-down fa-2x danger"></i>
+                                                @else
+                                                    <i class="fas fa-minus fa-1x"></i>
+                                                @endif
+                                            @endif
                                             </div>
                                         </div>
                                     @endif
@@ -114,13 +131,21 @@
                                                 <div class="medal-bronze"></div>
                                             </div>
                                             <div class="ranking-table-data">
-                                                {{ $itemRaking['nm_posto'] }}
+                                                {{ $itemRanking['nm_posto'] }}
                                             </div>
                                             <div class="ranking-table-data">
-                                                {{ $itemRaking['pt_ranking'] }}
+                                                {{ $itemRanking['pt_ranking'] }}
                                             </div>
                                             <div class="ranking-table-data" style="padding-right: 1.125rem">
+                                                @if ($itemRanking['evolucao']==-1)
                                                 <i class="fas fa-angle-up fa-2x success"></i>
+                                            @else
+                                                @if ($itemRanking['evolucao']==1)
+                                                    <i class="fas fa-angle-down fa-2x danger"></i>
+                                                @else
+                                                    <i class="fas fa-minus fa-1x"></i>
+                                                @endif
+                                            @endif
                                             </div>
                                         </div>
                                     @endif
@@ -136,21 +161,33 @@
                                         $contador = 0;
                                     @endphp
 
-                                    @foreach ($dadosRanking as $itemRanking)
+                                    @foreach ($dadosRanking as $itemRanking2)
                                         @if ($contador > 2)
                                             <div class="ranking-table-row">
                                                 <div class="ranking-table-data">
                                                     {{ $contador + 1 }}
                                                 </div>
                                                 <div class="ranking-table-data">
-                                                    {{ $itemRanking['nm_posto'] }}
+                                                    {{ $itemRanking2['nm_posto'] }}
                                                 </div>
                                                 <div class="ranking-table-data">
                                                     {{-- <div class="complete"></div> --}}
-                                                    {{ $itemRanking['pt_ranking'] }}
+                                                    {{ $itemRanking2['pt_ranking'] }}
                                                 </div>
                                                 <div class="ranking-table-data" style="padding-right: 1.125rem">
-                                                    <i class="fas fa-minus fa-1x"></i>
+                                                   
+
+                                                        @if ($itemRanking2['evolucao']==-1)
+                                                            <i class="fas fa-angle-up fa-2x success"></i>
+                                                        @else
+                                                            @if ($itemRanking2['evolucao']==1)
+                                                                <i class="fas fa-angle-down fa-2x danger"></i>
+                                                            @else
+                                                                <i class="fas fa-minus fa-1x"></i>
+                                                            @endif
+                                                        @endif
+
+
                                                 </div>
                                             </div>
                                         @endif
@@ -185,7 +222,7 @@
                         </div>
                     </div>
 
-                    <!--  Large modal example -->
+                    <!--  Large modal ranking -->
                     <div class="modal fade {{ $item['nm_grupo'] }}" tabindex="-1" role="dialog"
                         aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -196,7 +233,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <table class="table">
+                                    <table class="table table-lg align-middle">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Posição</th>
@@ -207,8 +244,8 @@
                                         <tbody class="tableRanking">
                                             @foreach ($listaGruposRanking as $itemLista)
                                                 @if ($itemLista['cd_grupo'] == $item['cd_grupo'])
-                                                    <tr>
-                                                        <th scope="row">{{ $itemLista['posicao_ranking'] }}</th>
+                                                    <tr class="linhaModal">
+                                                        <th class="rankingModal" scope="row">{{ $itemLista['posicao_ranking'] }}</th>
                                                         <td>{{ $itemLista['nm_posto'] }}</td>
                                                         <td>{{ $itemLista['pt_ranking'] }}</td>
                                                     </tr>
