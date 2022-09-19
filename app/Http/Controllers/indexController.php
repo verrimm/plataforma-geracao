@@ -19,8 +19,6 @@ class indexController extends Controller
 
     $ultimaData = lancamento::select( lancamento::raw('max(dt_info) as ultimaData'))
     ->first();
-
-    
     
     $raw = DB::statement("SET lc_time_names = 'pt_BR'");
 
@@ -28,9 +26,6 @@ class indexController extends Controller
     ->groupBy('ranking_posto.dt_info')
     ->get()
     ;
-
-
-
 
     $participantesPorGrupo  = grupo::select('g.nm_grupo','p.nm_posto')
     ->join("grupo_posto as gp",'gp.cd_grupo','=','g.cd_grupo')
