@@ -50,8 +50,8 @@
         </select>
       </div>
 
-      <div class="col-6 mb-3">
-        <label class="col-md-2 col-form-label">Unidade:</label>
+    <div class="col-6 mb-3">
+      <label class="col-md-2 col-form-label">Unidade:</label>
         <select id="selectUnidades" class="form-control select2">
           <option id="opcaoPadrao">Selecione</option>
           <optgroup label="Unidades grupo {{$participantesGrupo[0]['nm_grupo']}}">
@@ -61,21 +61,20 @@
               @endunless 
              @endforeach
           </optgroup>
-      </select>
-      </div>
+        </select>
+    </div>
 
-      <label class="col-md-6 col-form-label">Classificação Geral: {{$ranking['posicao_ranking']}}º</label>
       <label class="col-md-6 col-form-label">Classificação Geral: {{$ranking['posicao_ranking']}}º</label>
     </div>
 
     <div class="row">
       <!-- COOPERATIVA DEFAULT -->
-      <div class="col-lg-6 dividerComparador">{{-- dividerComparador cria um separador após coluna --}}
+      <div class="col-lg-6 dividerComparador"> {{-- dividerComparador cria um separador após coluna --}}
         {{-- inicio primeiro foreach --}}
         <div class="row">
           <div class="card">
             <div class="card-body">
-           <div class="table-rep-plugin"> {{-- class="table-rep-plugin" --}}
+           <div class="table-rep-plugin">
             <div class="table-responsive table-bordered mb-0">
               <table id="tabelaInicialComparador" class="table table-lg align-middle">
                 <tbody>
@@ -103,7 +102,7 @@
                           <th data-priority="3" colspan="2"> {{ $item['label_vl_lcto']}}  </th>
                           {{-- <th data-priority="3">Pts</th> --}}
                         </tr>
-                    </thead> 
+                    </thead>
                     @endif
                     <tr class="linhaReferencia">
                     <th>{{$item['nm_indicador']}}</th>
@@ -115,7 +114,7 @@
                       @else
                       {{$item['prefixo_1']}}{{ number_format( $item['vl_extra_1'], 0, ',', '.')}} 
                       @endif
-                    </td>  
+                    </td>
                   @endif
                         @if ($item['label_vl_extra_2']!=0)
                           <td> 
@@ -150,19 +149,15 @@
 
       </div>
       <div id="example" class="col-lg-6">
- 
       </div>
       </div>
     </div>
   </div>
 </div>
 
-
 <form id="formComparador"  action="{{ route('comparadorAjax') }}" class="form-horizontal d-none " method="POST"  enctype="multipart/form-data">
   @csrf
-
-  <input name="unidade"  class="inputComparador" type="text">
-
+  <input name="unidade" class="inputComparador" type="text">
 </form>
 
 <!-- COOPERATIVA DEFAULT FIM -->
@@ -184,7 +179,7 @@
 
     // Carrega Loader por 1seg na troca de modo noturno
     $('.loader').show();
-    //Adiciona classe para fechar sidebar
+    // Adiciona classe para fechar sidebar
     document.getElementById("body").classList.add("sidebar-enable");
     document.getElementById("body").classList.add("vertical-collpsed");
     setTimeout(function (){
@@ -219,15 +214,17 @@
   }
 
   function imprimirComparador(){
-   $('#selectUnidades').select2();
-   
-   $('#selectUnidades').on('select2:select', function (e) {
-     var data = e.params.data;
-     
-    document.querySelector('#formComparador .inputComparador').setAttribute('value',data.id)
-    tabelaComparador()
 
-   });
+    $('#selectUnidades').select2();
+    
+    $('#selectUnidades').on('select2:select', function (e) {
+      var data = e.params.data;
+      
+      document.querySelector('#formComparador .inputComparador').setAttribute('value',data.id)
+      tabelaComparador()
+
+    });
+
   } 
 
   function validaComparador() {

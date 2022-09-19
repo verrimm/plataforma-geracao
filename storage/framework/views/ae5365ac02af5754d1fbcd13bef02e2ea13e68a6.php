@@ -309,7 +309,6 @@
                                 </div>
                                 
 
-
                                 <div class="avatar-xs progress-icon-end" style="position: relative">
                                     <span id="iconPontuacao" class="avatar-title-card border iconePosicaoRanking"><?php echo e($rankingPodio[0]['posicao_ranking']); ?>º</span>
                                     <span id="iconPontuacaoPrimeiro" style="display: none; position: absolute; bottom: 10px;">🥅</span>
