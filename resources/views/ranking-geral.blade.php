@@ -93,17 +93,17 @@
                                     @php
                                         $contador = 0;
                                     @endphp
-                                    @foreach ($dadosRanking as $itemRaking)
+                                    @foreach ($dadosRanking as $itemRanking)
                                         @if ($contador == 0)
                                             <div class="ranking-table-row-leader-1">
                                                 <div class="ranking-table-data-leader-1">
                                                     <div class="medal-gold"></div>
                                                 </div>
                                                 <div class="ranking-table-data">
-                                                    {{ $itemRaking['nm_posto'] }}
+                                                    {{ $itemRanking['nm_posto'] }}
                                                 </div>
                                                 <div class="ranking-table-data">
-                                                    {{ $itemRaking['pt_ranking'] }}
+                                                    {{ $itemRanking['pt_ranking'] }}
                                                 </div>
                                                 <div class="ranking-table-data" style="padding-right: 1.125rem">
                                                     <i class="fas fa-angle-up fa-2x success"></i>
@@ -116,10 +116,10 @@
                                                     <div class="medal-silver"></div>
                                                 </div>
                                                 <div class="ranking-table-data">
-                                                    {{ $itemRaking['nm_posto'] }}
+                                                    {{ $itemRanking['nm_posto'] }}
                                                 </div>
                                                 <div class="ranking-table-data">
-                                                    {{ $itemRaking['pt_ranking'] }}
+                                                    {{ $itemRanking['pt_ranking'] }}
                                                 </div>
                                                 <div class="ranking-table-data" style="padding-right: 1.125rem">
                                                     <i class="fas fa-angle-down fa-2x danger"></i>
@@ -132,10 +132,10 @@
                                                     <div class="medal-bronze"></div>
                                                 </div>
                                                 <div class="ranking-table-data">
-                                                    {{ $itemRaking['nm_posto'] }}
+                                                    {{ $itemRanking['nm_posto'] }}
                                                 </div>
                                                 <div class="ranking-table-data">
-                                                    {{ $itemRaking['pt_ranking'] }}
+                                                    {{ $itemRanking['pt_ranking'] }}
                                                 </div>
                                                 <div class="ranking-table-data" style="padding-right: 1.125rem">
                                                     <i class="fas fa-angle-up fa-2x success"></i>
@@ -154,18 +154,18 @@
                                             $contador = 0;
                                         @endphp
 
-                                        @foreach ($dadosRanking as $itemRanking)
+                                        @foreach ($dadosRanking as $itemRanking2)
                                             @if ($contador > 2)
                                                 <div class="ranking-table-row">
                                                     <div class="ranking-table-data">
                                                         {{ $contador + 1 }}
                                                     </div>
                                                     <div class="ranking-table-data">
-                                                        {{ $itemRanking['nm_posto'] }}
+                                                        {{ $itemRanking2['nm_posto'] }}
                                                     </div>
                                                     <div class="ranking-table-data">
                                                         {{-- <div class="complete"></div> --}}
-                                                        {{ $itemRanking['pt_ranking'] }}
+                                                        {{ $itemRanking2['pt_ranking'] }}
                                                     </div>
                                                     <div class="ranking-table-data" style="padding-right: 1.125rem">
                                                         <i class="fas fa-minus fa-1x"></i>
