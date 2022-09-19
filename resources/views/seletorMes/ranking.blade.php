@@ -1,56 +1,60 @@
 <div class="col-xl-12" id="paginaRanking">
 
     <div class="row my-3">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" data-messelecionado="{{$ultimaData}}" data-ultimaData = "{{$ultimaData1}}" >
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="janeiro" data-bs-toggle="pill" data-bs-target="#pills-janeiro"
-                    type="button" role="tab" aria-controls="pills-home" data-mes="1" aria-selected="true">Janeiro</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button id="fevereiro"  class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
-                    type="button" role="tab" aria-controls="pills-profile" data-mes="2"aria-selected="false">Fevereiro</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="marco" data-bs-toggle="pill" data-bs-target="#pills-marco"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="3"aria-selected="false">Março</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="abril" data-bs-toggle="pill" data-bs-target="#pills-abril"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="4"aria-selected="false">Abril</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="maio" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="5"aria-selected="false">Maio</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="junho" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="6"aria-selected="false">Junho</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="julho" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="7"aria-selected="false">Julho</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="agosto" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="8" aria-selected="false">Agosto</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="setembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="9"aria-selected="false">Setembro</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="outubro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="10" aria-selected="false">Outubro</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="novembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="11" aria-selected="false">Novembro</button>
-            </li>
-            <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                <button class="nav-link" id="dezembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" data-mes="12" aria-selected="false">Dezembro</button>
-            </li>
-        </ul>
+        <div class="card mini-stats-wid border-primary">
+            <div class="card-body" style="padding: 15px 0 0 0">
+                <ul class="nav nav-pills mb-3" style="justify-content: space-evenly;padding-right: 0px;" id="pills-tab" role="tablist" data-messelecionado="{{$ultimaData}}" data-ultimaData = "{{$ultimaData1}}" >
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="janeiro" data-bs-toggle="pill" data-bs-target="#pills-janeiro"
+                            type="button" role="tab" aria-controls="pills-home" data-mes="1" aria-selected="true">Janeiro</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button id="fevereiro"  class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
+                            type="button" role="tab" aria-controls="pills-profile" data-mes="2"aria-selected="false">Fevereiro</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="marco" data-bs-toggle="pill" data-bs-target="#pills-marco"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="3"aria-selected="false">Março</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="abril" data-bs-toggle="pill" data-bs-target="#pills-abril"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="4"aria-selected="false">Abril</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="maio" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="5"aria-selected="false">Maio</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="junho" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="6"aria-selected="false">Junho</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="julho" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="7"aria-selected="false">Julho</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="agosto" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="8" aria-selected="false">Agosto</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="setembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="9"aria-selected="false">Setembro</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="outubro" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="10" aria-selected="false">Outubro</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="novembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="11" aria-selected="false">Novembro</button>
+                    </li>
+                    <li class="nav-item" role="presentation" onClick="seletorMes(this)">
+                        <button class="nav-link" id="dezembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                            type="button" role="tab" aria-controls="pills-contact" data-mes="12" aria-selected="false">Dezembro</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
 

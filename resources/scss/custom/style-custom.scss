@@ -36,24 +36,6 @@ $bronze: #f1734f;
     color: $yellow;
 }
 
-
-//Loader CSS Modo Noturno
-// #loader {
-//     position: absolute;
-//     left: 50%;
-//     top: 50%;
-//     z-index: 1;
-//     width: 120px;
-//     height: 120px;
-//     margin: -76px 0 0 -76px;
-//     border: 16px solid #f3f3f3;
-//     border-radius: 50%;
-//     border-top: 16px solid #3498db;
-//     -webkit-animation: spin 2s linear infinite;
-//     animation: spin 2s linear infinite;
-// }
-// Loader CSS Modo Noturno
-
 .card{
     margin-bottom: 10px !important;
 }
@@ -325,6 +307,52 @@ mark {
     color: #fff;
 }
 
+.shrinkFiltro {
+    transition: width 1s;
+    transition: height 2s;
+    transition: background-color .5s;
+    transition-timing-function: ease;
+    width: 17%;
+    background-color: $blue  !important;
+    color: #fff;
+}
+
+.shrinkFiltro:hover {
+    transition: background-color 2s;
+    transition-timing-function: ease;
+    background-color: $cyan  !important;
+    color: #fff;
+}
+
+#cardFiltro{
+    align-self: flex-end;
+        z-index: 1000;
+        display: block;
+        position: absolute;
+        width: 254px;
+        top: 32px;
+        height: 86%;
+}
+
+.expandFiltro {
+    z-index: 10000;
+    border-radius: 0.25rem 0.25rem 0px 0px !important;
+    transition: width .5s;
+    transition: height 2s;
+    transition-timing-function: ease;
+    width: 254px;
+    background-color: $blue  !important;
+    color: #fff;
+    position: relative;
+}
+
+.expandFiltro:hover {
+    transition: background-color 2s;
+    transition-timing-function: ease;
+    background-color: $cyan  !important;
+    color: #fff;
+}
+
 .mini-stats-wid {
     box-shadow: inset 0px 0px 0px .3px $blue;
 }
@@ -363,6 +391,14 @@ mark {
     padding: 0;
     border: none;
     color: $blue;
+}
+
+.nav-link{
+    color: #2e3d49;
+}
+
+.nav{
+    --bs-nav-link-disabled-color: #74788d94 !important;
 }
 
 //Row
@@ -634,4 +670,16 @@ table#tabelaInicialComparador{
 
 .table-bordered>:not(caption)>* {
     border-width: 4px 0 !important;
+}
+
+.ouro {
+    color: #ecc81a;
+}
+
+.prata {
+    color: #027ae5;
+}
+
+.bronze {
+    color: #f1734f;
 }

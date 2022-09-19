@@ -4,9 +4,7 @@
               <div class="table-rep-plugin">
                   <div class="table-responsive table-bordered mb-0">
                       <table id="tabelaObjetivoComparador" class="table table-lg align-middle">
-
                           <tbody>
-
                               @php
                                   $grupoSimilar = 0;
                               @endphp

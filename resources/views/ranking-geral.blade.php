@@ -19,13 +19,15 @@
     <div class="col-xl-12" id="paginaRanking">
 
         <div class="row my-3">
-            <ul class="nav nav-pills mb-3" id="pills-tab" data-mesSelecionado="{{$ultimaData}}" role="tablist" data-ultimaData = "{{$ultimaData}}" >
+            <div class="card mini-stats-wid border-primary">
+                <div class="card-body" style="padding: 15px 0 0 0">
+            <ul class="nav nav-pills mb-3" style="justify-content: space-evenly; padding-right: 0px;" id="pills-tab" data-mesSelecionado="{{$ultimaData}}" role="tablist" data-ultimaData = "{{$ultimaData}}" >
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="janeiro" data-bs-toggle="pill" data-bs-target="#pills-janeiro"
                         type="button" role="tab" aria-controls="pills-home" data-mes="1" aria-selected="true">Janeiro</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                    <button id="fevereiro"  class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
+                    <button id="fevereiro" class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
                         type="button" role="tab" aria-controls="pills-profile" data-mes="2"aria-selected="false">Fevereiro</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
@@ -69,6 +71,8 @@
                         type="button" role="tab" aria-controls="pills-contact" data-mes="12" aria-selected="false">Dezembro</button>
                 </li>
             </ul>
+            </div>
+            </div>
         </div>
 
 
@@ -199,7 +203,7 @@
                             </div>
                         </div>
 
-                        <!--  Large modal example -->
+                        <!--  Large modal ranking -->
                         <div class="modal fade {{ $item['nm_grupo'] }}" tabindex="-1" role="dialog"
                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -210,7 +214,7 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <table class="table">
+                                        <table class="table table-lg align-middle">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Posição</th>
@@ -221,8 +225,8 @@
                                             <tbody class="tableRanking">
                                                 @foreach ($listaGruposRanking as $itemLista)
                                                     @if ($itemLista['cd_grupo'] == $item['cd_grupo'])
-                                                        <tr>
-                                                            <th scope="row">{{ $itemLista['posicao_ranking'] }}</th>
+                                                        <tr class="linhaModal">
+                                                            <th class="rankingModal" scope="row">{{ $itemLista['posicao_ranking'] }}</th>
                                                             <td>{{ $itemLista['nm_posto'] }}</td>
                                                             <td>{{ $itemLista['pt_ranking'] }}</td>
                                                         </tr>
@@ -250,7 +254,6 @@
   
   </form>
 
-  
 
 @endsection
 
@@ -262,8 +265,32 @@
 
     <script>
 
-            
-     function seletorMes(elemento){
+    //CRIA CORES NOS RANKINGS DO MODAL 
+        var rankingModal = document.querySelectorAll(".rankingModal");
+        var linhaModal = document.querySelectorAll(".linhaModal");
+
+        for (var i = 0; i < rankingModal.length; i++) {
+            switch (rankingModal[i].innerText) {
+                case "1":
+                    linhaModal[i].classList.add("ouro");
+                    break;
+
+                case "2":
+                    linhaModal[i].classList.add("prata");
+                    break;
+
+                case "3":
+                    linhaModal[i].classList.add("bronze");
+                    break;
+
+                default:
+                    console.log('default-ranking')
+                    break;
+            }
+        }
+    //
+
+    function seletorMes(elemento){
 
 
             console.log( elemento.innerText)
@@ -298,13 +325,11 @@
 
     function ativaSeletorMes(){ 
 
-
         var mesAtualdata = document.querySelector("[data-mesSelecionado]").dataset.messelecionado
         var dateMesAtual = Date.parse(mesAtualdata) // converter string em milisegundos para  ser convertido em "date"
         
         var dataDummyMs = Date.now() // existe pra calcular a diferença de fuso horario
         var dataDummyobjeto =  new Date(dataDummyMs) // existe pra calcular a diferença de fuso horario
-
 
         var objetoData = new Date(dateMesAtual+((dataDummyobjeto.getTimezoneOffset()*60)*1000)) //variavel tipo date
         // aqui rola a conta pegando o mes atual + a diferença de fuso horario que vem em minutos
@@ -312,18 +337,15 @@
        
         // objetoData.getMonth()
 
-
         var indexMes = objetoData.getMonth()+1 // os meses vem como 0 a 11, por isso adicionei mais um 
         // para ficar semanticamente melhor no codigo
-
 
         ////////////////////////////////// mesma coisa só que para desativar
         var mesUltimadata = document.querySelector("[data-mesSelecionado]").dataset.ultimadata
         var dateMesAtual = Date.parse(mesUltimadata) // converter string em milisegundos para  ser convertido em "date"
-        
+    
         var dataDummyMs1 = Date.now() // existe pra calcular a diferença de fuso horario
         var dataDummyobjeto1 =  new Date(dataDummyMs1) // existe pra calcular a diferença de fuso horario
-
 
         var objetoData1 = new Date(dateMesAtual+((dataDummyobjeto1.getTimezoneOffset()*60)*1000)) //variavel tipo date
         // aqui rola a conta pegando o mes atual + a diferença de fuso horario que vem em minutos
@@ -331,51 +353,24 @@
        
         // objetoData.getMonth()
 
-
         var indexUltimoMes = objetoData1.getMonth()+2 // os meses vem como 0 a 11, por isso adicionei mais um 
         // para ficar semanticamente melhor no codigo
-    
 
         for (var i = indexUltimoMes; i < 13; i++) {
             console.log(i);
             // more statements
             console.log('[data-mes="'+i+'"]')
-            document.querySelector('[data-mes="'+i+'"]').classList.add('disabled')
-           
+            document.querySelector('[data-mes="'+i+'"]').classList.add('disabled');
+        }
 
-            }
+        document.querySelector('[data-mes="'+indexMes+'"]').classList.add("active");
 
-
-
-        
-        
-   
-         document.querySelector('[data-mes="'+indexMes+'"]').classList.add("active")
-
-   
-
-    
     }       
 
-    
-   
-    
-        $('document').ready(function(){
-            
+        $('document').ready(function(){    
             ativaSeletorMes()
-       
-
-
-
-
          });
 
-
-
-
-    
-
     </script>
-
 
 @endsection

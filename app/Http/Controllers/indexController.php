@@ -48,6 +48,7 @@ class indexController extends Controller
             $join->on("rp.cd_coop", "=", "p.cd_coop")
                 ->on("rp.cd_posto", "=", "p.cd_posto");
         })
+        ->where('rp.dt_info', '=', $ultimaData['ultimaData'])
         ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
         ->where('p.cd_coop', '=', $usuario['cd_coop'])
         ->where('p.cd_posto', '=', $usuario['cd_posto'])

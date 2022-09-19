@@ -65,6 +65,7 @@
       </div>
 
       <label class="col-md-6 col-form-label">Classificação Geral: {{$ranking['posicao_ranking']}}º</label>
+      <label class="col-md-6 col-form-label">Classificação Geral: {{$ranking['posicao_ranking']}}º</label>
     </div>
 
     <div class="row">
@@ -181,12 +182,12 @@
  
  <script>
 
-      // Carrega Loader por 1seg na troca de modo noturno
+    // Carrega Loader por 1seg na troca de modo noturno
     $('.loader').show();
     //Adiciona classe para fechar sidebar
     document.getElementById("body").classList.add("sidebar-enable");
     document.getElementById("body").classList.add("vertical-collpsed");
-    setTimeout(function () {
+    setTimeout(function (){
         $('.loader').hide();
     }, 500);
     // ================================================//
@@ -202,10 +203,10 @@
     $.ajax({
         type: 'POST',
         url: link,
-        data: formData ,
+        data: formData,
         processData: false,
-        contentType: false
-        , success: function(resposta){  
+        contentType: false,
+        success: function(resposta){
           teste = resposta
            var formulario = document.getElementById('example')
            formulario.innerHTML=resposta
@@ -218,13 +219,14 @@
   }
 
   function imprimirComparador(){
-    $('#selectUnidades').select2();
+   $('#selectUnidades').select2();
    
    $('#selectUnidades').on('select2:select', function (e) {
      var data = e.params.data;
      
-   document.querySelector('#formComparador .inputComparador').setAttribute('value',data.id)
-   tabelaComparador()
+    document.querySelector('#formComparador .inputComparador').setAttribute('value',data.id)
+    tabelaComparador()
+
    });
   } 
 
@@ -267,11 +269,9 @@
   $('#formComparador').submit(function(e) {
         e.preventDefault();
     });
-    
   imprimirComparador()
 })
 
- 
 </script>
  @endsection
 @endsection

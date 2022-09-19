@@ -33,104 +33,64 @@
     <link rel="stylesheet" href="<?php echo e(URL::asset('/assets/libs/jbox/jbox.min.css')); ?>">
 <?php $__env->stopSection(); ?>
 
-
-
-
-
-
-
-
-
-
-
 <div class="row">
     <div class="col-xl-12 d-flex flex-column">
         <div class="row mx-0 my-2" style="justify-content: flex-end;">
-            <button onclick="hideShow()" type="button"
-                class="shrink btn border-primary btn-sm waves-effect waves-light px-2" id="botaoFiltro"><i
-                    class="fas fa-filter" id="iconFiltro"></i> <span class="text-white" id="textoFiltro">Filtros</span></button>
+            <button onclick="hideShow()" type="button" class="shrinkFiltro btn border-primary btn-sm waves-effect waves-light px-2" id="botaoFiltro"><i class="fas fa-filter" id="iconFiltro"></i> <span class="text-white" id="textoFiltro">Filtros</span></button>
         </div>
-        <div class="card border border-primary mini-stats-wid " id="cardFiltro" style="display: none; width:25%;align-self: flex-end;">
-            
-           
-        
-            <div class="card-body">
-                <div class="row">
-                </div>
+        <div class="card border border-primary mini-stats-wid " id="cardFiltro" style="display: none;">
+            <div class="card-body" style="margin-top: 5%">
                 <form action="">
                     <?php echo csrf_field(); ?>
                     <div class="mb-2">
                         <?php
-                            $grupo  = $participantesPorGrupo[0]['nm_grupo'];
+                            $grupo = $participantesPorGrupo[0]['nm_grupo'];
                             $contadorGrupo = 0;
                             $contadorInicial = 0;
                         ?>
 
-                            <span>Unidade</span>
-
+                        <span>Unidade</span>
+                        <div class="input-group">
                         <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
-                            
+
                             <?php $__currentLoopData = $participantesPorGrupo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                
-                                    <?php if($contadorInicial==0): ?>
-                                        <option value="">Selecione</option>
-                                        <optgroup label=" Grupo: <?php echo e($item['nm_grupo']); ?> ">
-                
-                                            
-                                                
-                                                <?php
-                                                        $contadorInicial++
-                                                ?>
-                
-                
-                                    
-                
-                
-                                    <?php endif; ?>
-                
-                
-                                    <?php if($item['nm_grupo']==$grupo): ?>
-                        
-                                        <option value=""><?php echo e($item['nm_posto']); ?></option>
-                                        
-                                    <?php else: ?>
-                                        </optgroup>  
+                                <?php if($contadorInicial == 0): ?>
+                                    <option value="">Selecione</option>
+                                    <optgroup label=" Grupo: <?php echo e($item['nm_grupo']); ?> ">
                                         <?php
-                                            
-                                            $grupo = $item['nm_grupo']
-                
+                                            $contadorInicial++;
                                         ?>
-                    
+                                <?php endif; ?>
+
+                                <?php if($item['nm_grupo'] == $grupo): ?>
+                                    <option value=""><?php echo e($item['nm_posto']); ?></option>
+                                <?php else: ?>
+                                    </optgroup> 
+                                    <?php
                                         
-                                        <optgroup label=" Grupo: <?php echo e($item['nm_grupo']); ?> ">
-                
-                                                <option value=""> <?php echo e($item['nm_posto']); ?></option>
-                                                
-                
-                
-                                    <?php endif; ?>
-                        
-                            
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
-                
+                                        $grupo = $item['nm_grupo'];
+                                        
+                                    ?>
+
+                                    <optgroup label=" Grupo: <?php echo e($item['nm_grupo']); ?> ">
+
+                                        <option value=""> <?php echo e($item['nm_posto']); ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
+                        </div>
                     </div>
                     <span>Periodo</span>
-                    <div class="input-group" >
-                      
-                        
-                        <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
-
+                    <div class="input-group">
+                        <select id="selectIndexPeriodo" class="form-control select2 selectFiltros">
                             <option value="">Selecione</option>
                             <?php $__currentLoopData = $mesesDisponiveis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
                                 <option class="text-capitalize" value=""> <?php echo e($item['mes']); ?> </option>
-                                
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                            
                         </select>
-
+                    </div>
+                    <div class="input-group" style="justify-content: space-evenly; padding-top: 25%">
+                        <button type="submit" class="btn btn-primary w-md">Filtrar</button>
                     </div>
                 </form>
             </div>
@@ -142,7 +102,8 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="badge bg-primary" style="font-size: 100%; margin-bottom: 8px !important;"><span class="bx bx-map-pin"></span>
+                                <p class="badge bg-primary" style="font-size: 100%; margin-bottom: 8px !important;">
+                                    <span class="bx bx-map-pin"></span>
                                     <?php echo e($dadosUsuario[0]['nm_grupo']); ?>
 
                                 </p>
@@ -156,10 +117,12 @@
                                 </h5>
                             </div>
                             <div class="flex-grow-1">
-                                <p class="badge bg-primary" style="font-size: 100%; margin-bottom: 8px !important;"><span class="bx bx-trophy"></span>
-                                    Pontuação Total</p>
-                                <button type="button" class="btn btn-outline-light tooltipIndicador"
-                                    draggable="true" data-bs-toggle="tooltip" data-bs-placement="top"
+                                <p class="badge bg-primary" style="font-size: 100%; margin-bottom: 8px !important;">
+                                    <span class="bx bx-trophy"></span>
+                                    Pontuação Total
+                                </p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
                                     title="Número de pontos conquistados até agora no Superação 2022"><i
                                         class="far fa-question-circle"></i></button>
                                 <h5 class="mb-0">
@@ -171,19 +134,14 @@
                     </div>
                     <div class="card-footer progressBarBG">
                         <div class="d-flex titleProgressBar">
-                            <h5>Faltam <strong
-                                    class="success pontosInicio"><?php echo e($rankingPodio[0]['pt_ranking'] - $dadosUsuario->sum('pontuacao') + 1); ?>
-
-                                    pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p>
-                                colocação
-                            </h5>
+                            <h5 id="textPontuacao">Faltam <strong class="success pontosInicio"><?php echo e($rankingPodio[0]['pt_ranking'] - $dadosUsuario->sum('pontuacao') + 1); ?> pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p> colocação</h5>
+                            <h5 id="textPontuacaoPrimeiro" style="display: none">🏆 Parabéns! Você atualmente é o <p class="badge bg-success" style="font-size: 100%;">1º</p> colocado do seu grupo</h5>
                         </div>
                         <div class="d-flex align-items-center">
                             <div class="avatar-xs progress-icon-start" style="position: relative; top: -14px;">
-                                <span
-                                    class="avatar-title start border iconePosicaoRanking"><?php echo e($ranking['posicao_ranking']); ?>º</span>
+                                <span class="avatar-title start border iconePosicaoRanking metaRanking"><?php echo e($ranking['posicao_ranking']); ?>º</span>
                             </div>
-                            <div class="custom-progess mt-3 mb-4 d-flex flex-colunm  w-100">
+                            <div class="custom-progess mt-3 mb-4 d-flex flex-colunm w-100">
                                 <div class="progress animated-progess progress-lg w-100">
                                     <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar"
                                         role="progressbar"
@@ -319,10 +277,7 @@
                                         </div>
                                     </div>
                                     
-
-
                                 </div>
-
 
                                 
                                 <div style="display: none" id="conteudoMarcoSegundo">
@@ -356,18 +311,12 @@
 
 
                                 <div class="avatar-xs progress-icon-end" style="position: relative">
-                                    <span
-                                        class="avatar-title-card border iconePosicaoRanking"><?php echo e($rankingPodio[0]['posicao_ranking']); ?>º</span>
-                                </div>
+                                    <span id="iconPontuacao" class="avatar-title-card border iconePosicaoRanking"><?php echo e($rankingPodio[0]['posicao_ranking']); ?>º</span>
+                                    <span id="iconPontuacaoPrimeiro" style="display: none; position: absolute; bottom: 10px;">🥅</span>
+                                    </div>
                             </div>
-
                         </div>
-
                     </div>
-
-
-
-
                 </div>
             </div>
             <div class="col-md-3">
@@ -431,9 +380,7 @@
                                     <div class="carousel-align">
                                         <h6><?php echo e(number_format(($item['pontuacao'] * 100) / $dadosUsuario->sum('pontuacao'))); ?>%
                                             <span class="separador primary"></span>
-                                            <i class="bx bxs-upvote success"></i> <?php echo e($item['pontuacao']); ?>
-
-                                            Pts.
+                                             <?php echo e($item['pontuacao']); ?> Pts.
                                         </h6>
                                     </div>
                                 </div>
@@ -493,6 +440,47 @@
     }, 1000);
     // ================================================//
 
+//VALIDA META DEPEDENDO DA COLOCAÇÃO
+var posicao = document.querySelector(".metaRanking");
+
+var marcosMetaTerceiro = document.querySelector(".marcosMetaTerceiro");
+var marcosMetaSegundo = document.querySelector(".marcosMetaSegundo");
+
+var textPontuacao = document.getElementById("textPontuacao");
+var textPontuacaoPrimeiro = document.getElementById("textPontuacaoPrimeiro");
+
+var iconPontuacao = document.getElementById("iconPontuacao");
+var iconPontuacaoPrimeiro = document.getElementById("iconPontuacaoPrimeiro");
+
+    switch (posicao.innerText) {
+        case "3º":
+            marcosMetaTerceiro.style.display = "none";
+            break;
+
+        case "2º":
+            marcosMetaSegundo.style.display = "none";
+            marcosMetaTerceiro.style.display = "none";
+            break;
+
+        case "1º":
+            marcosMetaSegundo.style.display = "none";
+            marcosMetaTerceiro.style.display = "none";
+            
+            textPontuacao.style.display = "none";
+            textPontuacaoPrimeiro.style.display = "block";
+
+            iconPontuacaoPrimeiro.style.display = "flex";
+            iconPontuacaoPrimeiro.style.fontSize = "2rem";
+            iconPontuacaoPrimeiro.style.marginBottom = "2px";
+
+            iconPontuacao.style.display = "none";
+            break;
+
+        default:
+            console.log('default')
+            break;
+    }
+
 
     //Função para esconder card de regra na página do indicador
     function hideShow() {
@@ -505,13 +493,13 @@
             card.style.display = "none";
             texto.innerHTML = "Filtros";
             icone.classList.replace("fa-angle-down", "fa-angle-right");
-            botao.classList.replace("expand", "shrink");
+            botao.classList.replace("expandFiltro", "shrinkFiltro");
 
         } else {
             card.style.display = "block";
             texto.innerHTML = "Esconder Filtros";
             icone.classList.replace("fa-angle-right", "fa-angle-down")
-            botao.classList.replace("shrink", "expand");
+            botao.classList.replace("shrinkFiltro", "expandFiltro");
         }
     }
 </script>
