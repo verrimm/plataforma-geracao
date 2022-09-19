@@ -19,11 +19,15 @@ class seletorMes extends Controller
         $ultimaData = lancamento::select(lancamento::raw('max(dt_info) as ultimaData'))
         ->first();
 
-        // arrumar
-        // $ultimaData =  $request->input('mes');
-        //  $raw = DB::statement("SET lc_time_names = 'pt_BR'");
+    
+        $mesRequest =  $request->input('mes');
        
-      
+         $raw = DB::statement("SET lc_time_names = 'pt_BR'");
+
+         $ultimaDataTemp = lancamento::where(lancamento::raw('monthname(dt_info)'),'=',$mesRequest)
+         ->first();
+       
+     
 
         $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
         $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
@@ -43,7 +47,7 @@ class seletorMes extends Controller
                 $join->on("i.cd_indicador", "=", "l.cd_indicador");
             })
             ->where('p.cd_coop', $usuario['cd_coop'])
-            ->where('l.dt_info', '=', $ultimaData['ultimaData'])
+            ->where('l.dt_info', '=', $ultimaDataTemp['dt_info'])
             ->where('p.cd_posto', $usuario['cd_posto'])
             ->get();
 
@@ -68,7 +72,7 @@ class seletorMes extends Controller
             })
             ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
             ->orderByDesc('pt_ranking')
-            ->where('rp.dt_info', '=', $ultimaData['ultimaData'])
+            ->where('rp.dt_info', '=',  $ultimaDataTemp['dt_info'])
             ->get();
 
         $listaGruposRanking = posto::join("grupo_posto as gp", function ($join) {
@@ -82,7 +86,7 @@ class seletorMes extends Controller
             // ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
             ->orderBy('pt_ranking', 'desc')
             ->orderby('cd_grupo', 'asc')
-            ->where('rp.dt_info', '=', $ultimaData['ultimaData'])
+            ->where('rp.dt_info', '=', $ultimaDataTemp['dt_info'])
             // -where('cd_grupo' = '')
             ->get();
 
@@ -105,6 +109,8 @@ class seletorMes extends Controller
 
 
         return view('seletorMes.Ranking',[
+            'ultimaData'=>$ultimaDataTemp['dt_info'],
+            'ultimaData1'=>$ultimaData['ultimaData'],
             'dadosUsuario' => $dadosUsuario,
             'infoGrupo' => $grupo,
             'dadosRanking' => $ranking,

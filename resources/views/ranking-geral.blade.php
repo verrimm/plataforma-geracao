@@ -19,54 +19,54 @@
     <div class="col-xl-12" id="paginaRanking">
 
         <div class="row my-3">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <ul class="nav nav-pills mb-3" id="pills-tab" data-mesSelecionado="{{$ultimaData}}" role="tablist" data-ultimaData = "{{$ultimaData}}" >
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
-                    <button class="nav-link active" id="janeiro" data-bs-toggle="pill" data-bs-target="#pills-janeiro"
-                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">Janeiro</button>
+                    <button class="nav-link" id="janeiro" data-bs-toggle="pill" data-bs-target="#pills-janeiro"
+                        type="button" role="tab" aria-controls="pills-home" data-mes="1" aria-selected="true">Janeiro</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button id="fevereiro"  class="nav-link" id="fevereiro" data-bs-toggle="pill" data-bs-target="#pills-fevereiro"
-                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Fevereiro</button>
+                        type="button" role="tab" aria-controls="pills-profile" data-mes="2"aria-selected="false">Fevereiro</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="marco" data-bs-toggle="pill" data-bs-target="#pills-marco"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Março</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="3"aria-selected="false">Março</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="abril" data-bs-toggle="pill" data-bs-target="#pills-abril"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Abril</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="4"aria-selected="false">Abril</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="maio" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Maio</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="5"aria-selected="false">Maio</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="junho" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Junho</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="6"aria-selected="false">Junho</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="julho" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Julho</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="7"aria-selected="false">Julho</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="agosto" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Agosto</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="8" aria-selected="false">Agosto</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="setembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Setembro</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="9"aria-selected="false">Setembro</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="outubro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Outubro</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="10" aria-selected="false">Outubro</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="novembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Novembro</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="11" aria-selected="false">Novembro</button>
                 </li>
                 <li class="nav-item" role="presentation" onClick="seletorMes(this)">
                     <button class="nav-link" id="dezembro" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Dezembro</button>
+                        type="button" role="tab" aria-controls="pills-contact" data-mes="12" aria-selected="false">Dezembro</button>
                 </li>
             </ul>
         </div>
@@ -243,7 +243,7 @@
 
 
     
-<form id="formSeletorMes"  action="{{ route('comparadorAjax') }}" class="form-horizontal d-none " method="POST"  enctype="multipart/form-data">
+<form id="formSeletorMes"  action="{{ route('comparadorAjax') }}" class="form-horizontal  d-none" method="POST"  enctype="multipart/form-data">
     @csrf
   
     <input name="mes"  class="inputMes" type="text">
@@ -263,36 +263,117 @@
     <script>
 
             
-  function seletorMes(elemento){
+     function seletorMes(elemento){
 
-    var formulario = document.getElementById('formSeletorMes')  
-    var formData = new FormData(formulario)
-    var link = "seletorMesRanking"
 
-    $.ajax({
-        type: 'POST',
-        url: link,
-        data: formData ,
-        processData: false,
-        contentType: false
-        , success: function(resposta){  
-          teste = resposta
-           var formulario = document.getElementById('paginaRanking')
-           formulario.innerHTML=resposta
-        console.log("sucesso")  
-        },
-        error: function(resposta){
-            console.log("erro")
-        }
-    })
+            console.log( elemento.innerText)
+
+            var formulario = document.getElementById('formSeletorMes') 
+            var inputFormullario =document.querySelector('#formSeletorMes .inputMes')
+            inputFormullario.setAttribute('value',elemento.innerText)
+            var formData = new FormData(formulario)
+            var link = "seletorMesRanking"
+
+            $.ajax({
+                type: 'POST',
+                url: link,
+                data: formData ,
+                processData: false,
+                contentType: false
+                , success: function(resposta){  
+                teste = resposta
+                var formulario = document.getElementById('paginaRanking')
+                formulario.innerHTML=resposta
+                console.log("sucesso")  
+                ativaSeletorMes()
+                },
+                error: function(resposta){
+                    console.log("erro")
+                }
+            })
 
 
     }
 
 
+    function ativaSeletorMes(){ 
 
+
+        var mesAtualdata = document.querySelector("[data-mesSelecionado]").dataset.messelecionado
+        var dateMesAtual = Date.parse(mesAtualdata) // converter string em milisegundos para  ser convertido em "date"
+        
+        var dataDummyMs = Date.now() // existe pra calcular a diferença de fuso horario
+        var dataDummyobjeto =  new Date(dataDummyMs) // existe pra calcular a diferença de fuso horario
+
+
+        var objetoData = new Date(dateMesAtual+((dataDummyobjeto.getTimezoneOffset()*60)*1000)) //variavel tipo date
+        // aqui rola a conta pegando o mes atual + a diferença de fuso horario que vem em minutos
+        // os minutos são convertidos em milisegundos e somados na data
+       
+        // objetoData.getMonth()
+
+
+        var indexMes = objetoData.getMonth()+1 // os meses vem como 0 a 11, por isso adicionei mais um 
+        // para ficar semanticamente melhor no codigo
+
+
+        ////////////////////////////////// mesma coisa só que para desativar
+        var mesUltimadata = document.querySelector("[data-mesSelecionado]").dataset.ultimadata
+        var dateMesAtual = Date.parse(mesUltimadata) // converter string em milisegundos para  ser convertido em "date"
+        
+        var dataDummyMs1 = Date.now() // existe pra calcular a diferença de fuso horario
+        var dataDummyobjeto1 =  new Date(dataDummyMs1) // existe pra calcular a diferença de fuso horario
+
+
+        var objetoData1 = new Date(dateMesAtual+((dataDummyobjeto1.getTimezoneOffset()*60)*1000)) //variavel tipo date
+        // aqui rola a conta pegando o mes atual + a diferença de fuso horario que vem em minutos
+        // os minutos são convertidos em milisegundos e somados na data
+       
+        // objetoData.getMonth()
+
+
+        var indexUltimoMes = objetoData1.getMonth()+2 // os meses vem como 0 a 11, por isso adicionei mais um 
+        // para ficar semanticamente melhor no codigo
     
 
+        for (var i = indexUltimoMes; i < 13; i++) {
+            console.log(i);
+            // more statements
+            console.log('[data-mes="'+i+'"]')
+            document.querySelector('[data-mes="'+i+'"]').classList.add('disabled')
+           
+
+            }
+
+
+
+        
+        
+   
+         document.querySelector('[data-mes="'+indexMes+'"]').classList.add("active")
+
+   
+
+    
+    }       
+
+    
+   
+    
+        $('document').ready(function(){
+            
+            ativaSeletorMes()
+       
+
+
+
+
+         });
+
+
+
+
+    
 
     </script>
 

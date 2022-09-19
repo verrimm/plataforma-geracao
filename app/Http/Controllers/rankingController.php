@@ -16,7 +16,7 @@ class rankingController extends Controller
 
         $ultimaData = lancamento::select(lancamento::raw('max(dt_info) as ultimaData'))
         ->first();
-
+        
         $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
         $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
             ->where('cd_posto', '=', $usuario['cd_posto'])->first();
@@ -95,6 +95,7 @@ class rankingController extends Controller
         ->get();
     
         return view('ranking-geral', [
+            'ultimaData'  => $ultimaData['ultimaData'],
             'dadosUsuario' => $dadosUsuario,
             'infoGrupo' => $grupo,
             'dadosRanking' => $ranking,

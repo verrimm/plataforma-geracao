@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\grupo;
 use App\Models\grupoPosto;
 use App\Models\indicador;
 use App\Models\lancamento;
 use App\Models\posto;
+use App\Models\rankingPosto;
 use App\Models\usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class indexController extends Controller
 {
@@ -16,7 +19,29 @@ class indexController extends Controller
 
     $ultimaData = lancamento::select( lancamento::raw('max(dt_info) as ultimaData'))
     ->first();
+
     
+    
+    $raw = DB::statement("SET lc_time_names = 'pt_BR'");
+
+    $mesesDisponiveis = rankingPosto::select(rankingPosto::raw('monthname(dt_info) as mes'))
+    ->groupBy('ranking_posto.dt_info')
+    ->get()
+    ;
+
+
+
+
+    $participantesPorGrupo  = grupo::select('g.nm_grupo','p.nm_posto')
+    ->join("grupo_posto as gp",'gp.cd_grupo','=','g.cd_grupo')
+    ->join("postos  as p", function ($join) {
+        $join->on("gp.cd_coop", "=", "p.cd_coop")
+            ->on("gp.cd_posto", "=", "p.cd_posto");
+    
+    })
+    ->orderBy('gp.cd_grupo')    
+    ->get();
+
     $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
     $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
         ->where('cd_posto', '=', $usuario['cd_posto'])->first();
@@ -90,6 +115,8 @@ class indexController extends Controller
 
     // return $ultimaData['ultimaData'];
     return view('index', [
+        'mesesDisponiveis' =>  $mesesDisponiveis,
+        'participantesPorGrupo' =>$participantesPorGrupo,
         'rankingPodio' => $rankingPodio,
         'usuario' => $usuario,
         'ranking' => $ranking,

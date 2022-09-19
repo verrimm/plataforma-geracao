@@ -29,7 +29,7 @@ class comparadorController extends Controller
             $join->on("rp.cd_coop", "=", "gp.cd_coop")
             ->on("rp.cd_posto", "=", "gp.cd_posto");
         })
-
+        ->where('rp.dt_info', '=', $ultimaData['ultimaData'])
         ->where('gp.cd_grupo','=', $grupo['cd_grupo'])
         ->get();
 

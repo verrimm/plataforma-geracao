@@ -24,74 +24,106 @@
         }
     </style>
     <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"
-        type="text/css">
 
-    <link href="{{ URL::asset('/assets/libs/bootstrap-timepicker/bootstrap-timepicker.min.css') }}" rel="stylesheet"
-        type="text/css">
+
     <link href="{{ URL::asset('/assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.css') }}" rel="stylesheet"
         type="text/css" />
-    <link rel="stylesheet" href="{{ URL::asset('/assets/libs/datepicker/datepicker.min.css') }}">
+
     <link rel="stylesheet" href="{{ URL::asset('/assets/libs/jbox/jbox.min.css') }}">
 @endsection
 
 
 
+
+
+
+
+
+
+
+
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-12 d-flex flex-column">
         <div class="row mx-0 my-2" style="justify-content: flex-end;">
             <button onclick="hideShow()" type="button"
                 class="shrink btn border-primary btn-sm waves-effect waves-light px-2" id="botaoFiltro"><i
-                    class="fas fa-filter" id="iconFiltro"></i> <span id="textoFiltro">Filtros</span></button>
+                    class="fas fa-filter" id="iconFiltro"></i> <span class="text-white" id="textoFiltro">Filtros</span></button>
         </div>
-        <div class="card border border-primary mini-stats-wid" id="cardFiltro" style="display: none;">
+        <div class="card border border-primary mini-stats-wid " id="cardFiltro" style="display: none; width:25%;align-self: flex-end;">
             <div class="card-body">
                 <div class="row">
                 </div>
                 <form action="">
+                    @csrf
                     <div class="mb-2">
-                        <select class="form-control select2 selectFiltros">
-                            <option>Selecione</option>
-                            <optgroup label="Grupo 0">
-                                <option value="AK">Agência 1</option>
-                                <option value="HI">Agência 2</option>
-                            </optgroup>
-                            <optgroup label="Grupo 1">
-                                <option value="CA">Agência 3</option>
-                                <option value="NV">Agência 4</option>
-                                <option value="OR">Agência 5</option>
-                                <option value="WA">Agência 6</option>
-                            </optgroup>
-                            <optgroup label="Grupo 2">
-                                <option value="AZ">Agência 7</option>
-                                <option value="CO">Agência 8</option>
-                                <option value="ID">Agência 9</option>
-                                <option value="MT">Agência 10</option>
-                                <option value="NE">Agência 11</option>
-                            </optgroup>
-                            <optgroup label="Grupo 3">
-                                <option value="AL">Agência 12</option>
-                                <option value="AR">Agência 13</option>
-                                <option value="IL">Agência 14</option>
-                                <option value="IA">Agência 15</option>
-                                <option value="KS">Agência 16</option>
-                            </optgroup>
-                            <optgroup label="Grupo 4">
-                                <option value="CT">Agência 17</option>
-                                <option value="DE">Agência 18</option>
-                                <option value="FL">Agência 19</option>
-                                <option value="GA">Agência 20</option>
-                                <option value="IN">Agência 21</option>
-                                <option value="ME">Agência 22</option>
-                                <option value="MD">Agência 23</option>
-                            </optgroup>
+                        @php
+                            $grupo  = $participantesPorGrupo[0]['nm_grupo'];
+                            $contadorGrupo = 0;
+                            $contadorInicial = 0;
+                        @endphp
+                
+                        <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
+                            
+                            @foreach ($participantesPorGrupo as $item)
+                
+                                    @if ($contadorInicial==0)
+                                        <option value="">Selecione</option>
+                                        <optgroup label=" Grupo: {{$item['nm_grupo']}} ">
+                
+                                            
+                                                
+                                                @php
+                                                        $contadorInicial++
+                                                @endphp
+                
+                
+                                    
+                
+                
+                                    @endif
+                
+                
+                                    @if ($item['nm_grupo']==$grupo)
+                        
+                                        <option value="">{{$item['nm_posto']}}</option>
+                                        
+                                    @else
+                                        </optgroup>  {{-- aqui acontece a magica, sempre que muda de grupo fecha o optgroup --}}
+                                        @php
+                                            
+                                            $grupo = $item['nm_grupo']
+                
+                                        @endphp
+                    
+                                        
+                                        <optgroup label=" Grupo: {{$item['nm_grupo']}} ">
+                
+                                                <option value=""> {{$item['nm_posto']}}</option>
+                                                
+                
+                
+                                    @endif
+                        
+                            
+                            @endforeach 
+                
                         </select>
                     </div>
-                    <div class="input-group" id="datepicker4">
-                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                        <input type="text" class="form-control" data-date-container='#datepicker4'
-                            data-provide="datepicker" data-date-format="MM yyyy" data-date-min-view-mode="1"
-                            placeholder="Período">
+                    <div class="input-group" >
+                        
+                        
+                        <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
+
+                            <option value="">Selecione</option>
+                            @foreach ($mesesDisponiveis as $item)
+
+                                <option class="text-capitalize" value=""> {{$item['mes']}} </option>
+                                
+                            @endforeach
+
+                            
+                        </select>
+
                     </div>
                 </form>
             </div>
@@ -432,6 +464,9 @@
     @endforeach
 
 </div>
+
+
+
 @endsection
 @section('script')
 <script>
