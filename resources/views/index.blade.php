@@ -50,6 +50,9 @@
                     class="fas fa-filter" id="iconFiltro"></i> <span class="text-white" id="textoFiltro">Filtros</span></button>
         </div>
         <div class="card border border-primary mini-stats-wid " id="cardFiltro" style="display: none; width:25%;align-self: flex-end;">
+            
+           
+        
             <div class="card-body">
                 <div class="row">
                 </div>
@@ -61,7 +64,9 @@
                             $contadorGrupo = 0;
                             $contadorInicial = 0;
                         @endphp
-                
+
+                            <span>Unidade</span>
+
                         <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
                             
                             @foreach ($participantesPorGrupo as $item)
@@ -109,8 +114,9 @@
                 
                         </select>
                     </div>
+                    <span>Periodo</span>
                     <div class="input-group" >
-                        
+                      
                         
                         <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
 
