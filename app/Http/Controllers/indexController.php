@@ -27,7 +27,7 @@ class indexController extends Controller
     ->get()
     ;
 
-    $participantesPorGrupo  = grupo::select('g.nm_grupo','p.nm_posto')
+    $participantesPorGrupo  = grupo::select('g.nm_grupo','p.nm_posto','gp.cd_grupo')
     ->join("grupo_posto as gp",'gp.cd_grupo','=','g.cd_grupo')
     ->join("postos  as p", function ($join) {
         $join->on("gp.cd_coop", "=", "p.cd_coop")
