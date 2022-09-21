@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="{{ URL::asset('/assets/libs/jbox/jbox.min.css') }}">
 @endsection
 
-<div class="row">
+<div class="row" id="conteudoIndex">
     <div class="col-xl-12 d-flex flex-column">
         <div class="row" style="justify-content: center;">
             <div class="col-md-9">
@@ -267,7 +267,7 @@
                         id="textoFiltro">Filtros</span></button>
                 <div class="card border border-primary mini-stats-wid" id="cardFiltro" style="display: none;">
                     <div class="card-body" style="margin-top: 5%">
-                        <form action="">
+                        <form action="" id="formIndex" class="d-flex flex-column">
                             @csrf
                             <div class="mb-2">
                                 @php
@@ -275,51 +275,62 @@
                                     $contadorGrupo = 0;
                                     $contadorInicial = 0;
                                 @endphp
-
-                                <span>Unidade</span>
+        
+                           
+                                    <input class="d-none" type="text" id="grupoSelecionado" name="grupoSelecionado" >
+                                    <input class="d-none" id="postoSelecionado" type="text" name="postoSelecionado">
+                                    <input class="d-none" id="mesSelecionado"  type="text" name="mesSelecionado">
+                                    <span>Unidade</span>
                                 <div class="input-group">
-                                    <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
-
-                                        @foreach ($participantesPorGrupo as $item)
-                                            @if ($contadorInicial == 0)
-                                                <option value="">Selecione</option>
-                                                <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
-                                                    @php
-                                                        $contadorInicial++;
-                                                    @endphp
-                                            @endif
-
-                                            @if ($item['nm_grupo'] == $grupo)
-                                                <option value="">{{ $item['nm_posto'] }}</option>
-                                            @else
-                                                </optgroup> {{-- aqui acontece a magica, sempre que muda de grupo fecha o optgroup --}}
+        
+                                    
+        
+                                <select  required id="selectIndexUnidades" class="form-control select2 selectFiltros">
+                                    
+                                    
+        
+        
+                                    @foreach ($participantesPorGrupo as $item)
+                                        @if ($contadorInicial == 0)
+                                            <option value="">Selecione</option>
+                                            <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
                                                 @php
-                                                    
-                                                    $grupo = $item['nm_grupo'];
-                                                    
+                                                    $contadorInicial++;
                                                 @endphp
-
-                                                <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
-
-                                                    <option value=""> {{ $item['nm_posto'] }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                        @endif
+        
+                                        @if ($item['nm_grupo'] == $grupo)
+                                            <option value="" data-qualGrupo="{{$item['cd_grupo']}}">{{ $item['nm_posto'] }}</option>
+                                        @else
+                                            </optgroup> {{-- aqui acontece a magica, sempre que muda de grupo fecha o optgroup --}}
+                                            @php
+                                                
+                                                $grupo = $item['nm_grupo'];
+                                                
+                                            @endphp
+        
+                                            <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
+        
+                                                <option value=""> {{ $item['nm_posto'] }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                                 </div>
                             </div>
                             <span>Periodo</span>
                             <div class="input-group">
-                                <select id="selectIndexPeriodo" class="form-control select2 selectFiltros">
+                                <select required id="selectIndexPeriodo" class="form-control select2 selectFiltros">
                                     <option value="">Selecione</option>
                                     @foreach ($mesesDisponiveis as $item)
                                         <option class="text-capitalize" value=""> {{ $item['mes'] }} </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="input-group" style="justify-content: space-evenly;">
-                                <button type="submit" class="btn btn-primary w-md">Filtrar</button>
+                            <div class="input-group mt-3" style="justify-content: space-evenly; ">
+                                <button type="submit" onclick="conteudoIndex()"  class="btn btn-primary w-md">Filtrar</button>
                             </div>
                         </form>
+        
                     </div>
                 </div>
                 <div class="card mini-stats-wid bgIndicador my-2" id="posicaoCard">
@@ -430,6 +441,83 @@
 
 @endsection
 @section('script')
+
+
+
+<script>
+
+   
+
+
+
+    $(document).ready(function(){
+
+            $('#selectIndexPeriodo').select2();
+            $('#selectIndexPeriodo').on('select2:select', function (e) {
+            var data = e.params.data;
+
+            document.querySelector('#mesSelecionado').setAttribute('value',data.text)
+
+
+            });
+
+
+            $('#selectIndexUnidades').select2();
+
+            $('#selectIndexUnidades').on('select2:select', function (e) {
+            var data = e.params.data;
+      
+            document.querySelector('#postoSelecionado').setAttribute('value',data.text)
+            document.querySelector('#grupoSelecionado').setAttribute('value',data.element.dataset.qualgrupo)
+            
+
+            });
+
+
+
+
+
+
+    });
+
+
+
+    
+  function conteudoIndex(){
+
+        var formulario = document.getElementById('formIndex')  
+        var formData = new FormData(formulario)
+        var link = "indexAjax"
+
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(resposta){
+            teste = resposta
+            var formulario = document.getElementById('conteudoIndex')
+            formulario.innerHTML=resposta
+            console.log("sucesso")
+            },
+            error: function(resposta){
+            console.log("erro")
+        }
+    })
+}
+
+
+
+
+
+
+
+</script>
+
+
+
+
 <script>
     // Carrega Loader por 1seg na troca de modo noturno
     $('.loader').show();
