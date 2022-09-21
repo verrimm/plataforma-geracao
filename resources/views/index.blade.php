@@ -34,67 +34,6 @@
 
 <div class="row">
     <div class="col-xl-12 d-flex flex-column">
-        <div class="row mx-0 my-2" style="justify-content: flex-end;">
-            <button onclick="hideShow()" type="button" class="shrinkFiltro btn border-primary btn-sm waves-effect waves-light px-2" id="botaoFiltro"><i class="fas fa-filter" id="iconFiltro"></i> <span class="text-white" id="textoFiltro">Filtros</span></button>
-        </div>
-        <div class="card border border-primary mini-stats-wid " id="cardFiltro" style="display: none;">
-            <div class="card-body" style="margin-top: 5%">
-                <form action="">
-                    @csrf
-                    <div class="mb-2">
-                        @php
-                            $grupo = $participantesPorGrupo[0]['nm_grupo'];
-                            $contadorGrupo = 0;
-                            $contadorInicial = 0;
-                        @endphp
-
-                        <span>Unidade</span>
-                        <div class="input-group">
-                        <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
-
-                            @foreach ($participantesPorGrupo as $item)
-                                @if ($contadorInicial == 0)
-                                    <option value="">Selecione</option>
-                                    <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
-                                        @php
-                                            $contadorInicial++;
-                                        @endphp
-                                @endif
-
-                                @if ($item['nm_grupo'] == $grupo)
-                                    <option value="">{{ $item['nm_posto'] }}</option>
-                                @else
-                                    </optgroup> {{-- aqui acontece a magica, sempre que muda de grupo fecha o optgroup --}}
-                                    @php
-                                        
-                                        $grupo = $item['nm_grupo'];
-                                        
-                                    @endphp
-
-                                    <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
-
-                                        <option value=""> {{ $item['nm_posto'] }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                        </div>
-                    </div>
-                    <span>Periodo</span>
-                    <div class="input-group">
-                        <select id="selectIndexPeriodo" class="form-control select2 selectFiltros">
-                            <option value="">Selecione</option>
-                            @foreach ($mesesDisponiveis as $item)
-                                <option class="text-capitalize" value=""> {{ $item['mes'] }} </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="input-group" style="justify-content: space-evenly; padding-top: 25%">
-                        <button type="submit" class="btn btn-primary w-md">Filtrar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <div class="row" style="justify-content: center;">
             <div class="col-md-9">
                 <div class="card border border-primary mini-stats-wid">
@@ -315,7 +254,67 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card mini-stats-wid bgIndicador">
+            <div class="row mx-0" style="margin-bottom: ">
+            <button onclick="hideShow()" type="button" class="shrinkFiltro btn border-primary btn-sm waves-effect waves-light px-2" id="botaoFiltro"><i class="fas fa-filter" id="iconFiltro"></i> <span class="text-white" id="textoFiltro">Filtros</span></button>
+        </div>
+        <div class="card border border-primary mini-stats-wid" id="cardFiltro" style="display: none;">
+            <div class="card-body" style="margin-top: 5%">
+                <form action="">
+                    @csrf
+                    <div class="mb-2">
+                        @php
+                            $grupo = $participantesPorGrupo[0]['nm_grupo'];
+                            $contadorGrupo = 0;
+                            $contadorInicial = 0;
+                        @endphp
+
+                        <span>Unidade</span>
+                        <div class="input-group">
+                        <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
+
+                            @foreach ($participantesPorGrupo as $item)
+                                @if ($contadorInicial == 0)
+                                    <option value="">Selecione</option>
+                                    <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
+                                        @php
+                                            $contadorInicial++;
+                                        @endphp
+                                @endif
+
+                                @if ($item['nm_grupo'] == $grupo)
+                                    <option value="">{{ $item['nm_posto'] }}</option>
+                                @else
+                                    </optgroup> {{-- aqui acontece a magica, sempre que muda de grupo fecha o optgroup --}}
+                                    @php
+                                        
+                                        $grupo = $item['nm_grupo'];
+                                        
+                                    @endphp
+
+                                    <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
+
+                                        <option value=""> {{ $item['nm_posto'] }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        </div>
+                    </div>
+                    <span>Periodo</span>
+                    <div class="input-group">
+                        <select id="selectIndexPeriodo" class="form-control select2 selectFiltros">
+                            <option value="">Selecione</option>
+                            @foreach ($mesesDisponiveis as $item)
+                                <option class="text-capitalize" value=""> {{ $item['mes'] }} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="input-group" style="justify-content: space-evenly; padding-top: 25%">
+                        <button type="submit" class="btn btn-primary w-md">Filtrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+                <div class="card mini-stats-wid bgIndicador my-2">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">

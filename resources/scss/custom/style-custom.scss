@@ -312,7 +312,9 @@ mark {
     transition: height 2s;
     transition: background-color .5s;
     transition-timing-function: ease;
-    width: 17%;
+    width: 92%;
+    bottom: 100%;
+    position: absolute;
     background-color: $blue  !important;
     color: #fff;
 }
@@ -326,12 +328,12 @@ mark {
 
 #cardFiltro{
     align-self: flex-end;
-        z-index: 1000;
-        display: block;
-        position: absolute;
-        width: 254px;
-        top: 32px;
-        height: 86%;
+    z-index: 1000;
+    display: block;
+    position: absolute;
+    width: 92%;
+    bottom: 0;
+    height: 100%;
 }
 
 .expandFiltro {
@@ -340,10 +342,11 @@ mark {
     transition: width .5s;
     transition: height 2s;
     transition-timing-function: ease;
-    width: 254px;
+    width: 92%;
+    bottom: 100%;
     background-color: $blue  !important;
     color: #fff;
-    position: relative;
+    position: absolute;
 }
 
 .expandFiltro:hover {
