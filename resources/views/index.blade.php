@@ -69,12 +69,17 @@
                     </div>
                     <div class="card-footer progressBarBG">
                         <div class="d-flex titleProgressBar">
-                            <h5 id="textPontuacao">Faltam <strong class="success pontosInicio">{{$rankingPodio[0]['pt_ranking'] - $dadosUsuario->sum('pontuacao') + 1}} pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p> colocação</h5>
-                            <h5 id="textPontuacaoPrimeiro" style="display: none">🏆 Parabéns! Você atualmente é o <p class="badge bg-success" style="font-size: 100%;">1º</p> colocado do seu grupo</h5>
+                            <h5 id="textPontuacao">Faltam <strong
+                                    class="success pontosInicio">{{ $rankingPodio[0]['pt_ranking'] - $dadosUsuario->sum('pontuacao') + 1 }}
+                                    pontos</strong> para a <p class="badge bg-success" style="font-size: 100%;">1º</p>
+                                colocação</h5>
+                            <h5 id="textPontuacaoPrimeiro" style="display: none">🏆 Parabéns! Você atualmente é o <p
+                                    class="badge bg-success" style="font-size: 100%;">1º</p> colocado do seu grupo</h5>
                         </div>
                         <div class="d-flex align-items-center">
                             <div class="avatar-xs progress-icon-start" style="position: relative; top: -14px;">
-                                <span class="avatar-title start border iconePosicaoRanking metaRanking">{{$ranking['posicao_ranking']}}º</span>
+                                <span
+                                    class="avatar-title start border iconePosicaoRanking metaRanking">{{ $ranking['posicao_ranking'] }}º</span>
                             </div>
                             <div class="custom-progess mt-3 mb-4 d-flex flex-colunm w-100">
                                 <div class="progress animated-progess progress-lg w-100">
@@ -245,76 +250,79 @@
                                 {{-- END TOOLTIPS --}}
 
                                 <div class="avatar-xs progress-icon-end" style="position: relative">
-                                    <span id="iconPontuacao" class="avatar-title-card border iconePosicaoRanking">{{ $rankingPodio[0]['posicao_ranking'] }}º</span>
-                                    <span id="iconPontuacaoPrimeiro" style="display: none; position: absolute; bottom: 10px;">🥅</span>
-                                    </div>
+                                    <span id="iconPontuacao"
+                                        class="avatar-title-card border iconePosicaoRanking">{{ $rankingPodio[0]['posicao_ranking'] }}º</span>
+                                    <span id="iconPontuacaoPrimeiro"
+                                        style="display: none; position: absolute; bottom: 10px;">🥅</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-            <div class="row mx-0" style="margin-bottom: ">
-            <button onclick="hideShow()" type="button" class="shrinkFiltro btn border-primary btn-sm waves-effect waves-light px-2" id="botaoFiltro"><i class="fas fa-filter" id="iconFiltro"></i> <span class="text-white" id="textoFiltro">Filtros</span></button>
-        </div>
-        <div class="card border border-primary mini-stats-wid" id="cardFiltro" style="display: none;">
-            <div class="card-body" style="margin-top: 5%">
-                <form action="">
-                    @csrf
-                    <div class="mb-2">
-                        @php
-                            $grupo = $participantesPorGrupo[0]['nm_grupo'];
-                            $contadorGrupo = 0;
-                            $contadorInicial = 0;
-                        @endphp
+            <div class="col-md-3 d-flex flex-column">
+                <button onclick="hideShow()" type="button"
+                    class="shrinkFiltro btn border-primary btn-sm waves-effect waves-light px-2" id="botaoFiltro"><i
+                        class="fas fa-filter" id="iconFiltro"></i> <span class="text-white"
+                        id="textoFiltro">Filtros</span></button>
+                <div class="card border border-primary mini-stats-wid" id="cardFiltro" style="display: none;">
+                    <div class="card-body" style="margin-top: 5%">
+                        <form action="">
+                            @csrf
+                            <div class="mb-2">
+                                @php
+                                    $grupo = $participantesPorGrupo[0]['nm_grupo'];
+                                    $contadorGrupo = 0;
+                                    $contadorInicial = 0;
+                                @endphp
 
-                        <span>Unidade</span>
-                        <div class="input-group">
-                        <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
+                                <span>Unidade</span>
+                                <div class="input-group">
+                                    <select id="selectIndexUnidades" class="form-control select2 selectFiltros">
 
-                            @foreach ($participantesPorGrupo as $item)
-                                @if ($contadorInicial == 0)
+                                        @foreach ($participantesPorGrupo as $item)
+                                            @if ($contadorInicial == 0)
+                                                <option value="">Selecione</option>
+                                                <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
+                                                    @php
+                                                        $contadorInicial++;
+                                                    @endphp
+                                            @endif
+
+                                            @if ($item['nm_grupo'] == $grupo)
+                                                <option value="">{{ $item['nm_posto'] }}</option>
+                                            @else
+                                                </optgroup> {{-- aqui acontece a magica, sempre que muda de grupo fecha o optgroup --}}
+                                                @php
+                                                    
+                                                    $grupo = $item['nm_grupo'];
+                                                    
+                                                @endphp
+
+                                                <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
+
+                                                    <option value=""> {{ $item['nm_posto'] }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <span>Periodo</span>
+                            <div class="input-group">
+                                <select id="selectIndexPeriodo" class="form-control select2 selectFiltros">
                                     <option value="">Selecione</option>
-                                    <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
-                                        @php
-                                            $contadorInicial++;
-                                        @endphp
-                                @endif
-
-                                @if ($item['nm_grupo'] == $grupo)
-                                    <option value="">{{ $item['nm_posto'] }}</option>
-                                @else
-                                    </optgroup> {{-- aqui acontece a magica, sempre que muda de grupo fecha o optgroup --}}
-                                    @php
-                                        
-                                        $grupo = $item['nm_grupo'];
-                                        
-                                    @endphp
-
-                                    <optgroup label=" Grupo: {{ $item['nm_grupo'] }} ">
-
-                                        <option value=""> {{ $item['nm_posto'] }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                        </div>
+                                    @foreach ($mesesDisponiveis as $item)
+                                        <option class="text-capitalize" value=""> {{ $item['mes'] }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="input-group" style="justify-content: space-evenly;">
+                                <button type="submit" class="btn btn-primary w-md">Filtrar</button>
+                            </div>
+                        </form>
                     </div>
-                    <span>Periodo</span>
-                    <div class="input-group">
-                        <select id="selectIndexPeriodo" class="form-control select2 selectFiltros">
-                            <option value="">Selecione</option>
-                            @foreach ($mesesDisponiveis as $item)
-                                <option class="text-capitalize" value=""> {{ $item['mes'] }} </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="input-group" style="justify-content: space-evenly; padding-top: 25%">
-                        <button type="submit" class="btn btn-primary w-md">Filtrar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-                <div class="card mini-stats-wid bgIndicador my-2">
+                </div>
+                <div class="card mini-stats-wid bgIndicador my-2" id="posicaoCard">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
@@ -370,7 +378,7 @@
                                     <div class="carousel-align">
                                         <h6>{{ number_format(($item['pontuacao'] * 100) / $dadosUsuario->sum('pontuacao')) }}%
                                             <span class="separador primary"></span>
-                                            {{--<i class="bx bxs-upvote success"></i>--}} {{ $item['pontuacao'] }} Pts.
+                                            {{-- <i class="bx bxs-upvote success"></i> --}} {{ $item['pontuacao'] }} Pts.
                                         </h6>
                                     </div>
                                 </div>
@@ -430,17 +438,17 @@
     }, 1000);
     // ================================================//
 
-//VALIDA META DEPEDENDO DA COLOCAÇÃO
-var posicao = document.querySelector(".metaRanking");
+    //VALIDA META DEPEDENDO DA COLOCAÇÃO
+    var posicao = document.querySelector(".metaRanking");
 
-var marcosMetaTerceiro = document.querySelector(".marcosMetaTerceiro");
-var marcosMetaSegundo = document.querySelector(".marcosMetaSegundo");
+    var marcosMetaTerceiro = document.querySelector(".marcosMetaTerceiro");
+    var marcosMetaSegundo = document.querySelector(".marcosMetaSegundo");
 
-var textPontuacao = document.getElementById("textPontuacao");
-var textPontuacaoPrimeiro = document.getElementById("textPontuacaoPrimeiro");
+    var textPontuacao = document.getElementById("textPontuacao");
+    var textPontuacaoPrimeiro = document.getElementById("textPontuacaoPrimeiro");
 
-var iconPontuacao = document.getElementById("iconPontuacao");
-var iconPontuacaoPrimeiro = document.getElementById("iconPontuacaoPrimeiro");
+    var iconPontuacao = document.getElementById("iconPontuacao");
+    var iconPontuacaoPrimeiro = document.getElementById("iconPontuacaoPrimeiro");
 
     switch (posicao.innerText) {
         case "3º":
@@ -455,7 +463,7 @@ var iconPontuacaoPrimeiro = document.getElementById("iconPontuacaoPrimeiro");
         case "1º":
             marcosMetaSegundo.style.display = "none";
             marcosMetaTerceiro.style.display = "none";
-            
+
             textPontuacao.style.display = "none";
             textPontuacaoPrimeiro.style.display = "block";
 
@@ -478,14 +486,18 @@ var iconPontuacaoPrimeiro = document.getElementById("iconPontuacaoPrimeiro");
         var card = document.getElementById("cardFiltro");
         var texto = document.getElementById("textoFiltro");
         var icone = document.getElementById("iconFiltro");
+        var posicao = document.getElementById("posicaoCard");
+
 
         if (card.style.display === "block") {
+            posicao.style.display = "flex";
             card.style.display = "none";
             texto.innerHTML = "Filtros";
             icone.classList.replace("fa-angle-down", "fa-angle-right");
             botao.classList.replace("expandFiltro", "shrinkFiltro");
 
         } else {
+            posicao.style.display = "none";
             card.style.display = "block";
             texto.innerHTML = "Esconder Filtros";
             icone.classList.replace("fa-angle-right", "fa-angle-down")

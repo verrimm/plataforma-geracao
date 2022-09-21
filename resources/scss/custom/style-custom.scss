@@ -312,9 +312,9 @@ mark {
     transition: height 2s;
     transition: background-color .5s;
     transition-timing-function: ease;
-    width: 92%;
-    bottom: 100%;
-    position: absolute;
+    width: 100%;
+    top: 0;
+    position: relative;
     background-color: $blue  !important;
     color: #fff;
 }
@@ -327,7 +327,7 @@ mark {
 }
 
 #cardFiltro{
-    align-self: flex-end;
+    align-self: flex-start;
     z-index: 1000;
     display: block;
     position: absolute;
@@ -413,7 +413,7 @@ mark {
 //BACKGROUND ANIMATED POSITION
 .bg-ranking {
     width: 100%;
-    //height: 100vh;
+    height: 74%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -443,7 +443,7 @@ mark {
 
 .bg-ouro {
     width: 100%;
-    //height: 100vh;
+    height: 74%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -458,7 +458,7 @@ mark {
 
 .bg-prata {
     width: 100%;
-    //height: 100vh;
+    height: 74%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -473,7 +473,7 @@ mark {
 
 .bg-bronze {
     width: 100%;
-    //height: 100vh;
+    height: 74%;
     display: flex;
     align-items: center;
     justify-content: center;
