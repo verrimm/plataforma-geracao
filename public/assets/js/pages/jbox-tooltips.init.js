@@ -194,8 +194,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/assets/js/pages/jbox-tooltips.init": 0,
-/******/ 			"assets/css/app-dark": 0,
 /******/ 			"assets/css/app": 0,
+/******/ 			"assets/css/app-dark": 0,
 /******/ 			"assets/css/bootstrap-dark": 0,
 /******/ 			"assets/css/icons": 0,
 /******/ 			"assets/css/bootstrap": 0
@@ -250,12 +250,12 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/js/pages/jbox-tooltips.init.js"); })
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/bootstrap.scss"); })
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/icons.scss"); })
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/app.scss"); })
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/bootstrap-dark.scss"); })
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/app-dark","assets/css/app","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/app-dark.scss"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/app-dark","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/js/pages/jbox-tooltips.init.js"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/app-dark","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/bootstrap.scss"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/app-dark","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/icons.scss"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/app-dark","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/app.scss"); })
+/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/app-dark","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/bootstrap-dark.scss"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/app","assets/css/app-dark","assets/css/bootstrap-dark","assets/css/icons","assets/css/bootstrap"], function() { return __webpack_require__("./resources/scss/app-dark.scss"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

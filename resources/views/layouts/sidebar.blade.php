@@ -16,6 +16,7 @@
                         <li><a href="./ranking-geral" key="t-ranking"><i class="bx bx-bar-chart-alt-2 bx-tada-hover"></i>Ranking Geral</a></li>
                         <li><a href="./comparador" key="t-comparador"><i class="bx bx-git-compare bx-tada-hover"></i>Comparador</a></li>
                         <li><a href="./simulador" key="t-simulador"><i class="bx bx-calculator bx-tada-hover"></i>Simulador</a></li>
+                        <li><a href="./premiacao" key="t-premiacao"><i class="bx bx-diamond bx-tada-hover"></i>Premiação</a></li>
                         <li><a href="./regulamento" key="t-regulamento"><i class="bx bx-book-open bx-tada-hover"></i>Regulamento</a></li>
                     </ul>
                 </li>
