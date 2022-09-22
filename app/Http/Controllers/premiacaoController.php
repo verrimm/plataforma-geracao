@@ -12,16 +12,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class rankingController extends Controller
+class premiacaoController extends Controller
 {
-    public function show(){
+    public function show()
+    {
 
         $ultimaData = lancamento::select(lancamento::raw('max(dt_info) as ultimaData'))
-        ->first();
+            ->first();
 
         $mesAnterior = rankingPosto::select(lancamento::raw('max(dt_info), date_add(max(dt_info), INTERVAL - 1 MONTH) as "mesAnterior"'))
-        ->first();
-        
+            ->first();
+
         $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
         $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
             ->where('cd_posto', '=', $usuario['cd_posto'])->first();
@@ -29,12 +30,12 @@ class rankingController extends Controller
         //começo  da criação das  variaveis utilizadas na pagina, atraves de consultas sql
         $dadosUsuario = posto::join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "p.cd_coop")
-            ->on("gp.cd_posto", "=", "p.cd_posto");
+                ->on("gp.cd_posto", "=", "p.cd_posto");
         })
             ->join("grupos as g", 'g.cd_grupo', "=", 'gp.cd_grupo')
             ->join("lancamento as l", function ($join) {
                 $join->on("l.cd_coop", "=", "p.cd_coop")
-                ->on("l.cd_posto", "=", "p.cd_posto");
+                    ->on("l.cd_posto", "=", "p.cd_posto");
             })
             ->join("indicadores as i", function ($join) {
                 $join->on("i.cd_indicador", "=", "l.cd_indicador");
@@ -56,24 +57,23 @@ class rankingController extends Controller
             ->orderby('rp.posicao_ranking', 'asc')
             ->get();
 
-        $ranking = posto::select("p.nm_posto",'rp.pt_ranking','rp.posicao_ranking','gp.cd_grupo',DB::raw("  CASE
+        $ranking = posto::select("p.nm_posto", 'rp.pt_ranking', 'rp.posicao_ranking', 'gp.cd_grupo', DB::raw("  CASE
         WHEN rp.posicao_ranking > rp2.posicao_ranking THEN 1
         WHEN rp.posicao_ranking < rp2.posicao_ranking THEN - 1
         ELSE 0    END AS 'evolucao'"))
-        ->join("grupo_posto as gp", function ($join) {
-            $join->on("gp.cd_coop", "=", "p.cd_coop")
-                ->on("gp.cd_posto", "=", "p.cd_posto");
-        })
+            ->join("grupo_posto as gp", function ($join) {
+                $join->on("gp.cd_coop", "=", "p.cd_coop")
+                    ->on("gp.cd_posto", "=", "p.cd_posto");
+            })
             ->join("ranking_posto as rp", function ($join) {
                 $join->on("rp.cd_coop", "=", "p.cd_coop")
                     ->on("rp.cd_posto", "=", "p.cd_posto");
             })
             ->leftJoin("ranking_posto as rp2", function ($join) {
                 $join->on("rp.cd_superacao", "=", "rp2.cd_superacao")
-                ->on("rp.cd_coop", "=", "rp2.cd_coop")
-                ->on("rp.cd_posto", "=", "rp2.cd_posto")
-                ->on("rp2.dt_info","=",DB::raw('date_add(rp.dt_info, INTERVAL - 1 MONTH)'))
-                ;
+                    ->on("rp.cd_coop", "=", "rp2.cd_coop")
+                    ->on("rp.cd_posto", "=", "rp2.cd_posto")
+                    ->on("rp2.dt_info", "=", DB::raw('date_add(rp.dt_info, INTERVAL - 1 MONTH)'));
             })
 
             ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
@@ -83,11 +83,11 @@ class rankingController extends Controller
 
         $listaGruposRanking = posto::join("grupo_posto as gp", function ($join) {
             $join->on("gp.cd_coop", "=", "p.cd_coop")
-            ->on("gp.cd_posto", "=", "p.cd_posto");
+                ->on("gp.cd_posto", "=", "p.cd_posto");
         })
             ->join("ranking_posto as rp", function ($join) {
                 $join->on("rp.cd_coop", "=", "p.cd_coop")
-                ->on("rp.cd_posto", "=", "p.cd_posto");
+                    ->on("rp.cd_posto", "=", "p.cd_posto");
             })
             // ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
             ->orderBy('pt_ranking', 'desc')
@@ -110,9 +110,9 @@ class rankingController extends Controller
             ->get();
 
         $listaGrupos = grupo::join("superacao as s", "s.cd_superacao", "=", "g.cd_superacao")
-        ->get();
-    
-        return view('ranking-geral', [
+            ->get();
+
+        return view('premiacao', [
             'ultimaData'  => $ultimaData['ultimaData'],
             'dadosUsuario' => $dadosUsuario,
             'infoGrupo' => $grupo,
@@ -122,7 +122,5 @@ class rankingController extends Controller
             'listaGruposRanking' => $listaGruposRanking,
             'rankingCarousel' => $rankingCarousel
         ]);
-
-
     }
 }

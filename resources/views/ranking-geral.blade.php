@@ -12,11 +12,9 @@
             Superação
         @endslot
         @slot('title')
-            Ranking GRUPO {{ $dadosRanking[0]['cd_grupo'] }}
+            Ranking GRUPO {{$dadosRanking[0]['cd_grupo']}}{{-- grupo --}}
         @endslot
     @endcomponent
-
-
 
     <div class="col-xl-12" id="paginaRanking">
 
@@ -304,6 +302,7 @@
     <script>
 
     //CRIA CORES NOS RANKINGS DO MODAL 
+    function rankingGrupos(){
         var rankingModal = document.querySelectorAll(".rankingModal");
         var linhaModal = document.querySelectorAll(".linhaModal");
 
@@ -326,6 +325,7 @@
                     break;
             }
         }
+    }
     //
 
     function seletorMes(elemento){
@@ -350,7 +350,8 @@
                 var formulario = document.getElementById('paginaRanking')
                 formulario.innerHTML=resposta
                 console.log("sucesso")  
-                ativaSeletorMes()
+                ativaSeletorMes(),
+                rankingGrupos()
                 },
                 error: function(resposta){
                     console.log("erro")

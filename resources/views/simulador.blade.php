@@ -6,7 +6,7 @@
 
 @component('components.breadcrumb')
 @slot('li_1') Superação @endslot
-@slot('title') Simulador @endslot
+@slot('title') Premiação @endslot
 @endcomponent
 <div class="row">
     <div class="col-12">

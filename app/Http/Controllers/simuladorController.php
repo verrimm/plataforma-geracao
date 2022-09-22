@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class rankingController extends Controller
+class simuladorController extends Controller
 {
     public function show(){
 
@@ -112,7 +112,7 @@ class rankingController extends Controller
         $listaGrupos = grupo::join("superacao as s", "s.cd_superacao", "=", "g.cd_superacao")
         ->get();
     
-        return view('ranking-geral', [
+        return view('simulador', [
             'ultimaData'  => $ultimaData['ultimaData'],
             'dadosUsuario' => $dadosUsuario,
             'infoGrupo' => $grupo,

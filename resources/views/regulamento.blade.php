@@ -1,4 +1,4 @@
-@extends('layouts.master', ['rankingRapido' => 'teste'])
+@extends('layouts.master')
 
 @section('title') Regulamento @endsection
 
@@ -332,16 +332,13 @@
                                         <a href="#campanhaSuperacao" class="nav-link active">Campanha Superação</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#prerequisites" class="nav-link">Prerequisites</a>
+                                        <a href="#prerequisites" class="nav-link">Participantes</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#installation" class="nav-link">Installation</a>
+                                        <a href="#installation" class="nav-link">Formação dos Grupos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#multi" class="nav-link">Multi Language Settings</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#tips" class="nav-link">Tips</a>
+                                        <a href="#multi" class="nav-link">Estrutura da campanha superação 2022</a>
                                     </li>
                                 </ul>
                             </div>

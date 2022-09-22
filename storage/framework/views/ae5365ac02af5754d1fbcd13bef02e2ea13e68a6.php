@@ -69,6 +69,15 @@
 
                                 </h5>
                             </div>
+                            <div class="flex-grow-1">
+                                <p class="badge bg-primary" style="font-size: 100%; margin-bottom: 8px !important;">
+                                    <span class="bx bx-calendar"></span> Referência</p>
+                                <button type="button" class="btn btn-outline-light tooltipIndicador" draggable="true"
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Data das informações listadas"><i
+                                        class="far fa-question-circle"></i></button>
+                                <h5 class="mb-0">Julho/22</h5>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer progressBarBG">
@@ -321,7 +330,7 @@
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
-                            <div class="input-group" style="justify-content: space-evenly;">
+                            <div class="input-group" style="justify-content: space-evenly; margin-top: 15px">
                                 <button type="submit" class="btn btn-primary w-md">Filtrar</button>
                             </div>
                         </form>

@@ -4,8 +4,11 @@ use App\Http\Controllers\comparadorAjaxController;
 use App\Http\Controllers\comparadorController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\indicadorController;
+use App\Http\Controllers\premiacaoController;
 use App\Http\Controllers\rankingController;
+use App\Http\Controllers\regulamentoController;
 use App\Http\Controllers\seletorMes;
+use App\Http\Controllers\simuladorController;
 use App\Models\grupo;
 use App\Models\grupoPosto;
 use App\Models\indicador;
@@ -111,5 +114,16 @@ Route::get('seletorMesRanking',[seletorMes::class,'ranking'])->name('seletorMesR
 
 Route::post('comparadorAjax', [comparadorAjaxController::class, 'show'])->name('comparadorAjax');
 
-//rotas indicadores e rotas default e 404
+//rotas regulamento
+Route::get('premiacao', [premiacaoController::class, 'show']);
+
+//rotas regulamento
+Route::get('regulamento', [regulamentoController::class, 'show']);
+
+//rotas regulamento
+Route::get('simulador', [simuladorController::class, 'show']);
+
+//rotas indicadores e rotas default e 404 || PRECISA SEMPRE FICAR POR ÚLTIMO NA LISTA 
 Route::get('/{indicador}', [indicadorController::class, 'show']);
+
+
