@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    // TOOLTIP PODIO META - INDEX
     new jBox('Tooltip', {
         attach: '.tooltipMarcoSegundo',
         animation: {
@@ -13,7 +14,9 @@ $(document).ready(function () {
         footer: $('#footerMarcoSegundo'),
         closeOnMouseleave: true
     });
+    //==========================//
 
+    // TOOLTIP PODIO META - INDEX
     new jBox('Tooltip', {
         attach: '.tooltipMarcoTerceiro',
         animation: {
@@ -28,5 +31,5 @@ $(document).ready(function () {
         footer: $('#footerMarcoTerceiro'),
         closeOnMouseleave: true
     });
-
+    //==========================//
 });

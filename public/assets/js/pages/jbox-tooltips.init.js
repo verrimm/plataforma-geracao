@@ -8,6 +8,7 @@
 /***/ (function() {
 
 $(document).ready(function () {
+  // TOOLTIP PODIO META - INDEX
   new jBox('Tooltip', {
     attach: '.tooltipMarcoSegundo',
     animation: {
@@ -21,7 +22,9 @@ $(document).ready(function () {
     content: $('#conteudoMarcoSegundo'),
     footer: $('#footerMarcoSegundo'),
     closeOnMouseleave: true
-  });
+  }); //==========================//
+  // TOOLTIP PODIO META - INDEX
+
   new jBox('Tooltip', {
     attach: '.tooltipMarcoTerceiro',
     animation: {
@@ -35,7 +38,7 @@ $(document).ready(function () {
     content: $('#conteudoMarcoTerceiro'),
     footer: $('#footerMarcoTerceiro'),
     closeOnMouseleave: true
-  });
+  }); //==========================//
 });
 
 /***/ }),

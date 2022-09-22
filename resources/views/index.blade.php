@@ -17,30 +17,21 @@
             Bem-Vindo {{ $usuario['nm_usuario'] }}
         @endslot
     @endcomponent
+
 @section('css')
-    <style>
-        .page-title-right {
-            display: none;
-        }
 
-        .select2-container{
-	
+<style>
+    .page-title-right {
+        display: none;
+    }
 
-    width: 100%!important;
+    .select2-container{
+        width: 100%!important;
+    }
+</style>
 
-
-
-}
-
-
-
-    </style>
     <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-
-
-    <link href="{{ URL::asset('/assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.css') }}" rel="stylesheet"
-        type="text/css" />
-
+    <link href="{{ URL::asset('/assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ URL::asset('/assets/libs/jbox/jbox.min.css') }}">
 @endsection
 
@@ -656,9 +647,6 @@
                     bgIndicador.classList.add("bg-ranking");
                     break;
 
-
-
-
             }
     }
 
@@ -705,7 +693,6 @@
 
     //<!-- define cor da posição ranking  -->
     function jboxInit(){
-
      
         new jBox('Tooltip', {
             attach: '.tooltipMarcoSegundo',
@@ -736,51 +723,35 @@
             footer: $('#footerMarcoTerceiro'),
             closeOnMouseleave: true
         });
-
-
-
-
-
     }
 
     function carregarSelect2(){
 
-        
         $('#selectIndexPeriodo').select2();
             $('#selectIndexPeriodo').on('select2:select', function (e) {
             var data = e.params.data;
 
             document.querySelector('#mesSelecionado').setAttribute('value',data.text)
 
-
             });
 
 
             $('#selectIndexUnidades').select2();
-
             $('#selectIndexUnidades').on('select2:select', function (e) {
             var data = e.params.data;
       
             document.querySelector('#postoSelecionado').setAttribute('value',data.text)
             document.querySelector('#grupoSelecionado').setAttribute('value',data.element.dataset.qualgrupo)
-            
 
             });
     }
 
 
-    function cancelarSubmitForm(){
-        
+    function cancelarSubmitForm(){  
         document.getElementById("formIndex").addEventListener("click", function(event){
-        event.preventDefault()
+            event.preventDefault()
         });
-   
-
     }
-
-       
-    
-
 
 </script>
 

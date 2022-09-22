@@ -319,13 +319,6 @@ mark {
     color: #fff;
 }
 
-.shrinkFiltro:hover {
-    transition: background-color 2s;
-    transition-timing-function: ease;
-    background-color: $cyan  !important;
-    color: #fff;
-}
-
 #cardFiltro{
     align-self: flex-start;
     z-index: 1000;
@@ -349,12 +342,42 @@ mark {
     position: absolute;
 }
 
+// Comportamento do botao de filtro
+
+.shrinkFiltro:hover {
+    transition: background-color 2s;
+    transition-timing-function: ease;
+    background-color: $cyan  !important;
+    color: #fff;
+}
+
+.shrinkFiltro:active+.btn,
+.shrinkFiltro:checked+.btn,
+.shrinkFiltro:active {
+    color: #fff !important;
+}
+
+.shrinkFiltro:focus {
+    color: #fff !important;
+}
+
+.expandFiltro:active+.btn,
+.expandFiltro:checked+.btn,
+.expandFiltro:active {
+    color: #fff !important;
+}
+
+.expandFiltro:focus {
+    color: #fff !important;
+}
+
 .expandFiltro:hover {
     transition: background-color 2s;
     transition-timing-function: ease;
     background-color: $cyan  !important;
     color: #fff;
 }
+// =============================================
 
 .mini-stats-wid {
     box-shadow: inset 0px 0px 0px .3px $blue;
