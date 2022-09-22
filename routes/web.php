@@ -109,8 +109,11 @@ Route::get('graficoIndicadores/{indicador}', function ($indicador) {
 
 });
 
-Route::post('seletorMesRanking',[seletorMes::class,'ranking'])->name('seletorMesRanking')->name('seletorMesRanking');;
-Route::get('seletorMesRanking',[seletorMes::class,'ranking'])->name('seletorMesRanking');
+Route::post('seletorMesRanking',[seletorMes::class,'ranking'])->name('seletorMesRanking')->name('seletorMesRanking');
+Route::post('resumo',[seletorMes::class,'index'])->name('resumoIndex')->name('resumoIndex');
+Route::get('resumo',[seletorMes::class,'index'])->name('resumoIndex')->name('resumoIndex');
+
+
 
 Route::post('comparadorAjax', [comparadorAjaxController::class, 'show'])->name('comparadorAjax');
 
