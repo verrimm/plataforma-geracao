@@ -145,6 +145,27 @@ class seletorMes extends Controller
         
         $raw = DB::statement("SET lc_time_names = 'pt_BR'");
 
+        $mesRequest =  $request->input('mesSelecionado');
+        $grupoRequest =  $request->input('grupoSelecionado');
+        $postoRequest =  $request->input('postoSelecionado');
+
+        $coopEunidadeSelecionado = grupoPosto::select('gp.cd_coop','gp.cd_posto')
+        ->join("postos as p", function ($join) {
+            $join->on("gp.cd_coop", "=", "p.cd_coop")
+                ->on("gp.cd_posto", "=", "p.cd_posto");
+        })
+        ->where('gp.cd_grupo','=',$grupoRequest)
+        ->where('p.nm_posto','=',$postoRequest)
+        ->first()
+        ;
+;
+
+        $ultimaDataTemp = lancamento::where(lancamento::raw('monthname(dt_info)'),'=',$mesRequest)
+        ->first();
+
+
+
+
         $mesesDisponiveis = rankingPosto::select(rankingPosto::raw('monthname(dt_info) as mes'))
         ->groupBy('ranking_posto.dt_info')
         ->get()
@@ -160,7 +181,8 @@ class seletorMes extends Controller
         ->orderBy('gp.cd_grupo')    
         ->get();
 
-        $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
+        // $usuario = usuario::where('cd_usuario', '=', Auth::id())->first();
+        $usuario = $coopEunidadeSelecionado ;
         $grupo = grupoPosto::where('cd_coop', '=', $usuario['cd_coop'])
             ->where('cd_posto', '=', $usuario['cd_posto'])->first();
         $ranking = posto::join("grupo_posto as gp", function ($join) {
@@ -171,7 +193,8 @@ class seletorMes extends Controller
                 $join->on("rp.cd_coop", "=", "p.cd_coop")
                     ->on("rp.cd_posto", "=", "p.cd_posto");
             })
-            ->where('rp.dt_info', '=', $ultimaData['ultimaData'])
+            // ->where('rp.dt_info', '=', $ultimaData['ultimaData'])
+            ->where('rp.dt_info', '=', $ultimaDataTemp['dt_info'])
             ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
             ->where('p.cd_coop', '=', $usuario['cd_coop'])
             ->where('p.cd_posto', '=', $usuario['cd_posto'])
@@ -187,7 +210,8 @@ class seletorMes extends Controller
             })
 
             ->where('gp.cd_grupo', '=', $grupo['cd_grupo'])
-            ->where('rp.dt_info','=',$ultimaData['ultimaData'])
+            // ->where('rp.dt_info','=',$ultimaData['ultimaData'])
+            ->where('rp.dt_info', '=', $ultimaDataTemp['dt_info'])
             ->orderBy('posicao_ranking', 'asc')
             ->get();
 
@@ -229,12 +253,16 @@ class seletorMes extends Controller
             ->where('p.cd_coop', $usuario['cd_coop'])
             ->where('p.cd_posto', $usuario['cd_posto'])
 
-            ->where('l.dt_info','=',$ultimaData['ultimaData'])
+            // ->where('l.dt_info','=',$ultimaData['ultimaData'])
+            ->where('l.dt_info', '=', $ultimaDataTemp['dt_info'])
             ->get();
 
+            
+ 
 
-        // return $ultimaData['ultimaData'];
-        return view('index', [
+
+
+        return view('seletorMes.index', [
             'mesesDisponiveis' =>  $mesesDisponiveis,
             'participantesPorGrupo' =>$participantesPorGrupo,
             'rankingPodio' => $rankingPodio,
