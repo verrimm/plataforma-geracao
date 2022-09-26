@@ -18,5 +18,11 @@
             marcosMetaTerceiro.style.opacity = 1;
         }
 
-
+    //  const progressIndicador = document.querySelector(".progressIndicador");
+    //  if (progressIndicador) {
+    //      progressIndicador.style.width = progressIndicador.getAttribute("data-complete") + "%";
+    //      progressIndicador.style.opacity = 1;
+    //  }
+    //  META INDICADOR
+     
 }

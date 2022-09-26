@@ -23,7 +23,13 @@ function progressMeta() {
   if (marcosMetaTerceiro) {
     marcosMetaTerceiro.style.paddingLeft = marcosMetaTerceiro.getAttribute("data-complete-meta") - 4 + "%";
     marcosMetaTerceiro.style.opacity = 1;
-  }
+  } //  const progressIndicador = document.querySelector(".progressIndicador");
+  //  if (progressIndicador) {
+  //      progressIndicador.style.width = progressIndicador.getAttribute("data-complete") + "%";
+  //      progressIndicador.style.opacity = 1;
+  //  }
+  //  META INDICADOR
+
 }
 /******/ })()
 ;

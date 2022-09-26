@@ -85,12 +85,12 @@ class comparadorController extends Controller
             
 
         return view('comparador', [
-
         'participantesGrupo'=>$participantesGrupo,
         'minhaUnidade'=>$minhaUnidade,
         'dadosUsuario' => $dadosUsuario,
         'rankingCarousel' => $rankingCarousel,
-        'ranking' =>  $ranking
+        'ranking' =>  $ranking,
+        'ultimaData' => $ultimaData
     ]);
 
 

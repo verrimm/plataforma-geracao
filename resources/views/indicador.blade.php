@@ -109,7 +109,7 @@
 
             <div class="custom-progess mt-3 mb-3">
 
-              <div class="progress animated-progess progress-lg">
+              <div class="progress animated-progess progress-lg" style="width: 97%; left: 2%;">
                 <div class="progress-bar-striped js-completed-bar progress-bar bg-success rounded-bar" role="progressbar" data-complete="{{($pontuacaoIndicador['pontuacao']*100)/ ($indicador["pontuacao_base"]*$infoGrupo["total_participantes"])}}">
                 </div>
                 <svg class="fogueteBar bx-spin" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -245,6 +245,21 @@
 <script src="{{ URL::asset('./assets/js/pages/iconColocacao.init.js') }}"></script>
 
 <script>
+
+      $(document).ready(function(){
+
+        progressMeta()
+
+    });
+
+    function progressMeta(){
+        const progress = document.querySelector(".js-completed-bar");
+        if (progress) {
+            progress.style.width = (progress.getAttribute("data-complete")-2) + "%";
+            progress.style.opacity = 1;
+        }
+    }
+
    
    var resultAjax = [];
    var url = 'graficoIndicadores/creditopf';

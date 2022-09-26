@@ -65,8 +65,8 @@ class comparadorAjaxController extends Controller
             return view('tabelaComparador',[
 
                     'dadosUsuario'=> $dadosUsuario,
-                    'participantesGrupo'=>$participantesGrupo
-                    
+                    'participantesGrupo'=>$participantesGrupo,
+                    'ultimaData' => $ultimaData
 
 
             ]);

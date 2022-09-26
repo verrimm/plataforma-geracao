@@ -379,6 +379,41 @@ mark {
 }
 // =============================================
 
+// Comportamento botão de regras do indicador
+.shrink:hover {
+    transition: background-color 2s;
+    transition-timing-function: ease;
+    background-color: $cyan  !important;
+    color: #fff;
+}
+
+.shrink:active+.btn,
+.shrink:checked+.btn,
+.shrink:active {
+    color: #fff !important;
+}
+
+.shrink:focus {
+    color: #fff !important;
+}
+
+.expand:active+.btn,
+.expand:checked+.btn,
+.expand:active {
+    color: #fff !important;
+}
+
+.expand:focus {
+    color: #fff !important;
+}
+
+.expand:hover {
+    transition: background-color 2s;
+    transition-timing-function: ease;
+    background-color: $cyan  !important;
+    color: #fff;
+}
+//=============================================
 .mini-stats-wid {
     box-shadow: inset 0px 0px 0px .3px $blue;
 }
