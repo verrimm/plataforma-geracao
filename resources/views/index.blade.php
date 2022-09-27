@@ -430,8 +430,7 @@
                                         @endunless
                                         <h6 class="lead"><small><i class="bx bx-food-menu"></i> <strong
                                                     style="font-weight: 500;">{{ $item['label_vl_extra_2'] }}:</strong>
-                                                <span
-                                                    style="font-weight: 300;">{{ $item['prefixo_2'] }}{{ number_format($item['vl_extra_2'], 0, ',', '.') }}{{ $item['sufixo_2'] }}</span></small>
+                                                <span style="font-weight: 300;">{{ $item['prefixo_2'] }}{{ number_format($item['vl_extra_2'], 0, ',', '.') }}{{ $item['sufixo_2'] }}</span></small>
                                         </h6>
                                     </div>
                                 </div>

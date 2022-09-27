@@ -15,16 +15,7 @@
         $ouro: #ecc81a;
         $prata: #9aa0a5;
         $bronze: #f1734f;
-
         //== Cores ===//
-        body {
-            background: #F1F1F1;
-        }
-
-        // .container {
-        //     width: 1200px;
-        //     margin: 200px auto;
-        // }
 
         .timeline {
             // counter-reset: year 2013;
@@ -38,7 +29,6 @@
             position: relative;
             text-align: center;
             text-transform: uppercase;
-            font-family: 'Dosis', sans-serif;
         }
 
         .timeline ol,
@@ -46,25 +36,25 @@
             padding-left: 0rem !important;
         }
 
-        //Cor da fonte de texto
-        // .premios ul:nth-child(1) {
-        //     color: #4caf50;
-        // }
-
         .timeline li:before {
-            // counter-increment: year;
-            content: '🎖';
+            content: '';
+            background-size: 700% 700%;
+            background-image: linear-gradient(-45deg,
+                rgba(59, 173, 227, 1) 0%,
+                rgba(87, 111, 230, 1) 25%,
+                rgba(59, 173, 227, 1) 51%,
+                rgba(87, 111, 230, 1) 100%);
+            animation: AnimateBG 20s ease infinite;
             width: 40px;
             height: 40px;
-            border: 3px solid $blue;
+            border: 2px solid rgba(5, 27, 37, 0.3);
             border-radius: 50%;
             display: block;
             text-align: center;
             line-height: 35px;
             margin: 0 auto 10px;
-            background: #f1f1f1;
             color: #000;
-            cursor: pointer;
+            cursor: auto;
         }
 
         .timeline li:after {
@@ -88,22 +78,55 @@
         }
 
         .timeline li.active:before {
-            background: $blue;
-            color: #F1F1F1;
+            content: '🏆';
+            font-size: 1.3rem;
+            background-size: 700% 700%;
+            background-image: linear-gradient(-45deg,
+                rgba(255, 151, 0, 1) 0%,
+                rgb(230, 194, 0, 1) 25%,
+                rgb(255, 194, 0) 51%,
+                rgba(255, 151, 0, 1) 100%);
+            animation: AnimateBG 20s ease infinite;
+            cursor: pointer;
+            // color: #F1F1F1;
         }
 
-        .timeline li.active+li:after {
-            background: $blue;
+        .premiacaoTrimestre .badge{
+            font-size: 115%;
         }
 
-        .border-ouro{
-            border-color: $ouro !important;
+        // .timeline li.active+li:after {
+        //     background: $blue;
+        // }
+
+        .border-ouro {
+            border-color: $ouro  !important;
         }
-        
+
         .border-prata {
-            border-color: $prata !important;
+            border-color: $prata  !important;
         }
 
         .border-bronze {
-            border-color: $bronze !important;
+            border-color: $bronze  !important;
+        }
+
+        @keyframes AnimateBG {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        .tooltipGatilho1, .tooltipGatilho2{
+            padding: 0;
+            border: none;
+            color: #fff;
         }
