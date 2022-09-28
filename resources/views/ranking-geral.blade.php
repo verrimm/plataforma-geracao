@@ -192,7 +192,6 @@
                                                         {{ $itemRanking2['pt_ranking'] }}
                                                     </div>
                                                     <div class="ranking-table-data" style="padding-right: 1.125rem">
-                                                       
 
                                                             @if ($itemRanking2['evolucao']==-1)
                                                                 <i class="fas fa-angle-up fa-2x success"></i>
@@ -326,10 +325,8 @@
             }
         }
     }
-    //
 
     function seletorMes(elemento){
-
 
             console.log( elemento.innerText)
 

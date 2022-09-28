@@ -257,13 +257,18 @@
                                     <h6 id="footerMarcoTerceiro"><strong>{{ $rankingPodio[2]['nm_posto'] }} | Pontos:
                                             {{ $rankingPodio[2]['pt_ranking'] }}</strong></h6>
                                 </div>
+                                <div style="display: none" id="conteudoMarcoPrimeiro">
+                                    <div class="d-flex" style="margin-top: 10px">
+                                        <i class="fas fa-trophy first fa-3x iconMarco bx-tada" style="margin-right: 10px"
+                                            data-colocacao="{{ $rankingPodio[0]['posicao_ranking'] }}"></i>
+                                        <h5>{{ $rankingPodio[0]['nm_posto'] }} | Pontos: {{ $rankingPodio[0]['pt_ranking'] }}</h5>
+                                    </div>
+                                </div>                                
                                 {{-- END TOOLTIPS --}}
 
                                 <div class="avatar-xs progress-icon-end" style="position: relative">
-                                    <span id="iconPontuacao"
-                                        class="avatar-title-card border iconePosicaoRanking">{{ $rankingPodio[0]['posicao_ranking'] }}º</span>
-                                    <span id="iconPontuacaoPrimeiro"
-                                        style="display: none; position: absolute; bottom: 10px;">🥅</span>
+                                    <span id="iconPontuacao" class="avatar-title-card border iconePosicaoRanking tooltipMarcoPrimeiro">{{ $rankingPodio[0]['posicao_ranking'] }}º</span>
+                                    <span id="iconPontuacaoPrimeiro" style="display: none; position: absolute; bottom: 10px;">🥅</span>
                                 </div>
                             </div>
                         </div>
@@ -392,8 +397,7 @@
                                 <div class="card-footer">
                                     <div class="carousel-align">
                                         <h6>{{ number_format(($item['pontuacao'] * 100) / $dadosUsuario->sum('pontuacao')) }}%
-                                            <span class="separador primary"></span>
-                                            {{-- <i class="bx bxs-upvote success"></i> --}} {{ $item['pontuacao'] }} Pts.
+                                            <span class="separador primary"></span> {{ $item['pontuacao'] }}/{{$item["pontuacao_base"]*$item["total_participantes"]}}
                                         </h6>
                                     </div>
                                 </div>
@@ -710,6 +714,21 @@
             width: 300,
             content: $('#conteudoMarcoTerceiro'),
             footer: $('#footerMarcoTerceiro'),
+            closeOnMouseleave: true
+        });
+
+        new jBox('Tooltip', {
+            attach: '.tooltipMarcoPrimeiro',
+            animation: {
+                open: 'pulse',
+                close: 'pulse'
+            },
+            position: {
+                y: 'bottom'
+            },
+            width: 300,
+            content: $('#conteudoMarcoPrimeiro'),
+            footer: $('#footerMarcoPrimeiro'),
             closeOnMouseleave: true
         });
     }

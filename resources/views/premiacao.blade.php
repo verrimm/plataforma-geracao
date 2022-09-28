@@ -66,7 +66,7 @@
             </div>
             <div class="card-body d-flex align-items-center">
                 <div class="flex-shrink-0">
-                    <img src="https://via.placeholder.com/100" alt="...">
+                    <img src="https://via.placeholder.com/100x100?text=Foto" alt="...">
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <h5 class="card-title">Card title</h5>
@@ -87,7 +87,7 @@
             </div>
             <div class="card-body d-flex align-items-center">
                 <div class="flex-shrink-0">
-                    <img src="https://via.placeholder.com/100" alt="...">
+                    <img src="https://via.placeholder.com/100x100?text=Foto" alt="...">
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <h5 class="card-title">Card title</h5>
@@ -109,7 +109,7 @@
             </div>
             <div class="card-body d-flex align-items-center">
                 <div class="flex-shrink-0">
-                    <img src="https://via.placeholder.com/100" alt="...">
+                    <img src="https://via.placeholder.com/100x100?text=Foto" alt="...">
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <h5 class="card-title">Card title</h5>
@@ -129,7 +129,7 @@
             </div>
             <div class="card-body d-flex align-items-center">
                 <div class="flex-shrink-0">
-                    <img src="https://via.placeholder.com/100" alt="...">
+                    <img src="https://via.placeholder.com/100x100?text=Foto" alt="...">
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <h5 class="card-title">Card title</h5>
