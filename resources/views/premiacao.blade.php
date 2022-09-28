@@ -25,13 +25,20 @@
 @endsection
 
 <div class="row">
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt incidunt, fuga libero doloribus, expedita voluptas alias est voluptatibus ipsum quis beatae repellat recusandae suscipit. Possimus quas voluptas ex nemo vitae.</p>
+    <div class="mb-2 placeholder-glow">
+        <span class="placeholder placeholder-lg col-10"></span>
+        <span class="placeholder placeholder-lg col-9"></span>
+        <span class="placeholder placeholder-lg col-7"></span>
+    </div>
 </div>
-<div class="row">
+<div class="row"> {{-- TIMELINE --}}
     <div class="col-xl-12">
-        <div class="premios">
+        <div class="premios my-4">
+            <div class="mb-5 placeholder-glow">
+                <span class="placeholder placeholder-sm col-5"></span>
+            </div>
             <ul class="timeline">
-                <li class="mesPremiacao">Jan</li>
+                <li class="">Jan</li>
                 <li class="">Fev</li>
                 <li class="active trimestre"> Mar</li>
                 <li class="">Abr</li>
@@ -46,24 +53,129 @@
             </ul>
         </div>
     </div>
+</div> {{-- FIM TIMELINE --}}
+
+<div class="row my-5">
+    <div class="my-4 placeholder-glow">
+        <span class="placeholder placeholder-lg col-3"></span>
+    </div>
+    <div class="col-xl-6">
+        <div class="card border border-primary">
+            <div class="card-header bg-transparent border-primary">
+                <h5 class="my-0 text-primary"><i class="fas fa-graduation-cap me-3"></i>Certificações</h5>
+            </div>
+            <div class="card-body d-flex align-items-center">
+                <div class="flex-shrink-0">
+                    <img src="https://via.placeholder.com/100" alt="...">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                    <div class="mb-2 placeholder-glow">
+                        <span class="placeholder placeholder-sm col-10"></span>
+                        <span class="placeholder placeholder-sm col-9"></span>
+                        <span class="placeholder placeholder-sm col-7"></span>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border border-primary">
+            <div class="card-header bg-transparent border-primary">
+                <h5 class="my-0 text-primary"><i class="fas fa-piggy-bank me-3"></i></i>Prêmio Financeiro</h5>
+            </div>
+            <div class="card-body d-flex align-items-center">
+                <div class="flex-shrink-0">
+                    <img src="https://via.placeholder.com/100" alt="...">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                    <div class="mb-2 placeholder-glow">
+                        <span class="placeholder placeholder-sm col-10"></span>
+                        <span class="placeholder placeholder-sm col-9"></span>
+                        <span class="placeholder placeholder-sm col-7"></span>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="card border border-primary">
+            <div class="card-header bg-transparent border-primary">
+                <h5 class="my-0 text-primary"><i class="fas fa-plane-departure me-3"></i>Viagem</h5>
+            </div>
+            <div class="card-body d-flex align-items-center">
+                <div class="flex-shrink-0">
+                    <img src="https://via.placeholder.com/100" alt="...">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                    <div class="mb-2 placeholder-glow">
+                        <span class="placeholder placeholder-sm col-10"></span>
+                        <span class="placeholder placeholder-sm col-9"></span>
+                        <span class="placeholder placeholder-sm col-7"></span>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card border border-primary">
+            <div class="card-header bg-transparent border-primary">
+                <h5 class="my-0 text-primary"><i class="fas fa-trophy me-3"></i>Troféu</h5>
+            </div>
+            <div class="card-body d-flex align-items-center">
+                <div class="flex-shrink-0">
+                    <img src="https://via.placeholder.com/100" alt="...">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                    <div class="mb-2 placeholder-glow">
+                        <span class="placeholder placeholder-sm col-10"></span>
+                        <span class="placeholder placeholder-sm col-9"></span>
+                        <span class="placeholder placeholder-sm col-7"></span>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="premiacaoTrimestre" style="display: none;">
     <div class="row">
-        <div class="col-xl-12">
+        <div class="col-lg-12">
             <div class="d-flex" style="justify-content: space-evenly;">
-                <p class="badge bg-primary">G0</p>
-                <p class="badge bg-primary">G1</p>
-                <p class="badge bg-primary">G2</p>
-                <p class="badge bg-primary">G3</p>
-                <p class="badge bg-primary">G4</p>
-                <p class="badge bg-primary">G5</p>
-                <p class="badge bg-primary">G6</p>
+                <a href="javascript:void(0)">
+                    <p class="badge bg-primary">G0</p>
+                </a>
+                <a href="javascript:void(0)">
+                    <p class="badge bg-primary">G1</p>
+                </a>
+                <a href="javascript:void(0)">
+                    <p class="badge bg-primary">G2</p>
+                </a>
+                <a href="javascript:void(0)">
+                    <p class="badge bg-primary">G3</p>
+                </a>
+                <a href="javascript:void(0)">
+                    <p class="badge bg-primary">G4</p>
+                </a>
+                <a href="javascript:void(0)">
+                    <p class="badge bg-primary">G5</p>
+                </a>
+                <a href="javascript:void(0)">
+                    <p class="badge bg-primary">G6</p>
+                </a>
             </div>
         </div>
     </div>
     <div class="col-xl-12" style="padding-bottom: 2px">
-        <p style="font-weight: 500">Programa Único de Fidelidade (Cartão Visa)</p>
+        <p style="font-weight: 500">Programa Único de Fidelidade (Visa)</p>
     </div>
     <div class="row">
         <div class="col-xl-6" style="border-right: 1px solid">{{-- Coluna esquerda --}}
@@ -84,14 +196,18 @@
                 </ul>
             </div>
         </div>
-        <div class="col-xl-6">{{-- Coluna direita --}}            
-            <div class="card mini-stats-wid bg-primary" style="align-items: center; justify-content: center; padding-top: 10px;">
-                <i class="far fa-question-circle tooltipGatilho1" style="left: 85%; bottom: 75%; position: absolute;"></i>
+        <div class="col-xl-6">{{-- Coluna direita --}}
+            <div class="card mini-stats-wid bg-primary"
+                style="align-items: center; justify-content: center; padding-top: 10px;">
+                <i class="far fa-question-circle tooltipGatilho1"
+                    style="left: 85%; bottom: 75%; position: absolute;"></i>
                 <h6 style="color:#fff;">Seguros</h6>
                 <h3 style="color:#fff;">90%</h3>
             </div>
-            <div class="card mini-stats-wid bg-primary" style="opacity: .5; align-items: center; justify-content: center; padding-top: 10px;">
-                <i class="far fa-question-circle tooltipGatilho2" style="left: 85%; bottom: 75%; position: absolute;"></i>
+            <div class="card mini-stats-wid bg-primary"
+                style="opacity: .5; align-items: center; justify-content: center; padding-top: 10px;">
+                <i class="far fa-question-circle tooltipGatilho2"
+                    style="left: 85%; bottom: 75%; position: absolute;"></i>
                 <h6 style="color:#fff;">Consórcios</h6>
                 <h3 style="color:#fff;">0%</h3>
             </div>
@@ -118,17 +234,14 @@
             attach: '.trimestre',
             animation: {
                 open: 'pulse',
-                close: 'pulse'
+                close: 'slide:top'
             },
+            pointer: 'center',
             position: {
                 y: 'bottom'
             },
             minWidth: 300,
-            isolateScroll: true,
-            adjustPosition: true,
-            adjustTracker: true,
-            responsiveWidth: true,
-            responsiveHeight: true,
+            maxWidth: 400,
             title: 'Premiação Trimestral',
             content: $('.premiacaoTrimestre'),
             footer: 'Última atualização em: Julho/22',
@@ -149,7 +262,6 @@
             isolateScroll: true,
             adjustPosition: true,
             adjustTracker: true,
-            responsiveWidth: true,
             responsiveHeight: true,
             content: 'Atingimento de uma produção total anual de SEGUROS no valor de R$53,26 milhões efetivados via Unicred Corretora RS.',
             closeOnMouseleave: true
@@ -174,7 +286,6 @@
             content: 'O Gatilho 2 só poderá ser habilitado se o Gatilho 1 também for atingido. Após isso, atingimento de uma produção total anual de CONSÓRCIOS no valor de R$150 milhões via Mapfre Consórcios',
             closeOnMouseleave: true
         });
-
     </script>
     <!-- Jbox Tooltips -->
     <script src="{{ URL::asset('/assets/libs/jbox/jbox.min.js') }}"></script>

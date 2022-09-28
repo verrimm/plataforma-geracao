@@ -29,6 +29,7 @@
             position: relative;
             text-align: center;
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         .timeline ol,
@@ -37,21 +38,23 @@
         }
 
         .timeline li:before {
-            content: '';
+            content: '⚽';
             background-size: 700% 700%;
             background-image: linear-gradient(-45deg,
-                rgba(59, 173, 227, 1) 0%,
-                rgba(87, 111, 230, 1) 25%,
-                rgba(59, 173, 227, 1) 51%,
-                rgba(87, 111, 230, 1) 100%);
+                    rgba(59, 173, 227, 1) 0%,
+                    rgba(87, 111, 230, 1) 25%,
+                    rgba(152, 68, 183, 1) 51%,
+                    rgba(255, 53, 127, 1) 100%);
             animation: AnimateBG 20s ease infinite;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(5, 27, 37, 0.3);
+            width: 30px;
+            height: 30px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: rgba(5, 27, 37, 0.3);
             border-radius: 50%;
             display: block;
             text-align: center;
-            line-height: 35px;
+            line-height: 30px;
             margin: 0 auto 10px;
             color: #000;
             cursor: auto;
@@ -63,7 +66,7 @@
             width: 100%;
             height: 1px;
             background-color: grey;
-            top: 20px;
+            top: 15px;
             left: -50%;
             z-index: -999;
             transition: all ease-in-out .3s;
@@ -79,20 +82,22 @@
 
         .timeline li.active:before {
             content: '🏆';
-            font-size: 1.3rem;
+            font-size: 2rem;
+            width: fit-content;
             background-size: 700% 700%;
             background-image: linear-gradient(-45deg,
-                rgba(255, 151, 0, 1) 0%,
-                rgb(230, 194, 0, 1) 25%,
-                rgb(255, 194, 0) 51%,
-                rgba(255, 151, 0, 1) 100%);
+                    rgba(59, 173, 227, 1) 0%,
+                    rgba(87, 111, 230, 1) 25%,
+                    rgba(59, 173, 227, 1) 51%,
+                    rgba(87, 111, 230, 1) 100%);
+
             animation: AnimateBG 20s ease infinite;
             cursor: pointer;
             // color: #F1F1F1;
         }
 
-        .premiacaoTrimestre .badge{
-            font-size: 115%;
+        .premiacaoTrimestre .badge {
+            font-size: 100%;
         }
 
         // .timeline li.active+li:after {
@@ -125,7 +130,8 @@
             }
         }
 
-        .tooltipGatilho1, .tooltipGatilho2{
+        .tooltipGatilho1,
+        .tooltipGatilho2 {
             padding: 0;
             border: none;
             color: #fff;

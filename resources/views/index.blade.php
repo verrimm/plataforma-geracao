@@ -214,7 +214,6 @@
                                                 stroke-width="1px" fill="none" />
                                         </g>
                                     </svg>
-
                                     {{-- MARCOS Segundo e Terceiro Lugar --}}
                                     <div class="marcos" style="position: absolute; width: 100%;left:0;">
                                         <div class="marcosMetaTerceiro" style="z-index: 100; position:absolute"
@@ -251,8 +250,7 @@
                                     <div class="d-flex" style="margin-top: 10px">
                                         <i class="fas fa-trophy third fa-3x iconMarco" style="margin-right: 10px"
                                             data-colocacao="{{ $rankingPodio[2]['posicao_ranking'] }}"></i>
-                                        <h5>Faltam
-                                            <strong>{{ $rankingPodio[2]['pt_ranking'] - $dadosUsuario->sum('pontuacao') + 1 }}</strong>
+                                        <h5>Faltam <strong>{{ $rankingPodio[2]['pt_ranking'] - $dadosUsuario->sum('pontuacao') + 1 }}</strong>
                                             pontos para a colocação
                                         </h5>
                                     </div>
@@ -287,21 +285,13 @@
                                     $contadorGrupo = 0;
                                     $contadorInicial = 0;
                                 @endphp
-        
                            
                                     <input class="d-none" type="text" id="grupoSelecionado" name="grupoSelecionado" >
                                     <input class="d-none" id="postoSelecionado" type="text" name="postoSelecionado">
                                     <input class="d-none" id="mesSelecionado"  type="text" name="mesSelecionado">
                                     <span>Unidade</span>
-                                <div class="input-group">
-        
-                                    
-        
+                                <div class="input-group">     
                                 <select  required id="selectIndexUnidades" class="form-control select2 selectFiltros">
-                                    
-                                    
-        
-        
                                     @foreach ($participantesPorGrupo as $item)
                                         @if ($contadorInicial == 0)
                                             <option value="">Selecione</option>
